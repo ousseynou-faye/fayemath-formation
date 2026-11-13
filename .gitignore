@@ -1,0 +1,10 @@
+# Fichiers qui restent sur l ordinateur et ne sont jamais envoyes sur GitHub
+_archive-v1/
+sauvegardes/
+/app.js
+/donnees-formation.js
+/donnees-veille.js
+*sauvegarde*.json
+*mes_ecrits*.txt
+desktop.ini
+Thumbs.db
