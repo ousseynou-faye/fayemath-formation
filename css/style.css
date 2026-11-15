@@ -350,3 +350,24 @@ mark{background:var(--or);color:#16213E;border-radius:3px;padding:0 2px}
   .ligne select,.ligne input[type=date]{width:100%;padding:9px 8px}
   .res{padding:12px}
 }
+
+/* =====================================================================
+   VERSION 2.2 — approfondissement, mise en pratique, favoris, historique,
+   rappel de sauvegarde, bandeau de mise à jour, taille du texte
+   ===================================================================== */
+.appro-t{font-size:17px;margin:22px 0 10px;padding-top:14px;border-top:1px dashed var(--trait);max-width:76ch}
+.bloc.exo{border-left-color:var(--indigo2);border-style:solid;border-width:1px 1px 1px 5px;background:var(--carte)}
+.bloc.exo h3{color:var(--indigo2)}
+.coche-exo{display:flex;gap:10px;align-items:center;margin-top:10px;font-weight:700;font-size:15px;cursor:pointer}
+.coche-exo input{width:22px;height:22px;accent-color:var(--ok);flex:none}
+.rappel{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;border-left:5px solid var(--ocre);background:var(--ocre-clair);margin-bottom:16px}
+.histo{display:flex;align-items:flex-end;gap:3px;height:110px;padding:4px 0;border-bottom:1.5px solid var(--trait)}
+.histo>div{flex:1;height:100%;display:flex;align-items:flex-end;min-width:0}
+.histo i{display:block;width:100%;min-height:2px;background:var(--indigo2);border-radius:3px 3px 0 0;opacity:.75}
+.histo i.lec{background:var(--ocre);opacity:1}
+code{font-family:Consolas,"Courier New",monospace;font-size:.92em;background:var(--fond);border:1px solid var(--trait);border-radius:4px;padding:1px 5px}
+#maj{position:fixed;left:12px;right:12px;bottom:14px;z-index:20;max-width:560px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between;
+  background:var(--nav);color:var(--nav-texte);border-radius:12px;padding:12px 14px;box-shadow:0 6px 24px rgba(0,0,0,.35);font-size:14.5px}
+[data-taille="1"] #vue{zoom:1.12}
+[data-taille="2"] #vue{zoom:1.25}
+@media print{#maj,.rappel,.coche-exo{display:none !important}[data-taille] #vue{zoom:1}}

@@ -70,6 +70,11 @@ function vueJournal(){
       <div class="chiffres"><span><b>${fmtMin(minutesSemaine())}</b> cette semaine</span><span><b>${fmtMin(minutesTotal())}</b> au total</span><span><b>${Object.keys(etat.jours).length}</b> jours d'étude</span></div>
       <p class="petit" style="margin:10px 0 0">Le temps est compté par le minuteur d'étude, en bas du menu. Lancez-le au début de chaque séance.</p></div>
   </div>
+  <h2>Mes 4 dernières semaines</h2>
+  ${(() => { const H = historique(), max = Math.max(30, ...H.map(x => x.min)), tot = H.reduce((a,x) => a + x.min, 0), lec = H.reduce((a,x) => a + x.lec, 0), act = H.filter(x => x.min || x.lec).length;
+    return `<div class="carte"><div class="histo" role="img" aria-label="Minutes d'étude par jour sur 28 jours">${H.map(x => `<div title="${frDate(x.j)} : ${x.min} min, ${x.lec} leçon${x.lec>1?"s":""}"><i style="height:${Math.round(100*x.min/max)}%" class="${x.lec ? "lec" : ""}"></i></div>`).join("")}</div>
+      <div class="chiffres"><span><b>${fmtMin(tot)}</b> d'étude</span><span><b>${lec}</b> leçon${lec>1?"s":""} lue${lec>1?"s":""}</span><span><b>${act}</b> jour${act>1?"s":""} actif${act>1?"s":""} sur 28</span></div>
+      <p class="petit" style="margin:8px 0 0">Une barre par jour, la plus récente à droite. En ocre : les jours où une leçon a été lue. Les minutes viennent du minuteur d'étude.</p></div>`; })()}
   <h2>Nouvelle entrée</h2>
   <form class="carte" id="form-journal"><label class="petit" for="j-appris"><b>Ce que j'ai appris ou décidé</b></label><textarea class="zone" id="j-appris" required></textarea>
     <label class="petit" for="j-applique" style="display:block;margin-top:10px"><b>Ce que je vais appliquer, et quand</b></label><textarea class="zone" id="j-applique"></textarea>
@@ -135,16 +140,46 @@ function vueRecherche(){
 let msgSauv = "";
 function vueSauvegarde(){
   return `<div class="sur-titre">Réglages</div><h1>Sauvegarde et réglages</h1>
-  <p class="chapeau">Votre progression est gardée par le navigateur de cet ordinateur. Enregistrez une copie une fois par semaine, et rangez-la dans le dossier « sauvegardes » de l'application.</p>
+  <p class="chapeau">Votre progression est gardée sur cet appareil, par le navigateur. Enregistrez une copie une fois par semaine, et rangez-la dans le dossier « sauvegardes » de l'application.</p>
   ${msgSauv ? `<div class="carte resultat ok" role="status">${h(msgSauv)}</div>` : ""}
+  <h2>Sauvegarder</h2>
   <div class="grille g2">
-    <div class="carte"><h3>Enregistrer une copie</h3><p class="petit">Crée un fichier FayeMath_Formation_sauvegarde_${auj()}.json avec toute votre progression et vos écrits.</p><button class="btn" type="button" data-a="export">Enregistrer la sauvegarde</button></div>
-    <div class="carte"><h3>Restaurer une copie</h3><p class="petit">Remplace la progression actuelle par celle du fichier choisi (version 1 ou 2).</p><input type="file" id="fichier" accept=".json,application/json" aria-label="Fichier de sauvegarde"></div>
-    <div class="carte"><h3>Mon nom sur les attestations</h3><input class="champ" data-champ="nom" value="${h(etat.nom)}" aria-label="Nom" style="width:100%"></div>
-    <div class="carte"><h3>Repartir de zéro</h3><p class="petit">Efface toute la progression de cet ordinateur. Enregistrez une copie avant.</p><button class="btn rouge" type="button" data-a="raz">Tout effacer</button></div>
+    <div class="carte"><h3>Enregistrer une copie</h3><p class="petit">Crée le fichier FayeMath_Formation_sauvegarde_${auj()}.json avec toute votre progression et vos écrits.${etat.dernierExport ? " Dernière copie : " + frDate(etat.dernierExport) + "." : ""}</p>
+      <p style="margin:0;display:flex;gap:8px;flex-wrap:wrap"><button class="btn" type="button" data-a="export">Enregistrer la sauvegarde</button>
+      ${navigator.share ? '<button class="btn sec" type="button" data-a="partager">Partager (WhatsApp, e-mail…)</button>' : ""}</p></div>
+    <div class="carte"><h3>Fusionner avec une copie</h3><p class="petit"><b>Recommandé entre téléphone et ordinateur.</b> Ajoute à cet appareil ce qui a été fait sur l'autre, sans rien effacer : leçons lues, meilleurs scores, textes les plus complets.</p><input type="file" id="fichier-fusion" accept=".json,application/json" aria-label="Fichier de sauvegarde à fusionner"></div>
+    <div class="carte"><h3>Remplacer par une copie</h3><p class="petit">Efface la progression de cet appareil et la remplace par celle du fichier (version 1 ou 2). À utiliser pour revenir à un état antérieur.</p><input type="file" id="fichier" accept=".json,application/json" aria-label="Fichier de sauvegarde"></div>
   </div>
-  <p class="pied">Dernier enregistrement : ${etat.t ? new Date(etat.t).toLocaleString("fr-FR") : "aucun"}. ${stockageOK ? "" : "Le navigateur refuse l'enregistrement automatique : exportez une sauvegarde avant de fermer."}</p>`;
+  <h2>Réglages</h2>
+  <div class="grille g2">
+    <div class="carte"><h3>Taille du texte</h3><div class="filtres" role="group" aria-label="Taille du texte" style="margin:6px 0 0">${["Normale","Grande","Très grande"].map((l,i) => `<button class="filtre" type="button" data-a="taille" data-v="${i}" aria-pressed="${etat.taille === i}">${l}</button>`).join("")}</div></div>
+    <div class="carte"><h3>Mon nom sur les attestations</h3><input class="champ" data-champ="nom" value="${h(etat.nom)}" aria-label="Nom" style="width:100%"></div>
+    <div class="carte"><h3>Repartir de zéro</h3><p class="petit">Efface toute la progression de cet appareil. Enregistrez une copie avant.</p><button class="btn rouge" type="button" data-a="raz">Tout effacer</button></div>
+  </div>
+  <p class="pied">FayeMath Formation, version ${APP_VERSION}. Dernier enregistrement : ${etat.t ? new Date(etat.t).toLocaleString("fr-FR") : "aucun"}. ${stockageOK ? "" : "Le navigateur refuse l'enregistrement automatique : exportez une sauvegarde avant de fermer."}</p>`;
 }
+/* ---------- favoris ---------- */
+function vueFavoris(){
+  const F = LECONS.filter(x => etat.fav[x.l.id]);
+  return `<div class="sur-titre">Références</div><h1>Mes favoris</h1>
+  <p class="chapeau">Les leçons que vous avez marquées d'une étoile, pour les retrouver avant un appel, une séance ou un rendez-vous.</p>
+  ${F.length ? F.map(x => `<a class="trouve" href="#lecon/${x.l.id}"><small>Module ${x.m.n} · ${h(x.m.court)}</small><div><b>★ ${h(x.l.t)}</b></div><div class="petit">${h(x.l.cle)}</div></a>`).join("")
+    : '<p class="vide">Aucun favori pour l\'instant. Ouvrez une leçon et touchez « Ajouter aux favoris ».</p>'}`;
+}
+
+/* ---------- mode d'emploi ---------- */
+function vueAide(){
+  const bloc = (t, L) => `<h2>${t}</h2><div class="carte"><ol class="obj">${L.map(x => `<li>${x}</li>`).join("")}</ol></div>`;
+  return `<div class="sur-titre">Références</div><h1>Mode d'emploi</h1>
+  <p class="chapeau">Comment tirer le meilleur de FayeMath Formation, sur l'ordinateur comme sur le téléphone. Version ${APP_VERSION}.</p>
+  ${bloc("Une séance d'étude type (25 à 30 minutes)", ["Lancez le <b>minuteur d'étude</b>, en bas du menu.","Faites la <b>révision espacée</b> si des cartes sont dues (5 minutes).","Étudiez <b>une leçon</b> : lecture, exemple, approfondissement, puis répondez par écrit à la question de réflexion.","Faites la <b>mise en pratique</b> le jour même ou planifiez-la, puis cochez-la.","Notez une ligne dans le <b>journal de bord</b> : ce que vous avez appris, ce que vous allez appliquer.","Arrêtez le minuteur : le temps rejoint vos statistiques."])}
+  ${bloc("Valider un module", ["Lisez toutes les leçons du module.","Résolvez le <b>cas pratique</b> par écrit avant de regarder les éléments de réponse.","Rédigez l'<b>atelier</b> : c'est un document réellement utile à FayeMath Academy.","Consultez la <b>fiche-outil</b> et copiez-la là où vous en aurez besoin.","Réussissez le <b>quiz à " + SEUIL + " %</b>. Les réponses changent de place à chaque tentative.","Donnez un statut et une échéance aux <b>actions</b> du module dans le plan d'action."])}
+  ${bloc("Valider un pôle, puis le parcours", ["Validez tous les modules du pôle.","Passez le <b>bilan de pôle</b> (12 questions tirées au hasard) et obtenez " + SEUIL + " %.","L'<b>attestation</b> du pôle se débloque et s'imprime.","Les quatre pôles validés, passez l'<b>examen final</b> (20 questions) pour l'attestation générale."])}
+  ${bloc("Travailler sur le téléphone et sur l'ordinateur", ["Chaque appareil garde sa propre progression : rien n'est envoyé en ligne.","Pour réunir les deux : sur l'appareil A, <b>Sauvegarde → Partager</b> (ou Enregistrer) ; sur l'appareil B, <b>Sauvegarde → Fusionner avec une copie</b>.","La fusion n'efface rien : elle garde les leçons lues des deux côtés, le meilleur score de chaque quiz et le texte le plus complet de chaque réponse.","Faites-le une fois par semaine ; le tableau de bord vous le rappelle."])}
+  ${bloc("Recevoir une mise à jour sur le téléphone", ["Sur l'ordinateur, dans le dossier de l'application : <code>git add .</code> puis <code>git commit -m \"Mise à jour\"</code> puis <code>git push</code>.","Attendez une à deux minutes.","Ouvrez l'application sur le téléphone, avec une connexion : un bandeau « Nouvelle version » apparaît en bas. Touchez « Recharger ».","Le numéro de version est indiqué en bas du menu et dans « Sauvegarde et réglages »."])}
+  ${bloc("Bon à savoir", ["Le dépôt GitHub est public : le contenu de la formation est lisible par qui a l'adresse, mais jamais votre progression ni vos écrits.","Ne déposez jamais un fichier de sauvegarde dans le dépôt (le fichier <code>.gitignore</code> l'empêche).","Si vous videz les données de Chrome ou désinstallez l'application, la progression de l'appareil est perdue : d'où l'importance de la sauvegarde hebdomadaire.","Pour corriger un texte, modifiez la ligne dans <code>donnees/pole-a.js</code> à <code>pole-d.js</code>, puis rechargez."])}`;
+}
+
 function telecharger(nom, contenu, type){ // crée un fichier et le propose au téléchargement
   const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([contenu], {type})); a.download = nom;
   document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);

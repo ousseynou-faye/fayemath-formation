@@ -12,8 +12,11 @@ const pastille = s => `<span class="pastille ${s}">${libStatut[s]}</span>`;
 function vueAccueil(){
   const e = prochaineEtape(), nv = FM.modules.filter(valide).length, due = cartes().filter(carteDue).length;
   const A = actions(), enCours = A.filter(a => statut(a.k) === "cours").length, faites = A.filter(a => statut(a.k) === "fait").length;
-  const ls = leconsSemaine(), J = joursSemaine();
-  return `<div class="sur-titre">Tableau de bord</div><h1>Bonjour ${h(etat.nom.split(" ")[0])}</h1>
+  const ls = leconsSemaine(), J = joursSemaine(), fin = finEstimee(), jd = joursDepuis(etat.dernierExport);
+  const aSauver = Object.keys(etat.lu).length > 0 && (jd === null || jd >= 7);       // rappel hebdomadaire de sauvegarde
+  const favs = LECONS.filter(x => etat.fav[x.l.id]);
+  return `${aSauver ? `<div class="carte rappel"><div><b>Pensez à votre sauvegarde.</b> <span class="petit">${jd === null ? "Aucune copie enregistrée pour l'instant." : "Dernière copie il y a " + jd + " jours."}</span></div><a class="btn sec" href="#sauvegarde">Sauvegarder</a></div>` : ""}
+  <div class="sur-titre">Tableau de bord</div><h1>Bonjour ${h(etat.nom.split(" ")[0])}</h1>
   <p class="chapeau">Votre formation de fondateur : 4 pôles, ${FM.modules.length} modules, ${LECONS.length} leçons. Chaque module se valide par ses leçons et un quiz réussi à ${SEUIL} %.</p>
   ${e ? `<div class="carte reprise"><div><div class="sur-titre">Reprendre · ${h(e.sur)}</div><h3 style="font-size:19px">${h(e.titre)}</h3><div class="petit">${h(e.quoi)}</div></div><a class="btn" href="${e.href}">Continuer</a></div>`
       : `<div class="carte reprise"><div><h3>Parcours terminé</h3><div class="petit">Tous les modules sont validés. Passez les bilans de pôle et entretenez vos acquis avec la révision.</div></div><a class="btn" href="#bilans">Bilans et attestations</a></div>`}
@@ -25,7 +28,7 @@ function vueAccueil(){
     <div class="kpi"><b>${fmtMin(minutesSemaine())}</b><span>d'étude cette semaine</span></div>
     <div class="kpi"><b>${due}</b><span>carte${due>1?"s":""} à réviser</span></div>
   </div>
-  <div class="carte"><h3>Ma semaine</h3><div class="petit">Objectif : ${etat.objectif} leçons par semaine. Les jours d'étude sont en vert. <a href="#journal">Modifier l'objectif</a></div>
+  <div class="carte"><h3>Ma semaine</h3><div class="petit">Objectif : ${etat.objectif} leçons par semaine. Les jours d'étude sont en vert. ${fin ? `À ce rythme, il reste ${fin.reste} leçons, soit environ ${fin.semaines} semaine${fin.semaines>1?"s":""} (vers le ${fin.date}). ` : ""}<a href="#journal">Modifier l'objectif</a></div>
     <div class="semaine">${J.map((j,i) => `<span class="${etat.jours[j] ? "on" : ""}">${"LMMJVSD"[i]}</span>`).join("")}</div></div>
   <h2>Les 4 pôles</h2>
   <div class="grille g2">${FM.poles.map(p => { const L = modsPole(p.id), v = L.filter(valide).length;
@@ -34,6 +37,7 @@ function vueAccueil(){
   <h2>Carte des compétences</h2>
   <div class="comp">${FM.modules.map(m => `<a class="${statutModule(m)}" href="#module/${m.id}" title="${h(m.titre)} — ${libStatut[statutModule(m)]}"><i>${m.n}</i><span>${h(m.court)}</span></a>`).join("")}</div>
   <p class="petit" style="margin-top:8px">Vert : module validé · ocre : en cours · blanc : à commencer.</p>
+  ${favs.length ? `<h2>Mes favoris</h2><div class="puces">${favs.slice(0,8).map(x => `<a class="puce" href="#lecon/${x.l.id}" style="text-decoration:none;font-size:13.5px;padding:5px 12px">★ ${h(x.l.t)}</a>`).join("")}${favs.length > 8 ? ` <a class="petit" href="#favoris">Tous les favoris</a>` : ""}</div>` : ""}
   <h2>Appliquer</h2>
   <div class="grille g3">
     <a class="carte mod-carte" href="#actions"><h3>Plan d'action</h3><p>${faites} action${faites>1?"s":""} faite${faites>1?"s":""}, ${enCours} en cours, sur ${A.length}.</p></a>
@@ -63,7 +67,7 @@ function vueModule(m){
   <h2>À la fin de ce module, vous saurez</h2><div class="carte retenir"><ul class="obj">${m.objectifs.map(o => `<li>${h(o)}</li>`).join("")}</ul></div>
   <h2>Parcours du module</h2>
   <ol class="etp">
-    ${m.lecons.map((l,k) => etape("#lecon/"+l.id, !!etat.lu[l.id], k+1, l.t, "Leçon · environ "+dureeLecon(l)+" min")).join("")}
+    ${m.lecons.map((l,k) => etape("#lecon/"+l.id, !!etat.lu[l.id], k+1, l.t, "Leçon · "+lectureLecon(l)+" min de lecture + mise en pratique"+(etat.exo[l.id] ? " (faite)" : ""))).join("")}
     ${etape("#etape/"+m.id+"/cas", casFait(m), "C", "Cas pratique : "+m.cas.t, "Une situation réelle à résoudre, puis les éléments de réponse")}
     ${etape("#etape/"+m.id+"/atelier", atelierFait(m), "A", "Atelier : "+m.atelier.t, "Un écrit à produire pour FayeMath Academy")}
     ${etape("#etape/"+m.id+"/outil", false, "F", "Fiche-outil : "+m.outil.t, "Modèle prêt à l'emploi, à copier ou imprimer").replace(">Ouvrir<",">Consulter<")}
@@ -81,6 +85,7 @@ function vueModule(m){
 function corpsLecon(l){                 // texte de la leçon, sans les boutons (sert aussi à la version imprimable)
   return `<div class="lec">${l.p.map(x => `<p>${h(x)}</p>`).join("")}</div>
   <div class="bloc ex"><h3>Exemple concret</h3><p>${h(l.ex)}</p></div>
+  ${l.appro && l.appro.length ? `<h2 class="appro-t">Pour aller plus loin</h2><div class="lec">${l.appro.map(x => `<p>${h(x)}</p>`).join("")}</div>` : ""}
   <div class="bloc fm"><h3>Chez FayeMath Academy</h3><p>${h(l.fm)}</p></div>
   <div class="bloc err"><h3>Erreur fréquente</h3><p>${h(l.err)}</p></div>
   <div class="bloc cle"><h3>À retenir</h3><p>${h(l.cle)}</p></div>`;
@@ -92,8 +97,11 @@ function suiteLecon(x){                 // étape qui suit une leçon : leçon s
 function vueLecon(x){
   const {l, m, i} = x, lu = etat.lu[l.id], s = suiteLecon(x), prec = m.lecons[i-1];
   return `<div class="sur-titre"><a href="#module/${m.id}" style="color:inherit;text-decoration:none">Module ${m.n} · ${h(m.court)}</a> · Leçon ${i+1} sur ${m.lecons.length}</div>
-  <h1>${h(l.t)}</h1><p class="chapeau">Environ ${dureeLecon(l)} minutes d'étude, question de réflexion comprise. ${lu ? `<span class="pastille ok">Lue le ${frDate(lu)}</span>` : ""}</p>
+  <h1>${h(l.t)}</h1><p class="chapeau">${lectureLecon(l)} minutes de lecture et de réflexion, puis environ ${PRATIQUE} minutes de mise en pratique. ${lu ? `<span class="pastille ok">Lue le ${frDate(lu)}</span>` : ""}</p>
+  <p class="sans-imp" style="margin:-8px 0 14px"><button class="btn sec" type="button" data-a="fav" data-id="${l.id}" aria-pressed="${!!etat.fav[l.id]}">${etat.fav[l.id] ? "★ Dans mes favoris" : "☆ Ajouter aux favoris"}</button></p>
   ${corpsLecon(l)}
+  <div class="bloc exo"><h3>Mise en pratique · environ ${PRATIQUE} min</h3><p>${h(l.exo)}</p>
+    <label class="coche-exo"><input type="checkbox" data-exo="${l.id}" ${etat.exo[l.id] ? "checked" : ""}> Je l'ai faite${etat.exo[l.id] ? " le " + frDate(etat.exo[l.id]) : ""}</label></div>
   <div class="bloc refl"><h3>Question de réflexion</h3><p>${h(l.q)}</p>
     <textarea class="zone" data-champ="refl:${l.id}" aria-label="Votre réponse" placeholder="Écrivez votre réponse en quelques lignes : c'est ce qui ancre la leçon.">${h(etat.refl[l.id] || "")}</textarea></div>
   <div class="suivant"><span>${prec ? `<a class="btn sec" href="#lecon/${prec.id}">Leçon précédente</a>` : `<a class="btn sec" href="#module/${m.id}">Retour au module</a>`}</span>
@@ -132,10 +140,17 @@ function vueOutil(m){
 
 /* ---------- quiz (module ou bilan de pôle) ----------
    questions : [[question, [choix], bonne réponse, explication]] ; rep : {n°: choix} ; attr : attributs data des boutons */
-function blocQuestions(questions, rep, attr){
+const melanges = {};                   // ordre d'affichage des réponses, par quiz : {clé: [[2,0,1], …]}
+function ordreReponses(cle, questions){ // tiré au hasard une fois par tentative, pour que la bonne réponse change de place
+  if (!melanges[cle] || melanges[cle].length !== questions.length)
+    melanges[cle] = questions.map(q => { const o = q[1].map((_,j) => j); for (let i = o.length - 1; i > 0; i--){ const j = Math.floor(Math.random()*(i+1)); [o[i],o[j]] = [o[j],o[i]]; } return o; });
+  return melanges[cle];
+}
+function blocQuestions(questions, rep, attr, cle){
+  const ordre = ordreReponses(cle, questions);
   return questions.map((q,i) => { const c = rep[i], repondu = c !== undefined;
-    return `<div class="q"><p>${i+1}. ${h(q[0])}</p><div class="choix">${q[1].map((o,j) =>
-      `<button type="button" ${attr} data-q="${i}" data-c="${j}" ${repondu ? "disabled" : ""} class="${repondu && j===q[2] ? "bon" : repondu && j===c ? "faux" : ""}">${h(o)}</button>`).join("")}</div>
+    return `<div class="q"><p>${i+1}. ${h(q[0])}</p><div class="choix">${ordre[i].map(j =>
+      `<button type="button" ${attr} data-q="${i}" data-c="${j}" ${repondu ? "disabled" : ""} class="${repondu && j===q[2] ? "bon" : repondu && j===c ? "faux" : ""}">${h(q[1][j])}</button>`).join("")}</div>
       ${repondu ? `<div class="verdict ${c===q[2] ? "b" : "m"}"><b>${c===q[2] ? "Bonne réponse." : "Pas tout à fait."}</b> ${h(q[3])}</div>` : ""}</div>`; }).join("");
 }
 const noteQuiz = (questions, rep) => pct(questions.filter((q,i) => rep[i] === q[2]).length, questions.length);
@@ -147,17 +162,17 @@ function vueQuiz(m){
   ${fini ? `<div class="carte resultat ${note >= SEUIL ? "ok" : "ko"}"><h3>${note} % de bonnes réponses</h3>
       <p style="margin:6px 0 10px">${note >= SEUIL ? (toutLu ? "Module validé. Les questions rejoignent vos cartes de révision." : "Quiz réussi. Il reste des leçons à lire pour valider le module.") : "Seuil non atteint. Relisez les leçons concernées par vos erreurs, puis recommencez."}</p>
       <button class="btn sec" type="button" data-a="refaire-quiz" data-id="${m.id}">Refaire le quiz</button> ${note >= SEUIL && ap ? `<a class="btn" href="#module/${ap.id}">Module suivant</a>` : ""}</div>` : ""}
-  <div class="carte">${blocQuestions(m.quiz, s.rep, `data-a="rep-quiz" data-id="${m.id}"`)}</div>
+  <div class="carte">${blocQuestions(m.quiz, s.rep, `data-a="rep-quiz" data-id="${m.id}"`, "M-"+m.id)}</div>
   ${fini ? "" : `<p class="petit" role="status">${n} réponse${n>1?"s":""} sur ${m.quiz.length}.</p>`}
   <div class="suivant"><a class="btn sec" href="#module/${m.id}">Retour au module</a></div>`;
 }
 
 /* ---------- bilans de pôle et attestations ---------- */
 let bilan = null;                       // bilan en cours : {pole, qs: [questions], rep: {}}
-function tirerBilan(p){                 // 12 questions tirées au hasard dans les quiz des modules du pôle
-  const T = modsPole(p).flatMap(m => m.quiz);
+function tirerBilan(p){                 // 12 questions tirées au hasard dans les quiz du pôle (20 pour l'examen final)
+  const T = modsBilan(p).flatMap(m => m.quiz); delete melanges["B"];
   for (let i = T.length - 1; i > 0; i--){ const j = Math.floor(Math.random()*(i+1)); [T[i],T[j]] = [T[j],T[i]]; }
-  bilan = {pole:p, qs:T.slice(0,12), rep:{}};
+  bilan = {pole:p, qs:T.slice(0, p === "X" ? 20 : 12), rep:{}};
 }
 function vueBilans(){
   return `<div class="sur-titre">S'évaluer</div><h1>Bilans et attestations</h1>
@@ -167,21 +182,36 @@ function vueBilans(){
       <div class="chiffres"><span><b>${v}</b> / ${L.length} modules validés</span><span>Bilan : <b>${b ? b.best+" %" : "—"}</b>${b ? " le "+frDate(b.d) : ""}</span></div>
       <p style="margin:12px 0 0;display:flex;gap:8px;flex-wrap:wrap"><a class="btn${b ? " sec" : ""}" href="#bilan/${p.id}">${b ? "Repasser le bilan" : "Passer le bilan"}</a>
       ${ok ? `<a class="btn vert" href="#attestation/${p.id}">Voir l'attestation</a>` : `<span class="pastille">Attestation verrouillée</span>`}</p></div>`; }).join("")}</div>
+  <h2>Examen final</h2>
+  ${(() => { const b = etat.bilanP.X, tous = FM.poles.every(p => poleValide(p.id)), ok = poleValide("X");
+    return `<div class="carte" style="border-top:5px solid var(--or)"><div class="pole-lettre">Parcours complet</div><h3 style="font-size:18px">Examen final : 20 questions sur les 17 modules</h3>
+      <div class="chiffres"><span><b>${FM.poles.filter(p => poleValide(p.id)).length}</b> / 4 pôles validés</span><span>Examen : <b>${b ? b.best+" %" : "—"}</b>${b ? " le "+frDate(b.d) : ""}</span></div>
+      <p style="margin:12px 0 0;display:flex;gap:8px;flex-wrap:wrap"><a class="btn${b ? " sec" : ""}" href="#bilan/X">${b ? "Repasser l'examen" : "Passer l'examen final"}</a>
+      ${ok ? `<a class="btn vert" href="#attestation/X">Attestation générale</a>` : `<span class="pastille">${tous ? "Réussissez l'examen à " + SEUIL + " %" : "Attestation générale : validez d'abord les 4 pôles"}</span>`}</p></div>`; })()}
   <p class="pied">Ces attestations sont des documents internes de suivi de votre formation personnelle. Elles n'ont pas valeur de diplôme.</p>`;
 }
 function vueBilan(p){
   if (!bilan || bilan.pole !== p.id) tirerBilan(p.id);
   const n = Object.keys(bilan.rep).length, fini = n === bilan.qs.length, note = noteQuiz(bilan.qs, bilan.rep);
-  return `<div class="sur-titre">Bilan du pôle ${p.id}</div><h1>${h(p.titre)}</h1>
-  <p class="chapeau">${bilan.qs.length} questions tirées dans les ${modsPole(p.id).length} modules du pôle. Seuil : ${SEUIL} %.</p>
+  return `<div class="sur-titre">${p.id === "X" ? "Examen final" : "Bilan du pôle " + p.id}</div><h1>${h(p.titre)}</h1>
+  <p class="chapeau">${bilan.qs.length} questions tirées dans les ${modsBilan(p.id).length} modules ${p.id === "X" ? "du parcours" : "du pôle"}. Seuil : ${SEUIL} %.</p>
   ${fini ? `<div class="carte resultat ${note >= SEUIL ? "ok" : "ko"}"><h3>${note} % de bonnes réponses</h3><p style="margin:6px 0 10px">${note >= SEUIL ? "Bilan réussi." : "Seuil non atteint : reprenez les modules concernés, puis repassez le bilan."}</p>
     <button class="btn sec" type="button" data-a="nouveau-bilan" data-id="${p.id}">Nouveau tirage</button> <a class="btn" href="#bilans">Bilans et attestations</a></div>` : ""}
-  <div class="carte">${blocQuestions(bilan.qs, bilan.rep, 'data-a="rep-bilan"')}</div>
+  <div class="carte">${blocQuestions(bilan.qs, bilan.rep, 'data-a="rep-bilan"', "B")}</div>
   ${fini ? "" : `<p class="petit" role="status">${n} réponse${n>1?"s":""} sur ${bilan.qs.length}.</p>`}`;
 }
 function vueAttestation(p){
-  if (!poleValide(p.id)) return `<h1>Attestation verrouillée</h1><p class="chapeau">Validez tous les modules du pôle ${p.id} et réussissez son bilan à ${SEUIL} % pour l'obtenir.</p><a class="btn" href="#pole/${p.id}">Ouvrir le pôle ${p.id}</a>`;
+  if (!poleValide(p.id)) return p.id === "X"
+    ? `<h1>Attestation générale verrouillée</h1><p class="chapeau">Validez les quatre pôles, puis réussissez l'examen final à ${SEUIL} %.</p><a class="btn" href="#bilans">Bilans et attestations</a>`
+    : `<h1>Attestation verrouillée</h1><p class="chapeau">Validez tous les modules du pôle ${p.id} et réussissez son bilan à ${SEUIL} % pour l'obtenir.</p><a class="btn" href="#pole/${p.id}">Ouvrir le pôle ${p.id}</a>`;
   const b = etat.bilanP[p.id];
+  if (p.id === "X") return `<div class="attest"><img src="logo.png" alt="" width="84" height="84"><div class="sur-titre">FayeMath Academy · Formation du fondateur</div>
+    <h1>Attestation générale de formation interne</h1><p>Il est attesté que</p><div class="nom">${h(etat.nom)}</div>
+    <p>a validé l'ensemble du parcours du fondateur : <b>4 pôles, ${FM.modules.length} modules, ${LECONS.length} leçons</b></p>
+    <ul>${FM.poles.map(q => `<li>Pôle ${q.id} · ${h(q.titre)} — bilan ${etat.bilanP[q.id].best} %</li>`).join("")}</ul>
+    <p>Examen final : <b>${b.best} %</b> · le ${frDate(b.d)}</p>
+    <p class="petit" style="margin-top:22px">Document interne de suivi d'une formation personnelle. Sans valeur de diplôme.<br>« La Réussite se construit à Domicile »</p></div>
+  <p class="sans-imp" style="text-align:center"><button class="btn" type="button" data-a="imprimer">Imprimer l'attestation</button> <a class="btn sec" href="#bilans">Retour</a></p>`;
   return `<div class="attest"><img src="logo.png" alt="" width="84" height="84"><div class="sur-titre">FayeMath Academy · Formation du fondateur</div>
     <h1>Attestation de formation interne</h1><p>Il est attesté que</p><div class="nom">${h(etat.nom)}</div>
     <p>a validé le pôle <b>${p.id} — ${h(p.titre)}</b></p>
@@ -196,7 +226,7 @@ function vueImprimer(m){
   return `<p class="sans-imp"><button class="btn" type="button" data-a="imprimer">Imprimer ce module</button> <a class="btn sec" href="#module/${m.id}">Retour au module</a></p>
   <div class="sur-titre">FayeMath Formation · Pôle ${m.pole} · Module ${m.n}</div><h1>${h(m.titre)}</h1><p class="chapeau">${h(m.but)}</p>
   <h2>Objectifs</h2><ul class="obj">${m.objectifs.map(o => `<li>${h(o)}</li>`).join("")}</ul>
-  ${m.lecons.map((l,i) => `<h2>Leçon ${i+1} — ${h(l.t)}</h2>${corpsLecon(l)}<div class="bloc refl"><h3>Question de réflexion</h3><p>${h(l.q)}</p></div>`).join("")}
+  ${m.lecons.map((l,i) => `<h2>Leçon ${i+1} — ${h(l.t)}</h2>${corpsLecon(l)}<div class="bloc exo"><h3>Mise en pratique</h3><p>${h(l.exo)}</p></div><div class="bloc refl"><h3>Question de réflexion</h3><p>${h(l.q)}</p></div>`).join("")}
   <h2>Cas pratique — ${h(m.cas.t)}</h2><div class="bloc ex"><h3>La situation</h3><p>${h(m.cas.s)}</p></div><ol class="obj">${m.cas.q.map(q => `<li>${h(q)}</li>`).join("")}</ol>
   <h2>Atelier — ${h(m.atelier.t)}</h2><p>${h(m.atelier.c)}</p>
   <h2>Fiche-outil — ${h(m.outil.t)}</h2>${corpsOutil(m.outil)}

@@ -15,10 +15,12 @@ const LECON = id => LECONS.find(x => x.l.id === id);
 
 /* ---------- temps d'étude estimé d'une leçon ---------- */
 const nbMots = s => String(s).trim().split(/\s+/).length;
-function dureeLecon(l){               // lecture à 180 mots/minute + 3 minutes pour la question de réflexion
-  const mots = nbMots(l.p.join(" ") + " " + l.ex + " " + l.fm + " " + l.err + " " + l.cle);
+const PRATIQUE = 10;                  // minutes comptées pour la mise en pratique d'une leçon
+function lectureLecon(l){             // lecture à 180 mots/minute + 3 minutes pour la question de réflexion
+  const mots = nbMots(l.p.concat(l.appro || []).join(" ") + " " + l.ex + " " + l.fm + " " + l.err + " " + l.cle);
   return Math.max(4, Math.round(mots/180) + 3);
 }
+const dureeLecon = l => lectureLecon(l) + PRATIQUE;   // étude complète : lecture, réflexion, mise en pratique
 const dureeModule = m => m.lecons.reduce((a,l) => a + dureeLecon(l), 0) + 35;   // + cas, atelier, quiz
 
 /* ---------- progression d'un module ---------- */
@@ -36,14 +38,17 @@ const libStatut = {ok:"Validé", cours:"En cours", "":"À commencer"};
 function progListe(L){ return pct(L.reduce((a,m) => a + faitsModule(m), 0), L.reduce((a,m) => a + pasModule(m), 0)); }
 const progPole = p => progListe(modsPole(p));
 const progGlobale = () => progListe(FM.modules);
-const poleValide = p => modsPole(p).every(valide) && ((etat.bilanP[p] || {}).best || 0) >= SEUIL;
+/* Examen final : pseudo-pôle "X" qui couvre les 17 modules */
+const FINAL = {id:"X", titre:"Examen final du parcours", but:"20 questions tirées dans les 17 modules."};
+const modsBilan = p => p === "X" ? FM.modules : modsPole(p);
+const poleValide = p => (p === "X" ? FM.poles.every(q => poleValide(q.id)) : modsPole(p).every(valide)) && ((etat.bilanP[p] || {}).best || 0) >= SEUIL;
 
 /* ---------- prochaine étape conseillée ---------- */
 function prochaineEtape(){
   for (const m of FM.modules){
     if (valide(m) && casFait(m) && atelierFait(m)) continue;
     const l = m.lecons.find(x => !etat.lu[x.id]);
-    if (l) return {href:"#lecon/"+l.id, sur:"Module "+m.n+" · "+m.court, titre:l.t, quoi:"Leçon · environ "+dureeLecon(l)+" min"};
+    if (l) return {href:"#lecon/"+l.id, sur:"Module "+m.n+" · "+m.court, titre:l.t, quoi:"Leçon · "+lectureLecon(l)+" min de lecture + mise en pratique"};
     if (!casFait(m)) return {href:"#etape/"+m.id+"/cas", sur:"Module "+m.n+" · "+m.court, titre:m.cas.t, quoi:"Cas pratique"};
     if (!atelierFait(m)) return {href:"#etape/"+m.id+"/atelier", sur:"Module "+m.n+" · "+m.court, titre:m.atelier.t, quoi:"Atelier écrit"};
     if (!quizOK(m)) return {href:"#etape/"+m.id+"/quiz", sur:"Module "+m.n+" · "+m.court, titre:"Quiz de validation", quoi:"8 questions · seuil "+SEUIL+" %"};
@@ -65,6 +70,17 @@ function joursSemaine(){                // les 7 jours de la semaine en cours, d
 const leconsSemaine = () => { const S = new Set(joursSemaine()); return Object.values(etat.lu).filter(d => S.has(d)).length; };
 const minutesSemaine = () => joursSemaine().reduce((a,j) => a + (etat.temps[j] || 0), 0);
 const minutesTotal = () => Object.values(etat.temps).reduce((a,b) => a+b, 0);
+/* Historique des 28 derniers jours : [{j: date, min: minutes d'étude, lec: leçons lues}] */
+function historique(){
+  const parJour = {}; Object.values(etat.lu).forEach(d => parJour[d] = (parJour[d] || 0) + 1);
+  return Array.from({length:28}, (_,i) => { const j = plusJours(i - 27); return {j, min:etat.temps[j] || 0, lec:parJour[j] || 0}; });
+}
+/* Date de fin estimée du parcours au rythme de l'objectif hebdomadaire */
+function finEstimee(){
+  const reste = LECONS.filter(x => !etat.lu[x.l.id]).length; if (!reste) return null;
+  return {reste, semaines:Math.ceil(reste / Math.max(1, etat.objectif)), date:frDate(plusJours(7 * Math.ceil(reste / Math.max(1, etat.objectif))))};
+}
+const joursDepuis = d => d ? Math.round((new Date(auj()) - new Date(d)) / 86400000) : null;
 const fmtMin = n => n >= 60 ? Math.floor(n/60) + " h " + String(n%60).padStart(2,"0") : n + " min";
 
 /* ---------- plan d'action ---------- */
@@ -103,7 +119,7 @@ function indexRecherche(){
   if (INDEX_RECH) return INDEX_RECH;
   const I = [];
   FM.modules.forEach(m => {
-    m.lecons.forEach(l => I.push({type:"Leçon · module "+m.n, titre:l.t, txt:[l.t].concat(l.p, l.ex, l.fm, l.err, l.cle).join(" "), href:"#lecon/"+l.id}));
+    m.lecons.forEach(l => I.push({type:"Leçon · module "+m.n, titre:l.t, txt:[l.t].concat(l.p, l.appro || [], l.ex, l.fm, l.err, l.cle, l.exo || "").join(" "), href:"#lecon/"+l.id}));
     I.push({type:"Cas pratique · module "+m.n, titre:m.cas.t, txt:m.cas.t+" "+m.cas.s+" "+m.cas.q.join(" "), href:"#etape/"+m.id+"/cas"});
     I.push({type:"Fiche-outil · module "+m.n, titre:m.outil.t, txt:m.outil.t+" "+m.outil.usage+" "+m.outil.lignes.join(" "), href:"#etape/"+m.id+"/outil"});
     I.push({type:"Module "+m.n, titre:m.titre, txt:m.titre+" "+m.but+" "+m.objectifs.join(" ")+" "+m.actions.join(" "), href:"#module/"+m.id});

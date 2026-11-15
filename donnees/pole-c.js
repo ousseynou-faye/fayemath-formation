@@ -2,8 +2,9 @@
    FayeMath Formation — PÔLE C — Pédagogie
    Un objet par module. Champs :
      id, n, pole, court, titre, but, objectifs[]
-     lecons[] : {id, t: titre, p: [paragraphes], ex: exemple concret, fm: chez FayeMath,
-                 err: erreur fréquente, cle: à retenir, q: question de réflexion}
+     lecons[] : {id, t: titre, p: [paragraphes], appro: [approfondissement], ex: exemple concret,
+                 fm: chez FayeMath, err: erreur fréquente, cle: à retenir,
+                 exo: mise en pratique, q: question de réflexion}
      cas      : {t, s: situation, q: [questions], r: [éléments de réponse]}
      atelier  : {t, c: consigne}        outil : {t, usage, lignes[]} ("## " = sous-titre)
      actions[]: tâches versées au plan d'action
@@ -27,6 +28,7 @@ FM.modules.push(
  ],
  "lecons": [
   {
+   "id": "apprendre-1",
    "t": "Deux mémoires : pourquoi l'élève « décroche »",
    "p": [
     "Apprendre, c'est modifier durablement la mémoire à long terme. Mais tout ce qui est nouveau passe d'abord par la mémoire de travail, qui est très limitée : elle ne manipule que quelques éléments à la fois, pendant peu de temps. La mémoire à long terme, elle, est pratiquement sans limite.",
@@ -34,14 +36,20 @@ FM.modules.push(
     "Ce qui est déjà solidement en mémoire à long terme ne coûte presque rien. Un élève qui connaît ses tables et ses identités remarquables par cœur garde toute son attention pour le raisonnement. C'est pourquoi les automatismes ne s'opposent pas à la compréhension : ils la rendent possible.",
     "Conséquences pratiques : présenter la nouveauté par petites étapes, faire pratiquer après chaque étape, montrer un exemple entièrement résolu avant de demander à l'élève de chercher, et retirer tout ce qui distrait."
    ],
+   "appro": [
+    "La différence entre un expert et un débutant tient moins à l'intelligence qu'à ce qui est déjà organisé en mémoire. Devant une équation, vous voyez d'un coup une structure ; l'élève voit une suite de symboles qu'il doit traiter un par un. C'est pourquoi ce qui vous paraît évident ne l'est pas pour lui, et pourquoi « c'est facile » n'aide jamais.",
+    "Trois sources de surcharge sont de votre fait et se corrigent : parler pendant que l'élève lit ou calcule, donner plusieurs consignes à la fois, présenter une figure d'un côté et son explication de l'autre. Dites une chose, laissez faire, puis passez à la suivante ; écrivez les explications directement sur la figure.",
+    "Enfin, l'aide doit diminuer à mesure que l'élève progresse. Les exemples entièrement résolus sont très efficaces pour un débutant ; pour un élève déjà à l'aise, ils deviennent inutiles et il apprend davantage en cherchant. Ajustez la dose d'exemples au niveau réel."
+   ],
    "ex": "Résoudre 3(x − 2) = 2x + 5 demande de distribuer, regrouper, changer de membre, calculer. Pour un élève qui hésite encore sur 3 × (−2), c'est trop à la fois. On commence donc par vérifier la distributivité seule, puis on montre un exemple complet, puis on fait un exercice ensemble.",
    "fm": "Vos cours suivent déjà cet ordre : activité, définition, exemple modèle, exercice d'application corrigé. La révision des prérequis en première séance sert à repérer ce qui n'est pas encore automatique.",
    "err": "Expliquer tout le chapitre d'un seul trait, puis donner une série d'exercices. L'élève a écouté, mais sa mémoire de travail a débordé dès la troisième idée.",
    "cle": "Peu de nouveautés à la fois, un exemple résolu d'abord, de la pratique après chaque étape.",
-   "q": "Lors de votre dernière séance, à quel moment précis l'élève a-t-il décroché, et qu'est-ce qui était trop à la fois ?",
-   "id": "apprendre-1"
+   "exo": "Prenez l'exemple modèle de votre prochaine séance. Comptez les idées nouvelles qu'il contient. S'il y en a plus de trois, découpez-le en deux exemples.",
+   "q": "Lors de votre dernière séance, à quel moment précis l'élève a-t-il décroché, et qu'est-ce qui était trop à la fois ?"
   },
   {
+   "id": "apprendre-2",
    "t": "Se tester plutôt que relire",
    "p": [
     "La méthode de révision la plus répandue est la relecture du cours, souvent surligné. C'est aussi l'une des moins efficaces. Une vaste synthèse de la recherche (Dunlosky et ses collègues, 2013) a évalué dix techniques : relire et surligner y reçoivent une utilité faible, tandis que deux techniques obtiennent l'utilité la plus élevée, s'entraîner à se tester et répartir le travail dans le temps.",
@@ -49,14 +57,20 @@ FM.modules.push(
     "Se tester ne veut pas dire être noté. Il s'agit de fermer le cahier et de répondre : réciter une définition, refaire un exemple sans regarder, répondre à cinq questions rapides, expliquer la méthode à voix haute.",
     "L'effet est le plus fort quand le test est suivi d'une correction : l'élève compare sa réponse à la bonne et corrige tout de suite."
    ],
+   "appro": [
+    "Se tester profite aussi à ce qui n'a pas été trouvé. Chercher une réponse, même sans succès, prépare la mémoire à retenir la correction qui suit. Un élève qui a essayé et s'est trompé retient mieux qu'un élève à qui l'on a donné directement la solution, à condition que la correction vienne vite.",
+    "Variez les formes de rappel pour qu'elles ne deviennent pas mécaniques : réciter une propriété, donner un exemple et un contre-exemple, refaire une démonstration, expliquer une méthode à quelqu'un, écrire tout ce dont on se souvient d'un chapitre sur une feuille blanche puis compléter avec le cahier.",
+    "Présentez-le à l'élève comme un entraînement, jamais comme un contrôle. Le score du rappel de début de séance n'est pas une note : c'est un thermomètre qui indique quoi revoir. Un élève qui craint d'être jugé triche avec lui-même ; un élève qui a compris l'outil s'en sert seul."
+   ],
    "ex": "Début de séance, cahier fermé, cinq questions en cinq minutes sur la séance précédente : « Énonce le théorème de Thalès. Dans quel cas l'utilise-t-on ? Écris la formule du volume d'un cône… » On corrige ensemble, et l'élève note ce qu'il n'a pas su.",
    "fm": "Vos fiches de révision (QCM avec barème) et vos tests diagnostiques sont déjà des outils de test. Vous pouvez en faire un rituel d'ouverture de chaque séance et apprendre à l'élève à s'interroger seul avec ses fiches.",
    "err": "Demander « tu as révisé ? » et se contenter d'un oui. La seule vérification fiable est de faire produire la réponse, cahier fermé.",
    "cle": "Cahier fermé, on se rappelle ; puis on corrige. Relire ne suffit pas.",
-   "q": "Comment vos élèves révisent-ils entre deux séances, et comment pourriez-vous leur apprendre à se tester ?",
-   "id": "apprendre-2"
+   "exo": "Rédigez dix questions de rappel sur le chapitre que vous enseignez en ce moment, réponses comprises, à utiliser lors des deux prochaines séances.",
+   "q": "Comment vos élèves révisent-ils entre deux séances, et comment pourriez-vous leur apprendre à se tester ?"
   },
   {
+   "id": "apprendre-3",
    "t": "Espacer et mélanger",
    "p": [
     "La seconde technique la mieux établie est la pratique distribuée : revoir une notion plusieurs fois, à des moments espacés, plutôt qu'en une seule longue séance la veille du devoir. À temps de travail égal, on retient plus longtemps.",
@@ -64,14 +78,20 @@ FM.modules.push(
     "Troisième idée, classée d'utilité moyenne mais précieuse en mathématiques : mélanger les types d'exercices. Une série où tous les exercices relèvent de la même méthode entraîne à appliquer, pas à choisir. Or le jour de l'examen, la première difficulté est de reconnaître quelle méthode utiliser.",
     "Mélanger paraît plus difficile sur le moment, et l'élève a l'impression de moins bien réussir. C'est normal : la difficulté utile aujourd'hui produit la réussite durable demain."
    ],
+   "appro": [
+    "Espacer a un coût apparent qu'il faut expliquer à l'élève et aux parents : à la deuxième reprise, il a oublié une partie et s'en étonne. C'est normal et utile. Chaque reprise est plus rapide que la précédente, et l'oubli ralentit. Trois reprises de dix minutes laissent plus de traces qu'une heure d'affilée.",
+    "Organisez-le matériellement. Tenez pour chaque élève une liste des chapitres terminés avec la date de fin, et prévoyez les reprises dans votre préparation : une question à la séance suivante, un exercice une semaine après, un exercice un mois après. Sans calendrier, la reprise n'a jamais lieu.",
+    "Pour mélanger, commencez doucement : deux types d'exercices proches que l'élève confond (Thalès et sa réciproque, développer et factoriser, vitesse moyenne et vitesse instantanée). Demandez d'abord de dire seulement quelle méthode s'applique, sans calculer. Cette étape de reconnaissance est exactement ce que l'examen exige."
+   ],
    "ex": "En 3e, après les chapitres Thalès, Pythagore et trigonométrie : une fiche de six exercices dans le désordre, sans titre de chapitre. Pour chacun, l'élève écrit d'abord quel outil il va utiliser et pourquoi, avant tout calcul.",
    "fm": "Votre bibliothèque est organisée par chapitre. Ajouter à intervalles réguliers une séance de révision mêlant les chapitres déjà vus, à partir de vos séries d'exercices et de vos sujets d'examen, met en œuvre ce principe sans nouveau support.",
    "err": "Considérer qu'un chapitre « fait » en octobre est acquis pour l'examen de juillet. Sans rappel espacé, l'essentiel aura disparu.",
    "cle": "Revoir à J+1, J+7, J+30, et mélanger les chapitres pour apprendre à choisir la méthode.",
-   "q": "Quel chapitre vu il y a plus d'un mois n'avez-vous jamais repris avec chacun de vos élèves ?",
-   "id": "apprendre-3"
+   "exo": "Pour un élève, listez les chapitres terminés depuis la rentrée et la date de la dernière reprise de chacun. Programmez une reprise pour les deux plus anciens.",
+   "q": "Quel chapitre vu il y a plus d'un mois n'avez-vous jamais repris avec chacun de vos élèves ?"
   },
   {
+   "id": "apprendre-4",
    "t": "Le retour qui fait progresser",
    "p": [
     "Le cours particulier a un avantage décisif sur la classe : l'encadreur voit chaque erreur au moment où elle se produit et peut y répondre aussitôt. La Education Endowment Foundation, qui synthétise la recherche en éducation, estime que le tutorat individuel apporte en moyenne environ cinq mois de progrès supplémentaires, et souligne qu'il est le plus efficace lorsqu'il s'appuie sur un diagnostic et un retour rapide, en lien avec ce qui est fait en classe.",
@@ -79,12 +99,17 @@ FM.modules.push(
     "Il laisse aussi le travail à l'élève. Plutôt que de donner la bonne réponse, on indique où regarder : « Relis la ligne 3 ». On peut aussi lui demander d'expliquer sa démarche à voix haute ; souvent, il trouve l'erreur lui-même, et cette explication renforce l'apprentissage.",
     "Enfin, un retour n'a d'effet que si l'élève s'en sert : refaire l'exercice, ou un exercice voisin, tout de suite."
    ],
+   "appro": [
+    "Un retour utile répond à trois questions de l'élève : où dois-je arriver, où en suis-je, que dois-je faire maintenant ? Sans la première, il ne sait pas ce qui est attendu ; sans la troisième, il sait qu'il s'est trompé mais pas comment progresser. Vérifiez que chacun de vos retours contient une action.",
+    "Dosez la quantité. Corriger dix défauts d'un coup n'en corrige aucun. Choisissez la priorité du moment (par exemple la rédaction des conclusions) et laissez provisoirement passer des points secondaires. L'élève doit pouvoir dire, en fin de séance, la chose précise qu'il doit améliorer.",
+    "Le moment compte aussi. Pendant l'apprentissage d'une procédure nouvelle, un retour immédiat évite d'ancrer l'erreur. Quand l'élève s'entraîne en conditions d'examen, attendez la fin : il doit apprendre à se relire et à détecter seul ses fautes, ce que le correcteur ne fera pas à sa place."
+   ],
    "ex": "L'élève écrit (x + 3)² = x² + 9. Au lieu de corriger : « Vérifie avec x = 1. Que vaut chaque côté ? » Il trouve 16 et 10, constate l'écart, puis on revient au développement (x + 3)(x + 3).",
    "fm": "Le cinquième temps de la méthode CADRE, Évaluer, est précisément ce retour sur son propre travail. Vos corrigés détaillés permettent à l'élève de comparer sa démarche ligne par ligne.",
    "err": "Reprendre le stylo et refaire l'exercice à la place de l'élève. Il regarde, approuve, et ne saura pas le refaire seul.",
    "cle": "Un retour précis, sur la méthode, donné tout de suite, et suivi d'un nouvel essai.",
-   "q": "Dans vos séances, qui tient le stylo le plus longtemps : vous ou l'élève ?",
-   "id": "apprendre-4"
+   "exo": "Reprenez une copie récente d'un élève. Écrivez le retour que vous lui feriez en trois phrases : ce qui est acquis, l'erreur prioritaire, l'action à mener.",
+   "q": "Dans vos séances, qui tient le stylo le plus longtemps : vous ou l'élève ?"
   }
  ],
  "cas": {
@@ -248,6 +273,7 @@ FM.modules.push(
  ],
  "lecons": [
   {
+   "id": "didactique-1",
    "t": "Une méthode, appliquée à chaque exercice",
    "p": [
     "Mathnasium et Kumon sont devenus mondiaux parce qu'ils appliquent une seule méthode, partout, de la même façon. La méthode est ce qui reste quand l'élève travaille seul.",
@@ -255,15 +281,21 @@ FM.modules.push(
     "Votre méthode rejoint une référence classique : dans « Comment poser et résoudre un problème » (1945), le mathématicien George Pólya décrit quatre phases, comprendre le problème, concevoir un plan, exécuter le plan, revenir sur la solution. CADRE détaille ce chemin en cinq gestes que l'élève peut suivre seul.",
     "La phase la plus négligée est la première. Beaucoup d'élèves commencent à calculer avant d'avoir identifié ce qui est donné et ce qui est demandé. Faites reformuler l'énoncé avec ses mots, et faites écrire les données et l'inconnue avant toute opération."
    ],
+   "appro": [
+    "Chaque étape de CADRE a ses questions types, que l'élève finit par se poser seul. Comprendre : qu'est-ce qu'on me demande, avec mes mots ? Analyser : qu'est-ce que je connais, quelle partie du cours cela rappelle-t-il ? Décomposer : par quoi commencer, que me faut-il pour conclure ? Résoudre : chaque ligne est-elle justifiée ? Évaluer : le résultat est-il plausible, ai-je répondu à la question ?",
+    "Pour installer la méthode, pensez à voix haute devant l'élève. Il doit entendre vos hésitations, vos vérifications, vos retours en arrière. Un corrigé propre montre le résultat du raisonnement ; votre parole montre le raisonnement lui-même.",
+    "Quand l'élève est bloqué, ne donnez pas la solution : ramenez-le à l'étape précédente. « Relis la question. Qu'est-ce qu'on cherche ? » débloque plus souvent qu'un indice sur le calcul. Les stratégies classiques de Pólya restent utiles : faire un schéma, traiter un cas particulier, partir de ce que l'on cherche."
+   ],
    "ex": "Problème de collège : « Un cybercafé facture 300 F l'inscription puis 150 F par heure. Combien d'heures pour 1 500 F ? » Comprendre : on cherche un nombre d'heures. Analyser : coût = 300 + 150 × heures. Décomposer : poser l'équation, la résoudre. Résoudre : 150h = 1 200, h = 8. Évaluer : 300 + 150 × 8 = 1 500, le résultat convient.",
    "fm": "La méthode CADRE : Comprendre, Analyser, Décomposer, Résoudre, Évaluer. Elle est appliquée dans les supports élèves sans jamais y être nommée.",
    "err": "Réciter les cinq étapes comme une leçon. Une méthode ne s'apprend qu'en la voyant appliquée, puis en l'appliquant.",
    "cle": "La méthode se montre dans chaque exercice résolu ; elle ne se récite pas.",
+   "exo": "Choisissez un problème de votre prochaine séance et écrivez, pour chacune des cinq étapes, la question que vous poserez à l'élève.",
    "q": "Dans vos séances, laquelle des cinq étapes vos élèves sautent-ils le plus souvent ?",
-   "v1": "L5-0",
-   "id": "didactique-1"
+   "v1": "L5-0"
   },
   {
+   "id": "didactique-2",
    "t": "Du concret à l'abstrait",
    "p": [
     "Une notion mathématique se comprend mieux quand elle est rencontrée sous trois formes successives : une manipulation ou une situation concrète, une représentation (schéma, tableau, graphique), puis l'écriture symbolique. Le psychologue Jerome Bruner a décrit cette progression, souvent résumée par « concret, imagé, abstrait ».",
@@ -271,14 +303,20 @@ FM.modules.push(
     "En physique-chimie, le chemin est le même : un phénomène observé ou une expérience, puis un modèle (schéma du circuit, bilan des forces), puis la relation mathématique. La formule vient en dernier ; elle résume ce qui a été compris.",
     "Prenez vos exemples dans le quotidien de l'élève : les prix au marché, les trajets, le crédit téléphonique, la facture d'électricité. Un exemple familier ne coûte rien à la mémoire de travail."
    ],
+   "appro": [
+    "Les représentations ne sont pas des illustrations : ce sont des outils de pensée que l'élève doit apprendre à produire lui-même. Un schéma en barres pour un problème de partage, un tableau pour la proportionnalité, une droite graduée pour les relatifs, un arbre pour les probabilités : chacun rend visible une structure.",
+    "Faites circuler l'élève entre les registres : passer d'un énoncé à un tableau, d'un tableau à un graphique, d'un graphique à une formule, et retour. Une notion est comprise quand on la reconnaît sous ses différentes écritures. La fonction affine est à la fois une formule, un tableau de valeurs, une droite et une situation de tarif.",
+    "En physique-chimie, prenez garde aux mots du quotidien : « poids » pour masse, « chaleur » pour température, « courant » pour tension. L'élève arrive avec le sens courant ; il faut le nommer, puis poser le sens scientifique à côté, avec l'unité qui le distingue."
+   ],
    "ex": "Fractions en 6e : partager trois pains entre quatre enfants (concret), dessiner des bandes découpées en quarts (imagé), écrire 3/4 (abstrait). En physique, pour la loi d'Ohm : mesurer tension et intensité aux bornes d'un conducteur, tracer les points, constater la droite, puis écrire U = R × I.",
    "fm": "Vos cours commencent par une activité avant la définition : c'est cette entrée par le concret. Veillez à ce que l'activité soit réellement faite par l'élève, pas seulement lue.",
    "err": "Commencer par la formule « pour gagner du temps ». L'élève l'applique tant que l'exercice ressemble à l'exemple, puis se perd au premier énoncé différent.",
    "cle": "Situation, représentation, puis symbole : la formule arrive en dernier.",
-   "q": "Pour quel chapitre n'avez-vous pas encore de situation concrète ou de schéma à proposer ?",
-   "id": "didactique-2"
+   "exo": "Pour le chapitre en cours, préparez une situation tirée du quotidien de l'élève et le schéma ou le tableau qui la représente, avant toute formule.",
+   "q": "Pour quel chapitre n'avez-vous pas encore de situation concrète ou de schéma à proposer ?"
   },
   {
+   "id": "didactique-3",
    "t": "Les erreurs typiques ont une logique",
    "p": [
     "Une erreur répétée n'est presque jamais un hasard. Elle vient d'une règle que l'élève s'est construite et qui a fonctionné jusque-là. « Multiplier agrandit toujours » est vrai avec les entiers, puis devient faux avec 0,5. Tant que la règle fausse n'est pas mise en évidence, elle revient.",
@@ -286,14 +324,20 @@ FM.modules.push(
     "En physique-chimie : confondre masse et poids, penser que le courant est « consommé » par la lampe, croire qu'un objet s'arrête dès qu'on ne le pousse plus, oublier les unités ou les conversions, appliquer une formule sans vérifier ses conditions.",
     "Le traitement suit trois gestes : faire expliquer la démarche pour identifier la règle fausse, la mettre en défaut par un contre-exemple que l'élève calcule lui-même, puis reconstruire la règle correcte et s'entraîner sur des cas voisins. Tenez pour chaque chapitre une liste des erreurs rencontrées : elle devient votre meilleur outil de préparation."
    ],
+   "appro": [
+    "Classer les erreurs aide à y répondre. Les erreurs d'étourderie se traitent par des habitudes de vérification. Les erreurs de procédure (une étape oubliée ou inversée) se traitent par l'entraînement guidé. Les erreurs de conception (une règle fausse) demandent un contre-exemple et une reconstruction. Le même remède appliqué aux trois ne fonctionne pas.",
+    "Les exercices « trouve l'erreur » sont très efficaces : vous présentez une solution fausse mais plausible, l'élève doit localiser la faute et la corriger. Il s'exerce ainsi à relire avec un œil critique, sans l'enjeu d'avoir lui-même produit l'erreur.",
+    "Anticipez. Pour chaque chapitre, vous connaissez d'avance deux ou trois erreurs qui reviendront. Montrez-les avant qu'elles n'apparaissent : « Voici l'erreur que presque tout le monde fait ici, et pourquoi elle est tentante. » L'élève prévenu la reconnaît au moment où il s'apprête à la commettre."
+   ],
    "ex": "Simplification fausse : (x + 6)/2 devient x + 3. On demande : « Essaie avec x = 2. » Avant simplification : 8/2 = 4. Après : 5. L'élève voit l'écart ; on revient à la règle : on ne simplifie que des facteurs, donc (x + 6)/2 = x/2 + 3.",
    "fm": "La partie « piège classique » de vos vidéos et de vos cours s'appuie sur ces erreurs. Un répertoire d'erreurs par chapitre, alimenté par vos séances, enrichit à la fois vos supports et votre contenu public.",
    "err": "Barrer en rouge et écrire la bonne réponse. La règle fausse reste en place et produira la même erreur au prochain devoir.",
    "cle": "Chercher la règle fausse derrière l'erreur, la mettre en défaut par un contre-exemple, reconstruire.",
-   "q": "Quelles sont les trois erreurs que vous avez le plus souvent corrigées ce mois-ci, et quelle règle fausse se cache derrière chacune ?",
-   "id": "didactique-3"
+   "exo": "Rédigez deux exercices « trouve l'erreur » sur le chapitre en cours, à partir d'erreurs réellement commises par vos élèves.",
+   "q": "Quelles sont les trois erreurs que vous avez le plus souvent corrigées ce mois-ci, et quelle règle fausse se cache derrière chacune ?"
   },
   {
+   "id": "didactique-4",
    "t": "Rédiger : raisonner par écrit",
    "p": [
     "Aux examens, une partie des points récompense la démarche et sa présentation, pas seulement le résultat. Un élève qui trouve juste mais n'écrit rien perd des points ; un élève qui se trompe dans un calcul mais rédige correctement en garde. La rédaction se travaille donc à chaque séance, pas la veille de l'examen.",
@@ -301,14 +345,20 @@ FM.modules.push(
     "En physique-chimie, un calcul se présente en quatre lignes : la relation littérale, l'expression de la grandeur cherchée, l'application numérique avec les unités converties, le résultat avec son unité et un nombre raisonnable de chiffres. Ajoutez un réflexe : le résultat est-il vraisemblable ?",
     "Montrez d'abord une rédaction modèle, puis faites rédiger l'élève et comparez. Corrigez la rédaction avec la même exigence que le calcul."
    ],
+   "appro": [
+    "La rédaction s'apprend par imitation puis par allègement. D'abord l'élève complète une rédaction à trous dont la structure est donnée ; ensuite il rédige avec un modèle sous les yeux ; enfin il rédige seul. Passer directement à la troisième étape donne des copies sans justification.",
+    "Enseignez les connecteurs logiques et leur sens exact : « donc » annonce une conséquence, « car » une raison, « or » un fait supplémentaire, « si… alors » une condition. Beaucoup d'élèves les emploient au hasard. Insistez aussi sur la différence entre une propriété et sa réciproque : c'est une source fréquente de points perdus.",
+    "En physique-chimie, exigez l'expression littérale avant tout chiffre. Elle permet de vérifier l'homogénéité des unités et montre au correcteur que la relation est comprise. Un résultat numérique faux précédé d'une expression littérale juste conserve une partie des points ; un résultat seul n'en conserve aucun."
+   ],
    "ex": "« On sait que ABC est un triangle rectangle en A, avec AB = 3 cm et AC = 4 cm. Or, d'après le théorème de Pythagore, BC² = AB² + AC². Donc BC² = 9 + 16 = 25, et BC = 5 cm. » En physique : P = m × g ; P = 0,5 kg × 9,8 N/kg ; P = 4,9 N.",
    "fm": "Vos corrigés détaillés servent de rédactions modèles. Demandez à l'élève de comparer sa copie au corrigé ligne par ligne et de noter ce qui manque dans sa rédaction.",
    "err": "Accepter un résultat juste « parce qu'il a compris ». Le correcteur de l'examen ne verra que ce qui est écrit.",
    "cle": "Données, propriété nommée, conclusion ; en physique : formule, calcul, unité, vraisemblance.",
-   "q": "Quelle part de vos séances est consacrée à faire rédiger, et pas seulement à faire trouver ?",
-   "id": "didactique-4"
+   "exo": "Rédigez la solution modèle complète d'un exercice de votre prochaine séance, puis préparez-en une version à trous pour l'élève.",
+   "q": "Quelle part de vos séances est consacrée à faire rédiger, et pas seulement à faire trouver ?"
   },
   {
+   "id": "didactique-5",
    "t": "Des supports fiables",
    "p": [
     "Un support faux coûte plus cher qu'aucun support : l'élève apprend l'erreur. Chaque définition vient d'une source officielle, chaque exercice d'un vrai sujet, chaque résultat est vérifié.",
@@ -316,13 +366,17 @@ FM.modules.push(
     "La vérification suit un ordre : le programme officiel de la classe d'abord (la notion est-elle au programme, à ce niveau, sous cette forme ?), puis l'énoncé (toutes les données sont-elles présentes et cohérentes ?), puis le corrigé (chaque résultat recalculé).",
     "Un support destiné à être réutilisé mérite une relecture à froid, un autre jour. Les erreurs que l'on ne voit plus en écrivant apparaissent le lendemain."
    ],
+   "appro": [
+    "Un bon support se juge à l'usage. Après chaque séance, notez sur le document ce qui a posé problème : une consigne mal comprise, un exercice trop long, une figure ambiguë. Ces annotations nourrissent la version suivante. Un support s'améliore par ses utilisations, pas par une relecture à la table.",
+    "Construisez les séries d'exercices en paliers : application directe, puis application avec une étape en plus, puis problème, puis exercice de type examen. L'élève doit pouvoir réussir les premiers seul ; les derniers préparent l'épreuve. Indiquez le palier de chaque exercice pour choisir rapidement en séance."
+   ],
    "ex": "Avant de diffuser une série de 3e sur Thalès : vérifier dans le programme sénégalais la formulation attendue, contrôler que chaque figure correspond aux longueurs de l'énoncé, recalculer chaque quotient.",
    "fm": "Votre bibliothèque suit un standard de production : programme sénégalais, exercices réels, corrigés vérifiés par calcul.",
    "err": "Reprendre un exercice trouvé en ligne sans vérifier qu'il correspond au programme sénégalais. Notations, niveau et vocabulaire peuvent différer.",
    "cle": "Le fond se source, la forme se crée, chaque calcul se vérifie.",
+   "exo": "Reprenez un support utilisé cette semaine. Notez deux défauts constatés en séance et corrigez-les dans le fichier source.",
    "q": "Quel support utilisé cette semaine n'a pas encore été vérifié selon votre standard ?",
-   "v1": "L5-3",
-   "id": "didactique-5"
+   "v1": "L5-3"
   }
  ],
  "cas": {
@@ -484,6 +538,7 @@ FM.modules.push(
  ],
  "lecons": [
   {
+   "id": "seance-1",
    "t": "Construire une séance",
    "p": [
     "Une bonne séance a un objectif unique, annoncé au début et vérifié à la fin. Elle va du guidé à l'autonome : un exemple modèle, un exercice fait ensemble, un exercice fait seul.",
@@ -491,15 +546,21 @@ FM.modules.push(
     "Une séance de deux heures peut se découper ainsi, à titre de repère : dix minutes de rappel cahier fermé, vingt-cinq minutes de notion avec un exemple modèle, trente-cinq minutes de pratique guidée, trente-cinq minutes de pratique autonome, dix minutes de bilan et de travail à faire, cinq minutes de compte rendu. Les proportions comptent plus que les minutes : plus de la moitié du temps, c'est l'élève qui travaille.",
     "La fin de séance est le moment le plus souvent sacrifié. Réservez-la dès le début : c'est là que l'élève dit ce qu'il a appris et que vous vérifiez l'objectif."
    ],
+   "appro": [
+    "Chaque phase a un signal de passage. On quitte l'exemple modèle quand l'élève peut en redire les étapes ; on quitte la pratique guidée quand il réussit avec un simple indice ; on termine la pratique autonome quand il réussit sans aide un exercice nouveau. Passer à la suite parce que l'heure avance, sans ce signal, laisse l'élève en chemin.",
+    "Prévoyez toujours un plan B. Si le prérequis manque, la séance prévue devient impossible : il faut alors traiter le prérequis et réduire l'objectif. Si l'élève réussit très vite, l'exercice de réserve et un exercice de type examen évitent de meubler. Dans les deux cas, dites-le dans le compte rendu.",
+    "La séance de 1 h 30 n'est pas une séance de 2 heures raccourcie au hasard : gardez l'ouverture et le bilan intacts, et réduisez d'abord le nombre d'exercices, jamais le temps de pratique autonome en dessous d'un tiers de la séance."
+   ],
    "ex": "Objectif annoncé : « À la fin de la séance, tu sauras résoudre un système de deux équations par substitution. » Vérification finale : un système nouveau, résolu seul en dix minutes.",
    "fm": "Vos cours suivent ce déroulé : activité, définition, exemple modèle, exercice d'application corrigé. Votre fiche de séance détaille les phases et leur durée.",
    "err": "Passer la séance à faire les devoirs du lendemain. L'élève est dépanné, le parent est content ce soir-là, mais rien n'a été appris de durable.",
    "cle": "Un objectif par séance, du guidé à l'autonome, un compte rendu à la fin.",
+   "exo": "Écrivez le déroulé minuté de votre prochaine séance, avec pour chaque phase le signal qui vous fera passer à la suivante.",
    "q": "Lors de votre dernière séance, quel était l'objectif unique, et comment avez-vous vérifié qu'il était atteint ?",
-   "v1": "L5-1",
-   "id": "seance-1"
+   "v1": "L5-1"
   },
   {
+   "id": "seance-2",
    "t": "Préparer en quinze minutes",
    "p": [
     "Une séance improvisée dépend de votre forme du jour. Une séance préparée, même brièvement, garantit le niveau. Quinze minutes suffisent si la préparation suit toujours les mêmes questions.",
@@ -507,14 +568,20 @@ FM.modules.push(
     "Deuxième question : quel est l'objectif, formulé comme une capacité observable ? « L'élève sera capable de factoriser avec une identité remarquable » se vérifie ; « revoir les identités remarquables » ne se vérifie pas.",
     "Troisième question : avec quoi ? Un exemple modèle, deux exercices guidés, deux exercices autonomes de difficulté croissante, un exercice de réserve. Dernière question : quel prérequis risque de manquer, et comment le tester en deux minutes au début ?"
    ],
+   "appro": [
+    "Gardez une fiche par élève, tenue en deux minutes après chaque séance : ce qui a été fait, ce qui a résisté, ce qui est prévu. Avec dix élèves, vous ne pouvez pas tout retenir, et c'est cette fiche qui rend la préparation rapide. Elle sert aussi de base au bilan mensuel.",
+    "Choisissez les exercices avant la séance, pas pendant. Chercher un exercice devant l'élève fait perdre du temps et donne une impression d'improvisation. Marquez-les dans le support, avec la solution vérifiée à portée de main.",
+    "Préparez enfin la question d'entrée et la question de sortie. La première vérifie le prérequis ; la seconde vérifie l'objectif. Si vous ne pouvez pas écrire la question de sortie, c'est que l'objectif n'est pas encore assez précis."
+   ],
    "ex": "Fiche de préparation : « Samedi, Awa, 3e. Classe : chapitre racines carrées, devoir le 20. Objectif : simplifier une racine carrée. Prérequis à tester : carrés parfaits jusqu'à 144. Exemple modèle : √72. Guidés : √50, √108. Autonomes : exercices 4 et 6. Réserve : exercice 9. »",
    "fm": "Votre fiche de séance détaille déjà les phases et leur durée. Vos kits de chapitre (cours, exercices, corrigés, révision) fournissent l'exemple modèle et les exercices : la préparation consiste surtout à choisir.",
    "err": "Préparer un contenu trop ambitieux « pour être sûr d'occuper les deux heures ». Un objectif atteint vaut mieux que trois objectifs survolés.",
    "cle": "Quatre questions : où en est la classe, quel objectif observable, quels exercices, quel prérequis.",
-   "q": "Savez-vous, pour chaque élève, quel chapitre est en cours en classe et la date de son prochain devoir ?",
-   "id": "seance-2"
+   "exo": "Créez votre modèle de fiche élève (une ligne par séance : date, fait, difficulté, suite) et remplissez-le pour vos deux derniers cours.",
+   "q": "Savez-vous, pour chaque élève, quel chapitre est en cours en classe et la date de son prochain devoir ?"
   },
   {
+   "id": "seance-3",
    "t": "Questionner et guider",
    "p": [
     "Les travaux de Barak Rosenshine sur les enseignants les plus efficaces montrent des constantes : ils posent beaucoup de questions, vérifient la compréhension de chaque étape, consacrent plus de temps à la pratique guidée et corrigent les erreurs tout de suite. Ils visent aussi un taux de réussite élevé pendant l'entraînement, de l'ordre de 80 % : assez pour installer la confiance, pas trop pour que l'élève reste en effort.",
@@ -522,14 +589,20 @@ FM.modules.push(
     "Laissez du silence. Après une question, attendez quelques secondes avant de reformuler ou d'aider. C'est dans ce temps que l'élève cherche.",
     "Guider, c'est aider juste ce qu'il faut puis retirer l'aide. On montre un exemple complet ; on en fait un second ensemble, l'élève dictant les étapes ; il fait le troisième avec un indice ; le quatrième seul. Si le quatrième échoue, on revient d'un cran, sans reproche."
    ],
+   "appro": [
+    "Distinguez trois sortes de questions. Les questions de rappel vérifient ce qui est su. Les questions de compréhension demandent d'expliquer ou de justifier. Les questions de transfert changent la situation : « et si le triangle n'était pas rectangle ? ». Une séance qui ne pose que des questions de rappel n'apprend pas à raisonner.",
+    "Quand la réponse est fausse, résistez à l'envie de corriger tout de suite. Demandez comment l'élève a trouvé ; souvent le raisonnement est juste jusqu'à un point précis. Valorisez ce qui est correct, puis faites porter la correction sur ce point.",
+    "Parlez moins. Mesurez-vous une fois : dans une heure, combien de minutes avez-vous parlé, et combien l'élève a-t-il écrit ou expliqué ? En cours particulier, l'élève devrait produire au moins autant que vous. Le silence pendant qu'il cherche est du temps de travail."
+   ],
    "ex": "Au lieu de « Tu as compris la substitution ? » : « Explique-moi pourquoi on remplace y dans la deuxième équation. » Puis : « Voici une solution, il y a une erreur à la ligne 2 ou 3. Trouve-la. »",
    "fm": "La séance « du guidé à l'autonome » de vos cours est exactement cette aide que l'on retire progressivement. Notez dans le compte rendu à quel niveau d'aide l'élève a réussi.",
    "err": "Enchaîner les explications parce que l'élève hoche la tête. Sans question qui l'oblige à produire, vous ne savez pas ce qu'il a compris.",
    "cle": "Faire expliquer plutôt que demander « compris ? », attendre, puis retirer l'aide pas à pas.",
-   "q": "Quelles questions posez-vous pour vérifier la compréhension, en dehors de « tu as compris ? »",
-   "id": "seance-3"
+   "exo": "Écrivez cinq questions pour votre prochaine séance : deux de rappel, deux de compréhension, une de transfert.",
+   "q": "Quelles questions posez-vous pour vérifier la compréhension, en dehors de « tu as compris ? »"
   },
   {
+   "id": "seance-4",
    "t": "Le cadre professionnel à domicile",
    "p": [
     "Vous travaillez chez les gens. La qualité perçue commence avant le premier exercice : arriver à l'heure, saluer la famille, avoir son matériel, commencer sans délai. Un retard se prévient par un message, toujours.",
@@ -537,12 +610,17 @@ FM.modules.push(
     "Travaillez dans un espace ouvert ou à portée de vue d'un adulte de la maison. C'est une règle de prudence qui protège l'élève, la famille et vous-même. Gardez une distance professionnelle : cordial, jamais familier ; aucune remarque sur la maison ou la vie de la famille.",
     "Terminez à l'heure et de la même façon : l'élève range, vous notez le travail à faire dans son cahier, vous dites un mot au parent présent, et le compte rendu écrit part le soir même."
    ],
-   "ex": "Premier jour chez une famille : « Pour qu'Ibrahima travaille bien, il nous faudrait une table au calme, si possible toujours la même, et que son téléphone reste dans une autre pièce pendant la séance. Est-ce possible ? »",
+   "appro": [
+    "Établissez le cadre dès la première visite, en présence du parent et de l'élève : lieu, horaire, téléphone, travail à faire, façon de prévenir en cas d'empêchement. Ce qui est dit ce jour-là devant tout le monde n'a plus à être renégocié en tête-à-tête.",
+    "Restez à votre place dans la famille. Vous entendrez et verrez des choses de la vie du foyer : ne les commentez pas, ne les répétez à personne, ne prenez pas parti entre un parent et son enfant. Refusez poliment ce qui dépasse votre rôle, comme garder un autre enfant ou faire travailler une matière non prévue.",
+    "Soignez les détails qui signalent le sérieux : tenue correcte, matériel complet (supports imprimés, stylos, règle, calculatrice), téléphone en silencieux, et quelques minutes d'avance pour ne jamais commencer en retard."
+   ],
+   "ex": "Premier jour chez une famille : « Pour qu'Abdou travaille bien, il nous faudrait une table au calme, si possible toujours la même, et que son téléphone reste dans une autre pièce pendant la séance. Est-ce possible ? »",
    "fm": "Votre positionnement est « le soutien scolaire professionnel du quartier » : ce professionnalisme se prouve d'abord par la ponctualité, la tenue et la régularité des comptes rendus. Vos conditions prévoient déjà le cas des reports.",
    "err": "Accepter de travailler dans le salon, télévision allumée, « pour ne pas déranger ». La séance perd la moitié de son efficacité et vous en porterez la responsabilité.",
    "cle": "Ponctualité, lieu calme, espace ouvert, fin de séance identique à chaque fois.",
-   "q": "Chez quelle famille les conditions de travail ne sont-elles pas bonnes, et que pouvez-vous demander ?",
-   "id": "seance-4"
+   "exo": "Rédigez les cinq règles de fonctionnement que vous énoncerez à la première visite chez une nouvelle famille.",
+   "q": "Chez quelle famille les conditions de travail ne sont-elles pas bonnes, et que pouvez-vous demander ?"
   }
  ],
  "cas": {
@@ -702,6 +780,7 @@ FM.modules.push(
  ],
  "lecons": [
   {
+   "id": "evaluer-1",
    "t": "Mesurer et montrer la progression",
    "p": [
     "Votre promesse est une progression mesurable. Il faut donc un point de départ (le test d'entrée), des mesures régulières (devoirs, évaluations) et un point d'étape pour les parents.",
@@ -709,15 +788,21 @@ FM.modules.push(
     "Mesurer une progression suppose de comparer des choses comparables : les mêmes compétences, évaluées de la même façon, à deux dates. Notez pour chaque élève quelques indicateurs stables : réussite aux questions de rappel, note aux devoirs blancs, part des exercices réussis sans aide.",
     "Les notes de l'établissement comptent pour les parents, mais elles dépendent du professeur, du sujet et du chapitre. Présentez-les à côté de vos propres mesures, sans les confondre."
    ],
+   "appro": [
+    "Choisissez des indicateurs que l'élève peut faire évoluer par son travail et que le parent comprend sans explication. Trois suffisent : le taux de réussite aux rappels de début de séance, la note aux évaluations internes, la part des exercices réussis sans aide. Notez-les à chaque séance, en une minute.",
+    "Un graphique simple vaut mieux qu'un long commentaire. Une courbe qui monte de séance en séance parle au parent comme à l'élève. Montrez-la d'abord à l'élève : voir ses propres progrès est un moteur puissant.",
+    "Soyez prudent dans l'interprétation. Deux mesures ne font pas une tendance, et une baisse ponctuelle peut venir d'un chapitre plus difficile. Parlez de progression sur un mois au moins, et expliquez les variations plutôt que de les cacher."
+   ],
    "ex": "Fiche de suivi de Khady, 3e : diagnostic d'octobre 7/20 ; devoir blanc de novembre 10/20 ; exercices réussis sans aide : 3 sur 10 en octobre, 6 sur 10 en décembre. Trois chiffres, une tendance lisible.",
    "fm": "Vos outils : le test diagnostique d'entrée par classe, le kit de révision des prérequis pour la première séance, les devoirs avec barème, le bilan mensuel.",
    "err": "Annoncer « il progresse » sans chiffre. Le parent n'a alors que la note de l'école pour juger, et elle peut dire le contraire.",
    "cle": "Sans point de départ mesuré, aucune progression ne peut être montrée.",
+   "exo": "Pour un élève, relevez vos trois indicateurs sur les dernières séances et tracez la courbe sur une feuille.",
    "q": "Pour chacun de vos élèves, quels chiffres pouvez-vous montrer aujourd'hui sur son évolution depuis le début ?",
-   "v1": "L5-2",
-   "id": "evaluer-1"
+   "v1": "L5-2"
   },
   {
+   "id": "evaluer-2",
    "t": "Trois évaluations, trois usages",
    "p": [
     "On évalue pour trois raisons différentes. Avant d'enseigner, l'évaluation diagnostique situe l'élève : que sait-il déjà, quels prérequis manquent ? Pendant l'apprentissage, l'évaluation formative vérifie en continu ce qui est compris, pour ajuster la séance. Après, l'évaluation sommative fait le bilan sur un ensemble : devoir, composition, examen blanc.",
@@ -725,14 +810,20 @@ FM.modules.push(
     "Un bon test diagnostique est court (vingt à trente minutes), couvre les prérequis de l'année plutôt que le programme en cours, et classe ses questions par notion. Le résultat utile n'est pas la note globale mais la carte : acquis, fragile, non acquis, notion par notion.",
     "Cette carte dicte le plan des premières séances et fournit le point de départ que vous montrerez au parent."
    ],
+   "appro": [
+    "Construisez le test diagnostique à rebours : listez les notions de l'année, puis pour chacune les prérequis indispensables des années précédentes. Ce sont ces prérequis que le test interroge, avec deux ou trois questions courtes par notion, de difficulté croissante.",
+    "L'évaluation formative prend des formes très légères : une question posée à l'oral, un exercice de deux minutes, « montre-moi comment tu fais ». Ce qui la définit, c'est l'usage : vous modifiez la suite de la séance selon la réponse. Si rien ne change quoi que l'élève réponde, ce n'était pas une évaluation formative.",
+    "Pour l'évaluation sommative, annoncez le périmètre, la durée et le barème à l'avance. Un devoir surprise mesure le stress autant que le savoir. Et corrigez-le rapidement : une copie rendue trois semaines plus tard n'apprend plus rien."
+   ],
    "ex": "Diagnostic d'entrée en 2nde S : calcul littéral (4 questions), équations et inéquations (3), géométrie du triangle (3), fonctions (2), proportionnalité et unités (3). Résultat : calcul littéral fragile, fonctions non acquises. Les deux premières séances commencent par là.",
    "fm": "Vos tests diagnostiques d'entrée par classe et vos livrets de révision des prérequis remplissent cette fonction. Vos évaluations de chapitre avec barème servent d'évaluations sommatives.",
    "err": "Faire passer un long test noté sur 20 à un nouvel élève et lui annoncer une mauvaise note le premier jour. Le diagnostic doit éclairer, pas décourager.",
    "cle": "Diagnostique avant, formative pendant, sommative après : trois moments, trois usages.",
-   "q": "Votre test d'entrée produit-il une carte notion par notion, ou seulement une note ?",
-   "id": "evaluer-2"
+   "exo": "Pour une classe que vous suivez, listez cinq prérequis indispensables de l'année précédente et écrivez deux questions de diagnostic pour chacun.",
+   "q": "Votre test d'entrée produit-il une carte notion par notion, ou seulement une note ?"
   },
   {
+   "id": "evaluer-3",
    "t": "Corriger pour faire progresser",
    "p": [
     "Une copie corrigée et rendue n'apprend rien si l'élève ne regarde que la note. La correction devient utile quand elle classe les erreurs et quand l'élève reprend lui-même ses fautes.",
@@ -740,14 +831,20 @@ FM.modules.push(
     "Un barème détaillé, proche de celui de l'examen, montre que les points se gagnent étape par étape : la formule citée, la mise en équation, le calcul, la conclusion avec unité. Il apprend à l'élève à ne jamais rendre une question blanche.",
     "Dernier geste, le plus important : la reprise. L'élève refait sans aide les questions manquées, puis un exercice voisin. Notez les erreurs récurrentes dans sa fiche de suivi ; elles alimentent les questions de rappel des séances suivantes."
    ],
+   "appro": [
+    "Rendez la copie avec un commentaire en trois parties : un acquis précis, l'erreur dominante, une action. « Bonne maîtrise des calculs de fractions. Trois points perdus par oubli de conclusion. À chaque exercice, termine par une phrase qui répond à la question. » Les commentaires vagues, encourageants ou sévères, ne changent rien.",
+    "Faites corriger par l'élève autant que possible. Rendez la copie avec les erreurs seulement signalées dans la marge, sans la solution ; il cherche et corrige. Ce qu'il n'arrive pas à corriger seul est précisément ce qu'il faut retravailler ensemble.",
+    "Tenez un relevé d'erreurs par élève. Après trois devoirs, des régularités apparaissent : toujours les signes, toujours la lecture d'énoncé, toujours la dernière question non traitée faute de temps. Ce relevé transforme une suite de notes en programme de travail."
+   ],
    "ex": "Devoir blanc de 3e, 11/20. Marges : C, C, L, R, C. Constat partagé avec l'élève : « Tu perds cinq points sur des calculs, pas sur la compréhension. Objectif du mois : vérifier chaque calcul par un second moyen. »",
    "fm": "Vos devoirs avec barème et vos corrigés détaillés permettent cette correction codée. Le projet de stratégie de gestion des évaluations de tous vos élèves peut s'appuyer sur ce même code d'erreurs.",
    "err": "Corriger toute la copie au tableau en donnant les solutions. L'élève recopie, et refera les mêmes erreurs.",
    "cle": "Coder les erreurs, détailler le barème, faire refaire par l'élève.",
-   "q": "Que deviennent les copies que vous corrigez : l'élève reprend-il ses erreurs, et en gardez-vous une trace ?",
-   "id": "evaluer-3"
+   "exo": "Corrigez une copie avec le code d'erreurs (C, M, R, L, S), comptez les points perdus par type et rédigez le commentaire en trois parties.",
+   "q": "Que deviennent les copies que vous corrigez : l'élève reprend-il ses erreurs, et en gardez-vous une trace ?"
   },
   {
+   "id": "evaluer-4",
    "t": "Le bilan mensuel et l'échange avec les parents",
    "p": [
     "Le bilan mensuel transforme votre travail en information lisible. Une page suffit : notions travaillées, résultats mesurés, points forts, points à renforcer, objectif du mois suivant. Écrivez pour un parent qui n'a pas fait de mathématiques depuis longtemps.",
@@ -755,12 +852,17 @@ FM.modules.push(
     "Fixez un objectif simple et vérifiable pour le mois suivant : une compétence, une mesure, une date. « D'ici fin janvier, réussir sans aide huit équations sur dix. »",
     "Accompagnez le bilan d'un échange de dix minutes : le parent pose ses questions, vous lui dites comment aider à la maison (un horaire de travail fixe, vérifier que les exercices sont faits) sans lui demander d'enseigner."
    ],
+   "appro": [
+    "Écrivez le bilan en partant des faits notés dans vos fiches de séance, pas de votre impression générale. Deux phrases précises valent mieux qu'un paragraphe d'appréciations. Évitez le vocabulaire scolaire que le parent ne maîtrise pas : dites « résoudre un problème où il faut poser une équation » plutôt que « mise en équation ».",
+    "Pendant l'échange, laissez d'abord parler le parent : qu'a-t-il observé à la maison, dans les notes, dans l'attitude ? Il détient des informations que vous n'avez pas. Puis présentez le bilan, et terminez par un accord sur l'objectif du mois.",
+    "Gardez tous les bilans. À la fin de l'année, leur suite raconte le parcours de l'élève : c'est votre meilleur argument pour la réinscription, et la matière d'un témoignage si la famille l'accepte."
+   ],
    "ex": "« Bilan de novembre — Omar, 5e. Travaillé : fractions, proportionnalité. Résultats : rappel de début de séance 4/5 en moyenne ; évaluation de chapitre 12/20. Point fort : calcul mental. À renforcer : problèmes à plusieurs étapes. Objectif de décembre : résoudre seul un problème en deux étapes, trois fois sur quatre. »",
    "fm": "Le bilan mensuel fait partie de votre promesse : « chaque mois apporte une progression que vous pouvez voir ». Votre atelier de ce module vous fait écrire son modèle.",
    "err": "Envoyer le bilan sans objectif pour la suite. Le parent sait ce qui s'est passé, pas où l'on va.",
    "cle": "Une page, des faits, un point à renforcer, un objectif mesurable pour le mois suivant.",
-   "q": "Votre dernier bilan contenait-il un objectif vérifiable pour le mois suivant ?",
-   "id": "evaluer-4"
+   "exo": "Rédigez le bilan mensuel d'un élève réel à partir de vos notes de séance, avec un objectif mesurable pour le mois suivant.",
+   "q": "Votre dernier bilan contenait-il un objectif vérifiable pour le mois suivant ?"
   }
  ],
  "cas": {
@@ -922,6 +1024,7 @@ FM.modules.push(
  ],
  "lecons": [
   {
+   "id": "examens-1",
    "t": "Connaître l'épreuve avant de la préparer",
    "p": [
     "On ne prépare bien que ce que l'on connaît précisément : durée, coefficient, structure du sujet, barème, matériel autorisé. Ces informations figurent dans l'en-tête des sujets officiels ; relisez-les chaque année, car elles peuvent changer.",
@@ -929,14 +1032,20 @@ FM.modules.push(
     "Au baccalauréat, les sujets récents de l'Office du Bac indiquent pour les séries S2, S2A, S4 et S5 une épreuve de mathématiques de 4 heures au coefficient 5, et une épreuve de sciences physiques de 4 heures au coefficient 6 pour S2 et S2A. En S1, S1A et S3, le coefficient des sciences physiques est de 8.",
     "Une réforme du baccalauréat est en discussion au Sénégal depuis 2026 (réduction du nombre de séries, nouvelles disciplines). Vérifiez donc à chaque rentrée les textes en vigueur auprès de l'Office du Bac et de la Direction des examens et concours avant d'annoncer quoi que ce soit aux familles."
    ],
+   "appro": [
+    "Analysez plusieurs sujets récents de la même épreuve et dressez un tableau : thèmes présents, nombre de points par thème, types de questions. Vous verrez ce qui revient presque chaque année et ce qui est rare. Cette carte oriente l'entraînement : on assure d'abord ce qui tombe souvent.",
+    "Lisez aussi les consignes de l'en-tête et de l'énoncé avec l'élève : matériel autorisé, nombre de pages, exercices obligatoires, présentation attendue. Chaque année, des candidats perdent des points pour ne pas avoir lu ces lignes.",
+    "Informez le parent avec exactitude. Coefficients et modalités sont fixés par des textes officiels qui peuvent évoluer ; en cas de doute, renvoyez à l'établissement, à l'Office du Bac ou à la Direction des examens et concours plutôt que d'affirmer de mémoire."
+   ],
    "ex": "Avec un élève de 3e, ouvrir trois sujets de BFEM de mathématiques d'années différentes et relever ensemble : durée, coefficient, nombre d'exercices, répartition des points entre activités numériques et activités géométriques, types de questions qui reviennent.",
    "fm": "Votre bibliothèque contient une banque de sujets d'examen (BFEM et Bac) et vos documents pédagogiques sénégalais sont rangés par classe. La formule EXCELLENCE inclut les annales du Bac et un examen blanc corrigé par mois.",
    "err": "Préparer l'examen avec des sujets d'un autre pays ou d'une autre série. Le format, le programme et les attentes de rédaction ne sont pas les mêmes.",
    "cle": "Durée, coefficient, structure, barème : on les lit sur les sujets officiels, chaque année.",
-   "q": "Pour chacune de vos classes d'examen, connaissez-vous la structure exacte du dernier sujet officiel ?",
-   "id": "examens-1"
+   "exo": "Prenez trois sujets récents de l'épreuve que prépare un de vos élèves et dressez le tableau des thèmes avec les points attribués.",
+   "q": "Pour chacune de vos classes d'examen, connaissez-vous la structure exacte du dernier sujet officiel ?"
   },
   {
+   "id": "examens-2",
    "t": "Le rétroplanning de l'année d'examen",
    "p": [
     "Une année d'examen se planifie à l'envers, à partir de la date de l'épreuve. On distingue trois phases : apprendre le programme, consolider, s'entraîner dans les conditions de l'examen.",
@@ -944,14 +1053,20 @@ FM.modules.push(
     "Suivez la progression de la classe pour rester utile aux devoirs, mais gardez votre propre fil : à chaque séance, un temps de rappel sur les chapitres anciens, et une fois par mois une évaluation qui mêle plusieurs chapitres. C'est la pratique espacée appliquée à l'année.",
     "Tenez compte du calendrier réel : compositions, fêtes, vacances, éventuelles perturbations scolaires. Un planning qui ignore ces semaines sera faux dès novembre."
    ],
+   "appro": [
+    "Découpez l'année en périodes de quatre à six semaines, chacune avec un objectif et une évaluation. À la fin de chaque période, comparez le prévu et le réalisé et ajustez. Un planning révisé cinq fois dans l'année reste utile ; un planning figé en octobre ne l'est plus en décembre.",
+    "Classez les chapitres selon deux critères : leur poids dans les sujets et le niveau actuel de l'élève. Ce qui pèse lourd et n'est pas maîtrisé passe en premier. Ce qui pèse peu et demande beaucoup d'efforts passe en dernier, quitte à ne viser que les questions faciles.",
+    "Gardez du temps pour ce que l'école n'aura pas traité. En fin d'année, les programmes sont parfois inachevés en classe. Repérez dès le deuxième trimestre les chapitres en retard et prévoyez de les couvrir vous-même."
+   ],
    "ex": "Élève de Terminale S2, épreuves début juillet. Octobre à mars : chapitres au rythme de la classe, examen blanc mensuel. Avril-mai : fin du programme, reprise des chapitres faibles repérés aux examens blancs. Juin : un sujet complet par semaine en temps réel, correction détaillée, fiches de formules.",
    "fm": "Votre rythme de deux séances de 2 heures par semaine en Terminale et l'examen blanc mensuel de la formule EXCELLENCE fournissent déjà la structure de ce rétroplanning.",
    "err": "Découvrir en mai que trois chapitres n'ont jamais été abordés. Le rétroplanning sert précisément à voir ce retard dès janvier.",
    "cle": "On part de la date de l'épreuve et on remonte : entraînement, consolidation, apprentissage.",
-   "q": "Pour chaque élève de 3e ou de Terminale, à quelle date le programme sera-t-il terminé au rythme actuel ?",
-   "id": "examens-2"
+   "exo": "Pour un élève d'examen, classez les chapitres du programme en trois groupes : maîtrisés, fragiles, non vus. Placez-les sur un calendrier jusqu'à l'épreuve.",
+   "q": "Pour chaque élève de 3e ou de Terminale, à quelle date le programme sera-t-il terminé au rythme actuel ?"
   },
   {
+   "id": "examens-3",
    "t": "S'entraîner sur annales",
    "p": [
     "Les annales servent à trois choses : connaître le format, repérer les thèmes qui reviennent, et surtout s'entraîner à produire une copie complète en temps limité. Lire un corrigé ne remplace pas cet entraînement.",
@@ -959,14 +1074,20 @@ FM.modules.push(
     "La correction compte autant que l'épreuve. Notez avec un barème proche de l'officiel, codez les erreurs, puis faites reprendre les questions manquées. Tenez un tableau des résultats par thème : il montre où investir les séances suivantes.",
     "Commencez tôt par des exercices d'annales classés par chapitre, dès que le chapitre est terminé, puis passez aux sujets complets quand une grande partie du programme est vue."
    ],
+   "appro": [
+    "Après chaque sujet, faites remplir à l'élève une fiche de retour : note obtenue, temps passé par exercice, questions non traitées, erreurs par type, et une décision pour le sujet suivant. Sans cette analyse, enchaîner les annales ne fait que répéter les mêmes fautes.",
+    "Entraînez aussi la rédaction et la présentation dans ces conditions : numérotation des questions, résultats encadrés, figures soignées, phrase de conclusion. Sous la pression du temps, l'élève revient à ses habitudes ; ce sont donc les habitudes qu'il faut former.",
+    "Refaire un sujet déjà corrigé, quelques semaines plus tard, n'est pas du temps perdu. L'élève constate ce qu'il sait désormais faire et ce qui résiste encore. C'est de la pratique espacée appliquée à l'examen."
+   ],
    "ex": "Tableau de suivi d'une élève de 3e sur quatre BFEM blancs : activités numériques 6/10, 7/10, 7/10, 8/10 ; activités géométriques 3/10, 4/10, 4/10, 6/10. La priorité des séances est claire : la géométrie.",
    "fm": "Vos séries d'exercices réels et votre banque de sujets permettent les deux étapes : exercices d'annales par chapitre, puis sujets complets. Vos corrigés d'évaluation servent de barème.",
    "err": "Faire les annales « ensemble », à voix haute, avec l'encadreur. L'élève croit savoir, mais n'a jamais produit seul une copie entière.",
    "cle": "Sujet entier, temps réel, sans aide ; puis correction au barème et reprise des erreurs.",
-   "q": "Combien de sujets complets en temps réel chacun de vos élèves d'examen aura-t-il faits avant l'épreuve ?",
-   "id": "examens-3"
+   "exo": "Créez la fiche de retour d'examen blanc (note, temps par exercice, erreurs par type, décision) à faire remplir par vos élèves.",
+   "q": "Combien de sujets complets en temps réel chacun de vos élèves d'examen aura-t-il faits avant l'épreuve ?"
   },
   {
+   "id": "examens-4",
    "t": "Le jour J : temps, méthode, sang-froid",
    "p": [
     "Un élève qui sait peut échouer par mauvaise gestion de l'épreuve. Cette gestion s'apprend et se répète pendant les examens blancs.",
@@ -974,12 +1095,17 @@ FM.modules.push(
     "Troisième règle : ne jamais rester bloqué. Si une question résiste, on admet son résultat pour traiter la suite, et on y revient à la fin. Quatrième règle : garder dix minutes pour relire, vérifier les calculs, les unités et les conclusions.",
     "Le stress se réduit surtout par la répétition : un élève qui a déjà composé plusieurs fois dans les conditions réelles reconnaît la situation. Ajoutez des consignes simples pour la veille et le matin : matériel préparé, sommeil, repas, arrivée en avance, pas de révision de dernière minute sur un chapitre nouveau."
    ],
+   "appro": [
+    "Apprenez à l'élève à marquer le sujet à la première lecture : une croix devant ce qu'il sait faire, un point d'interrogation devant ce qui demande réflexion. Il commence par les croix. Cette lecture active évite la panique devant un exercice difficile placé en début de sujet.",
+    "Enseignez les réflexes de vérification rapides : ordre de grandeur du résultat, signe, unité, cohérence avec la figure, substitution de la solution dans l'équation de départ. Une minute de contrôle par exercice rattrape des points que rien d'autre ne rattrapera.",
+    "Préparez aussi le « blanc ». Si l'élève ne trouve plus rien, il pose le stylo, respire, passe à une autre question et y revient. Le lui avoir dit à l'avance, et l'avoir vécu en examen blanc, change sa réaction le jour venu. Le rôle des parents la dernière semaine est de garantir le calme, le sommeil et les repas, pas d'ajouter de la pression."
+   ],
    "ex": "Plan de temps pour un BFEM de mathématiques de 2 heures : 5 minutes de lecture du sujet, 100 minutes de composition réparties selon le barème, 15 minutes de relecture. L'élève écrit ce plan sur son brouillon dès le début.",
    "fm": "Vos examens blancs sont le lieu où cette gestion s'installe. Demandez à l'élève d'écrire son plan de temps sur le brouillon à chaque fois, et commentez-le pendant la correction.",
    "err": "Donner des conseils de gestion du temps uniquement la veille de l'examen. Ce qui n'a pas été répété ne sera pas appliqué sous pression.",
    "cle": "Lire tout, commencer par le plus sûr, répartir le temps selon les points, relire dix minutes.",
-   "q": "Vos élèves d'examen savent-ils combien de minutes ils doivent consacrer à chaque exercice ?",
-   "id": "examens-4"
+   "exo": "Avec un élève d'examen, écrivez son plan de temps pour l'épreuve, minute par minute, et faites-le appliquer au prochain examen blanc.",
+   "q": "Vos élèves d'examen savent-ils combien de minutes ils doivent consacrer à chaque exercice ?"
   }
  ],
  "cas": {
@@ -1142,6 +1268,7 @@ FM.modules.push(
  ],
  "lecons": [
   {
+   "id": "motivation-1",
    "t": "La motivation suit la réussite",
    "p": [
     "On croit souvent qu'il faut motiver l'élève pour qu'il réussisse. C'est surtout l'inverse : la réussite constatée nourrit l'envie de continuer. Le psychologue Albert Bandura a appelé « sentiment d'efficacité personnelle » la conviction d'être capable de réussir une tâche ; sa première source est l'expérience de réussites réelles.",
@@ -1149,14 +1276,20 @@ FM.modules.push(
     "Rendez le progrès visible. Un élève ne remarque pas qu'il réussit aujourd'hui ce qu'il ratait il y a six semaines si personne ne le lui montre. Comparez ses copies, tenez un graphique simple de ses scores de rappel.",
     "Deux autres besoins comptent : avoir un peu de choix (l'ordre des exercices, la façon de vérifier) et se sentir respecté par un adulte qui croit en lui. La relation de travail est un outil pédagogique à part entière."
    ],
+   "appro": [
+    "Fixez des objectifs proches et précis. « Avoir la moyenne au BFEM » est lointain et dépend de trop de choses ; « réussir seul cinq équations sur cinq d'ici vendredi » est à portée et se constate. Chaque petit objectif atteint construit la conviction que le travail produit un effet.",
+    "Reliez explicitement le résultat à ce que l'élève a fait. « Tu as réussi parce que tu as posé les données avant de calculer » lui apprend que la réussite vient d'un geste qu'il peut refaire. Sans ce lien, il attribue le succès à la chance ou à la facilité de l'exercice.",
+    "Méfiez-vous des récompenses extérieures promises par les parents. Elles fonctionnent un temps, puis l'élève travaille pour la récompense et s'arrête quand elle disparaît. L'intérêt durable vient du sentiment de progresser et de comprendre."
+   ],
    "ex": "Élève de 5e découragé. Première séance : trois exercices choisis juste à son niveau, réussis. Deuxième séance : on monte d'un cran. À la quatrième, vous lui montrez sa première copie à côté de la dernière. C'est lui qui dit : « Avant, je ne savais pas faire ça. »",
    "fm": "Votre promesse d'une progression visible chaque mois vaut aussi pour l'élève. Le bilan mensuel peut lui être présenté à lui d'abord, avant d'être envoyé au parent.",
    "err": "Encourager sans preuve (« tu vas y arriver, c'est facile »). Si l'exercice est raté, l'élève conclut qu'il est encore plus faible qu'il ne le pensait.",
    "cle": "Des réussites réelles, à la bonne difficulté, et un progrès rendu visible.",
-   "q": "Pour votre élève le moins motivé, quelle réussite réelle pouvez-vous organiser dès la prochaine séance ?",
-   "id": "motivation-1"
+   "exo": "Pour votre élève le moins motivé, fixez trois petits objectifs vérifiables pour les deux prochaines semaines et notez comment vous les lui présenterez.",
+   "q": "Pour votre élève le moins motivé, quelle réussite réelle pouvez-vous organiser dès la prochaine séance ?"
   },
   {
+   "id": "motivation-2",
    "t": "« Je suis nul en maths »",
    "p": [
     "Cette phrase décrit une croyance, pas un fait. L'élève attribue ses échecs à une cause fixe, « je ne suis pas fait pour ça », contre laquelle il ne peut rien. Tant qu'il le croit, l'effort lui paraît inutile.",
@@ -1164,14 +1297,20 @@ FM.modules.push(
     "Changez aussi le statut de l'erreur. Dans vos séances, une erreur est une information : elle montre où travailler. Dites-le, et montrez-le en cherchant calmement la cause plutôt qu'en sanctionnant.",
     "Enfin, l'anxiété a un effet direct : un élève tendu a moins de mémoire de travail disponible et réussit moins bien ce qu'il sait pourtant faire. Un rituel de début calme, une première question facile, un ton posé améliorent réellement les résultats."
    ],
+   "appro": [
+    "Écoutez d'où vient la croyance. Souvent, un épisode précis l'a installée : une humiliation au tableau, une série de mauvaises notes, une comparaison avec un frère. La connaître ne sert pas à faire de la psychologie, mais à éviter de reproduire la situation et à comprendre les réactions de l'élève.",
+    "Surveillez votre propre langage. « C'est simple », « tu devrais le savoir », un soupir devant une erreur répétée : ces signaux confirment à l'élève qu'il n'est pas à la hauteur. À l'inverse, « c'est une erreur que beaucoup font, regardons pourquoi » la rend normale et utile.",
+    "Les parents transmettent parfois la croyance sans le vouloir : « moi aussi j'étais nul en maths ». Proposez-leur une autre phrase : « c'est difficile, mais avec du travail régulier on y arrive, et je vois que tu avances »."
+   ],
    "ex": "L'élève : « De toute façon, je suis nulle en maths. » Réponse : « Tu ne sais pas encore factoriser, c'est différent. La semaine dernière, tu ne savais pas développer, et aujourd'hui tu as réussi quatre calculs sur cinq. On va faire pareil pour la factorisation. »",
    "fm": "La méthode CADRE donne à l'élève une suite d'actions à sa portée : il n'a plus à « être bon », il a une démarche à suivre. C'est un argument à lui donner autant qu'aux parents.",
    "err": "Comparer l'élève à un frère, une sœur ou un camarade. La comparaison confirme l'étiquette au lieu de la défaire.",
    "cle": "Dire « pas encore », valoriser la stratégie, traiter l'erreur comme une information.",
-   "q": "Quelles phrases vos élèves emploient-ils pour parler d'eux-mêmes en mathématiques, et que leur répondez-vous ?",
-   "id": "motivation-2"
+   "exo": "Notez trois phrases que vous dites par réflexe devant une erreur. Réécrivez chacune pour qu'elle porte sur la démarche et non sur l'élève.",
+   "q": "Quelles phrases vos élèves emploient-ils pour parler d'eux-mêmes en mathématiques, et que leur répondez-vous ?"
   },
   {
+   "id": "motivation-3",
    "t": "L'élève en grande difficulté",
    "p": [
     "Quand un élève de 4e ne maîtrise pas les fractions de 6e, lui expliquer mieux le chapitre de 4e ne sert à rien. Les mathématiques sont cumulatives : chaque notion repose sur les précédentes. Il faut descendre jusqu'au dernier terrain solide.",
@@ -1179,14 +1318,20 @@ FM.modules.push(
     "Expliquez ce choix à l'élève et aux parents : pendant quelques semaines, les notes de l'école peuvent ne pas bouger, parce que l'on reconstruit en dessous. Annoncez ce que vous mesurerez à la place.",
     "Sachez aussi reconnaître vos limites. Certaines difficultés persistantes (lecture, attention, repérage dans l'espace, confusion durable des nombres) peuvent relever de troubles qui demandent l'avis de spécialistes. Votre rôle n'est pas de poser un diagnostic, mais de signaler ce que vous observez aux parents, avec tact, et de les inviter à en parler à l'établissement ou à un professionnel de santé."
    ],
+   "appro": [
+    "Menez deux voies en parallèle, avec des temps séparés et annoncés : dix à quinze minutes de reconstruction des bases à chaque séance, puis le chapitre de la classe, simplifié. L'élève voit qu'il n'est pas abandonné en cours, et ses bases remontent séance après séance.",
+    "Découpez la notion manquante en paliers très fins, chacun réussi à un taux élevé avant de passer au suivant. Pour les fractions : comprendre la fraction comme partage, comparer, simplifier, additionner au même dénominateur, puis à dénominateurs différents. Notez le palier atteint.",
+    "Protégez l'estime de l'élève. Travailler des notions de 6e quand on est en 4e peut être vécu comme une humiliation. Présentez-le comme une réparation ciblée et temporaire : « il te manque deux outils, on les installe et tu pourras suivre ». N'utilisez pas un support marqué d'une classe inférieure sous ses yeux si vous pouvez l'éviter."
+   ],
    "ex": "Élève de 4e, diagnostic : tables fragiles, fractions non acquises. Plan sur six semaines : dix minutes de calcul à chaque séance avec score noté, fractions reprises depuis la représentation, puis lien avec le chapitre de la classe. Mesure annoncée au parent : le score de calcul, passé de 8/20 à 15/20.",
    "fm": "Vos livrets de révision des prérequis et vos tests diagnostiques par classe sont les outils de cette remontée. Les kits des classes inférieures de votre bibliothèque servent de supports de reprise.",
    "err": "Promettre un rattrapage rapide pour rassurer. Reconstruire des bases prend du temps ; mieux vaut l'annoncer que le subir.",
    "cle": "Descendre au dernier terrain solide, une priorité à la fois, maîtrise avant d'avancer.",
-   "q": "Quel élève suivez-vous aujourd'hui sur le programme de sa classe alors que ses bases demanderaient une reprise ?",
-   "id": "motivation-3"
+   "exo": "Pour un élève en difficulté, découpez la notion qui lui manque en cinq paliers et notez celui où il se trouve aujourd'hui.",
+   "q": "Quel élève suivez-vous aujourd'hui sur le programme de sa classe alors que ses bases demanderaient une reprise ?"
   },
   {
+   "id": "motivation-4",
    "t": "Poser un cadre avec l'adolescent",
    "p": [
     "La plupart des blocages de travail ne sont pas des problèmes de mathématiques : devoirs non faits, téléphone, fatigue, absence d'horaire. Un cadre clair, posé tôt, évite de transformer chaque séance en négociation.",
@@ -1194,12 +1339,17 @@ FM.modules.push(
     "Quand le travail n'est pas fait, restez factuel. Cherchez la cause (trop long, pas compris, pas de moment prévu) et ajustez : moins d'exercices, mais faits ; un horaire fixe décidé avec la famille. La troisième fois, on en parle avec le parent, en présence de l'élève, sans l'humilier.",
     "Les parents sont vos alliés à condition de leur donner un rôle tenable : garantir un lieu et un horaire, vérifier que le travail est fait, vous prévenir d'un événement. Ne leur demandez pas d'expliquer les mathématiques, et ne rapportez pas chaque faiblesse de l'adolescent : il doit pouvoir vous faire confiance."
    ],
+   "appro": [
+    "Faites participer l'élève à l'élaboration des règles. Une règle qu'il a formulée lui-même est mieux respectée qu'une règle imposée. Demandez : « De quoi as-tu besoin pour bien travailler ? Qu'est-ce qui t'en empêche le plus ? » puis écrivez ensemble.",
+    "Prévoyez la suite quand une règle n'est pas tenue, et dites-la d'avance : d'abord un rappel, puis un ajustement, puis une conversation à trois avec le parent. La conséquence annoncée et appliquée calmement a plus d'effet qu'une colère imprévisible.",
+    "Avec un adolescent, la relation se joue sur la justesse et la constance. Tenez vos propres engagements, reconnaissez vos erreurs, ne faites pas de promesse que vous ne tiendrez pas, et ne le ridiculisez jamais. Un élève qui vous respecte travaille aussi pour ne pas vous décevoir."
+   ],
    "ex": "Contrat de travail en trois lignes, signé par l'élève : « 1. Je fais les deux exercices donnés avant chaque séance. 2. Mon téléphone reste dans le salon pendant la séance. 3. Je dis quand je ne comprends pas. » En face : « M. Faye arrive à l'heure, explique autant de fois que nécessaire, donne au plus trente minutes de travail. »",
    "fm": "Votre compte rendu après chaque séance permet de signaler le travail fait ou non fait de façon régulière et neutre, sans attendre que la situation se dégrade.",
    "err": "Se plaindre de l'élève au parent devant lui. Vous gagnez une réprimande ce jour-là et perdez sa coopération pour la suite.",
    "cle": "Peu de règles, écrites, réciproques ; les parents garantissent le lieu et l'horaire.",
-   "q": "Quelles règles de travail avez-vous réellement posées, par écrit, avec chacun de vos élèves ?",
-   "id": "motivation-4"
+   "exo": "Préparez la conversation de cadrage avec un élève : vos deux questions d'ouverture, les trois règles que vous souhaitez obtenir, et la suite prévue si elles ne sont pas tenues.",
+   "q": "Quelles règles de travail avez-vous réellement posées, par écrit, avec chacun de vos élèves ?"
   }
  ],
  "cas": {

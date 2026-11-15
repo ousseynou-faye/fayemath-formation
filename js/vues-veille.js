@@ -45,7 +45,7 @@ function vueVeilleModule(v){
   ${v.note ? `<p class="petit" style="margin-top:10px">${h(v.note)}</p>` : ""}
   <h2>Idée à tester pour FayeMath</h2>
   <div class="carte idee"><p style="margin:0 0 10px;max-width:68ch">${h(v.idee)}</p>${ligneAction({k:"T"+v.n, txt:"Statut de cette idée"})}</div>
-  <h2>Je me teste</h2><div class="carte">${blocQuestions(v.quiz, rep, `data-a="rep-veille" data-id="${v.n}"`)}
+  <h2>Je me teste</h2><div class="carte">${blocQuestions(v.quiz, rep, `data-a="rep-veille" data-id="${v.n}"`, "V-"+v.n)}
     ${Object.keys(rep).length ? `<button class="btn sec" type="button" data-a="refaire-veille" data-id="${v.n}" style="margin-top:8px">Refaire le quiz</button>` : ""}</div>
   <h2>Ma synthèse</h2><label class="petit" for="synth">En quelques lignes : ce que cette étude change pour FayeMath.</label>
   <textarea class="zone" id="synth" data-synth="${v.n}">${h(etat.synth[v.n] || "")}</textarea>

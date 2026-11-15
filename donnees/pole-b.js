@@ -2,8 +2,9 @@
    FayeMath Formation — PÔLE B — Développement commercial
    Un objet par module. Champs :
      id, n, pole, court, titre, but, objectifs[]
-     lecons[] : {id, t: titre, p: [paragraphes], ex: exemple concret, fm: chez FayeMath,
-                 err: erreur fréquente, cle: à retenir, q: question de réflexion}
+     lecons[] : {id, t: titre, p: [paragraphes], appro: [approfondissement], ex: exemple concret,
+                 fm: chez FayeMath, err: erreur fréquente, cle: à retenir,
+                 exo: mise en pratique, q: question de réflexion}
      cas      : {t, s: situation, q: [questions], r: [éléments de réponse]}
      atelier  : {t, c: consigne}        outil : {t, usage, lignes[]} ("## " = sous-titre)
      actions[]: tâches versées au plan d'action
@@ -26,6 +27,7 @@ FM.modules.push(
  ],
  "lecons": [
   {
+   "id": "notoriete-1",
    "t": "Peu de canaux, dans le bon ordre",
    "p": [
     "Un fondateur seul ne peut pas tenir sept canaux. Mieux vaut quatre canaux classés, du plus proche au plus large, et commencer par celui qui donne des résultats cette semaine.",
@@ -33,15 +35,20 @@ FM.modules.push(
     "Chaque canal a un rôle. Le réseau apporte les premières familles, le terrain installe la présence dans le quartier, WhatsApp entretient le lien, Facebook élargit. Les utiliser dans cet ordre évite de payer une publicité pour des gens qui ne vous connaissent pas encore.",
     "Mesurez la source de chaque contact : « Comment avez-vous entendu parler de nous ? » Après deux mois, vous saurez quel canal mérite votre temps."
    ],
+   "appro": [
+    "Chaque canal a son indicateur. Réseau : nombre de noms obtenus par mois. Terrain : nombre de contacts pris après une présence. WhatsApp : nombre de réponses à un envoi. Facebook : nombre de messages reçus. Sans indicateur, vous jugez un canal à l'impression qu'il vous laisse.",
+    "Tenez un canal au moins deux mois avant de le juger. La confiance des familles se construit par la répétition : un parent contacte souvent après avoir vu votre nom trois ou quatre fois, par des voies différentes."
+   ],
    "ex": "Sur dix contacts d'un mois : six par recommandation, trois par une affiche près d'un collège, un par Facebook. La conclusion est claire : renforcer les recommandations avant d'augmenter le budget publicitaire.",
    "fm": "Vos quatre canaux : (1) réseau personnel, (2) terrain ciblé à Bargny, (3) WhatsApp avec un chapitre offert, (4) Facebook local avec une petite publicité. LinkedIn sert à la crédibilité, une publication par semaine au plus.",
    "err": "Ouvrir un compte sur chaque réseau puis ne rien publier pendant des semaines. Un canal abandonné donne une image d'activité arrêtée.",
    "cle": "On active le réseau d'abord, la publicité payante en dernier.",
+   "exo": "Pour vos dix dernières familles ou contacts sérieux, notez la source. Calculez la part de chaque canal.",
    "q": "D'où viennent précisément vos cinq dernières familles ?",
-   "v1": "L4-0",
-   "id": "notoriete-1"
+   "v1": "L4-0"
   },
   {
+   "id": "notoriete-2",
    "t": "Le contenu qui attire",
    "p": [
     "Un contenu utile et gratuit prouve votre niveau mieux qu'une publicité. Les Sherpas ont grandi ainsi sur les réseaux sociaux, et Khan Academy est née de vidéos gratuites.",
@@ -49,15 +56,20 @@ FM.modules.push(
     "Un bon contenu a une seule idée et une suite : il se termine par une invitation simple (« écrivez-moi le mot BFEM pour recevoir la fiche »). C'est cette invitation qui transforme un lecteur en contact.",
     "Préparez par lots : une après-midi par mois pour quatre contenus vaut mieux que la recherche d'une idée chaque semaine. Vos supports de cours sont déjà une réserve d'exercices et de méthodes."
    ],
+   "appro": [
+    "Un contenu utile suit une structure fixe : un problème que l'élève reconnaît, la solution en quelques étapes, l'erreur à éviter, puis une invitation. Garder la même structure vous fait gagner du temps et crée un rendez-vous pour ceux qui vous suivent.",
+    "Adressez-vous à deux publics. L'élève cherche une explication claire ; le parent cherche la preuve que vous savez expliquer. Un même exercice résolu sert les deux, si vous ajoutez une ligne pour le parent : ce que cet exercice travaille et à quel examen il prépare."
+   ],
    "ex": "Série « L'erreur de la semaine » : une erreur fréquente de 3e (par exemple développer (a + b)² en a² + b²), l'explication en trois lignes, la bonne méthode, puis l'invitation à recevoir la fiche complète.",
    "fm": "Votre aimant à contacts : le chapitre 1 de 6e « Nombres décimaux arithmétiques ». Votre projet vidéo vise TikTok, YouTube et Facebook.",
    "err": "Publier uniquement des annonces (« inscriptions ouvertes »). Sans contenu utile, la page n'apporte rien et n'est pas partagée.",
    "cle": "Un contenu utile par semaine vaut mieux que dix contenus un seul mois.",
+   "exo": "Préparez quatre contenus d'avance à partir de vos supports existants : sujet, classe, format, canal, invitation finale.",
    "q": "Quels sont les trois exercices ou erreurs que vos élèves rencontrent le plus et que vous pourriez expliquer en public ?",
-   "v1": "L4-1",
-   "id": "notoriete-2"
+   "v1": "L4-1"
   },
   {
+   "id": "notoriete-3",
    "t": "Le bouche-à-oreille et les témoignages",
    "p": [
     "Les parents satisfaits sont votre meilleur outil de marketing. Encore faut-il leur demander : un témoignage ne vient presque jamais tout seul.",
@@ -65,13 +77,17 @@ FM.modules.push(
     "La recommandation se provoque par une demande précise. « Connaissez-vous un parent de la classe de votre fils que cela pourrait aider ? » obtient un nom ; « parlez de moi autour de vous » n'obtient rien.",
     "Un témoignage utile raconte un avant et un après, avec un fait observable : une note, une attitude, une habitude de travail. Proposez au parent trois questions simples pour l'aider à l'écrire."
    ],
+   "appro": [
+    "Installez la recommandation dans votre fonctionnement plutôt que de compter sur le hasard. Trois moments s'y prêtent : après un premier mois réussi, après une bonne note, à la fin de l'année. À chacun, une question précise et une seule.",
+    "Remerciez toujours la personne qui vous recommande, que la famille s'inscrive ou non, et donnez-lui des nouvelles. Celui qui recommande engage sa propre réputation ; le tenir informé est une marque de respect, et la meilleure façon qu'il recommence."
+   ],
    "ex": "Questions à envoyer : « Quelle était la difficulté de votre enfant avant ? Qu'est-ce qui a changé depuis ? Que diriez-vous à un parent qui hésite ? » Trois réponses courtes font un témoignage complet.",
    "fm": "Idée retenue du parcours : demander un témoignage écrit ou audio à chaque famille satisfaite après le premier mois.",
    "err": "Publier un témoignage sans accord, ou avec le nom et la photo de l'enfant. La confiance gagnée se perd d'un coup.",
    "cle": "Un témoignage se demande, au bon moment, et se publie avec accord.",
+   "exo": "Choisissez deux familles satisfaites. Envoyez à chacune vos trois questions de témoignage et la demande d'un nom.",
    "q": "Quelle famille satisfaite n'avez-vous encore jamais sollicitée pour un témoignage ou un nom ?",
-   "v1": "L4-2",
-   "id": "notoriete-3"
+   "v1": "L4-2"
   }
  ],
  "cas": {
@@ -222,6 +238,7 @@ FM.modules.push(
  ],
  "lecons": [
   {
+   "id": "vente-1",
    "t": "Le tunnel de vente en 8 étapes",
    "p": [
     "Vendre n'est pas convaincre en une fois. C'est faire avancer chaque famille d'une étape à la suivante, sans en sauter.",
@@ -229,15 +246,20 @@ FM.modules.push(
     "Le tunnel sert aussi de diagnostic. Si beaucoup de contacts n'arrivent jamais à l'appel, le problème est dans le premier message ; si les séances de découverte ne débouchent pas, il est dans la proposition. On corrige l'étape qui fuit, pas tout le système.",
     "Tenez la base à jour le jour même : un prospect sans date de prochaine action est un prospect perdu."
    ],
+   "appro": [
+    "Mesurez chaque passage du tunnel. De cent contacts, combien arrivent à l'appel ? De ces appels, combien à la séance de découverte ? De ces séances, combien à l'inscription ? Ces trois taux vous disent où agir, et ils changent votre regard : un refus cesse d'être un échec personnel pour devenir une donnée.",
+    "Chaque étape a une sortie définie. Un prospect ne reste pas indéfiniment « en réflexion » : après les relances prévues, il passe en « sans suite » avec une date de recontact éventuelle, par exemple à la rentrée ou avant les compositions."
+   ],
    "ex": "Sur un mois : 20 contacts, 9 appels, 5 séances de découverte, 2 inscriptions. La plus grosse perte est entre le contact et l'appel : c'est le premier message et la prise de rendez-vous qu'il faut retravailler.",
    "fm": "Votre tunnel : ATTIRER → CONTACTER → QUALIFIER (appel de 15 minutes) → FAIRE DÉCOUVRIR (séance gratuite d'une heure avec diagnostic) → PROPOSER → INSCRIRE → DÉMARRER → FIDÉLISER.",
    "err": "Proposer une séance de découverte à tout contact, sans appel préalable. Vous dépensez des trajets pour des familles qui n'avaient ni le besoin ni le budget.",
    "cle": "Chaque prospect est à une étape précise ; votre travail est de le faire passer à la suivante.",
+   "exo": "Classez tous vos prospects actuels par étape du tunnel et donnez à chacun une date de prochaine action.",
    "q": "À quelle étape de votre tunnel perdez-vous le plus de familles ?",
-   "v1": "L3-0",
-   "id": "vente-1"
+   "v1": "L3-0"
   },
   {
+   "id": "vente-2",
    "t": "L'appel de 15 minutes et la séance de découverte",
    "p": [
     "L'appel sert de filtre : il ne coûte aucun trajet. Vous y posez des questions (classe, difficultés, objectifs, disponibilités, budget) et vous écoutez plus que vous ne parlez.",
@@ -245,15 +267,20 @@ FM.modules.push(
     "Pendant l'appel, le parent doit parler plus que vous. Posez des questions ouvertes, reformulez ce que vous avez compris, puis proposez. Un parent qui s'est senti écouté accepte plus facilement la suite.",
     "À la fin de la séance de découverte, donnez le diagnostic en trois points : ce que l'élève sait faire, ce qui lui manque, ce que vous proposez. Puis fixez immédiatement le moment de la décision."
    ],
+   "appro": [
+    "Les meilleures questions font parler de la situation concrète : « Racontez-moi comment se passent les devoirs à la maison », « Qu'a dit son professeur au dernier conseil ? », « Qu'aimeriez-vous voir changer d'ici trois mois ? ». Elles vous donnent les mots du parent, que vous reprendrez dans votre proposition.",
+    "Pendant la séance de découverte, le parent juge trois choses en quelques minutes : votre ponctualité, votre façon de parler à son enfant, et la clarté de ce que vous dites à la fin. Préparez ce dernier moment autant que le contenu : c'est lui qui décide."
+   ],
    "ex": "Clôture de la découverte : « Awa maîtrise le calcul numérique, mais elle bloque sur la mise en équation. Je propose la formule STANDARD, le samedi à 15 h. Je vous envoie le récapitulatif ce soir ; pouvons-nous nous appeler demain à 18 h pour votre décision ? »",
    "fm": "Le diagnostic CADRE se tient pendant la séance de découverte. Vous visez une à deux séances de découverte par semaine.",
    "err": "Terminer par « je vous laisse réfléchir ». Sans date, la décision se dilue et vous n'osez plus rappeler.",
    "cle": "Aucune séance de découverte sans appel préalable ; aucune séance de découverte sans suite fixée.",
+   "exo": "Écrivez vos cinq questions d'appel et la phrase de clôture de la séance de découverte, avec la demande d'une date de décision.",
    "q": "Quelles sont vos cinq questions d'appel, dans l'ordre, et laquelle obtient les réponses les plus utiles ?",
-   "v1": "L3-1",
-   "id": "vente-2"
+   "v1": "L3-1"
   },
   {
+   "id": "vente-3",
    "t": "Les objections et la relance",
    "p": [
     "Une objection est une demande d'information, pas un refus. Les plus fréquentes portent sur le prix, le temps de l'élève, un ancien encadreur décevant ou « on va réfléchir ».",
@@ -261,15 +288,20 @@ FM.modules.push(
     "Traitez l'objection en quatre temps : accueillir (« je comprends »), questionner (« qu'est-ce qui vous fait hésiter ? »), répondre par un fait, vérifier (« est-ce que cela répond à votre question ? »).",
     "Arrêtez de relancer après un nombre fixé d'essais, avec un dernier message courtois qui laisse la porte ouverte. Votre temps de prospection est limité."
    ],
+   "appro": [
+    "Derrière une objection se trouve souvent une autre question. « C'est cher » peut vouloir dire « je ne suis pas sûr que cela marche ». « Il n'a pas le temps » peut vouloir dire « il n'est pas d'accord ». Demandez toujours ce qui fait hésiter avant de répondre.",
+    "Certaines objections sont de vraies raisons de ne pas s'inscrire : budget réellement insuffisant, élève opposé, trajet impossible. Les reconnaître vous évite d'insister, préserve la relation, et laisse la porte ouverte pour plus tard ou pour une recommandation."
+   ],
    "ex": "Objection : « Il avait déjà un encadreur l'an dernier, ça n'a rien donné. » Réponse : « Je comprends votre prudence. Qu'est-ce qui a manqué ? … Chez nous, vous recevez un compte rendu après chaque séance et un bilan chaque mois : vous voyez vous-même si cela avance. »",
    "fm": "Votre rythme de relance : deux jours après le contact, puis cinq jours après.",
    "err": "Répondre à une objection par un long argumentaire. Une question, puis un fait, suffisent.",
    "cle": "On prépare ses réponses aux objections à l'avance et on relance avec une information, pas avec « alors ? ».",
+   "exo": "Écrivez votre réponse en deux phrases aux quatre objections les plus fréquentes : le prix, le temps de l'élève, l'ancien encadreur, « on va réfléchir ».",
    "q": "Quelle objection entendez-vous le plus, et quelle est votre réponse en deux phrases ?",
-   "v1": "L3-2",
-   "id": "vente-3"
+   "v1": "L3-2"
   },
   {
+   "id": "vente-4",
    "t": "Piloter par un seul chiffre",
    "p": [
     "Vous ne contrôlez pas le nombre d'inscriptions. Vous contrôlez le nombre de familles à qui vous parlez sérieusement chaque semaine.",
@@ -277,13 +309,17 @@ FM.modules.push(
     "Vos taux de conversion réels remplacent les hypothèses. S'il vous faut dix contacts qualifiés pour deux inscriptions, vous savez combien de contacts il faut pour atteindre votre objectif de foyers.",
     "Regardez les chiffres une fois par semaine, à heure fixe, et ne changez qu'une chose à la fois. Sinon vous ne saurez pas ce qui a fonctionné."
    ],
+   "appro": [
+    "Un indicateur n'est utile que s'il déclenche une action. Fixez à l'avance ce que vous ferez si le chiffre est bas : relancer d'anciens contacts, demander des noms aux familles actuelles, renforcer le canal le plus efficace. La décision se prend à froid, pas le jour où le chiffre déçoit.",
+    "Gardez l'historique semaine par semaine. Sur un trimestre, vous verrez les périodes favorables (rentrée, veille des compositions, après les bulletins) et vous pourrez concentrer votre effort de prospection au bon moment."
+   ],
    "ex": "Objectif : 3 foyers de plus en six semaines. Avec 2 inscriptions pour 10 contacts qualifiés, il faut environ 15 contacts, soit un peu moins de 3 par semaine au minimum ; l'objectif de 7 à 8 laisse une marge.",
    "fm": "Objectif : 7 à 8 contacts qualifiés par semaine ; alerte en dessous de 5 pendant deux semaines. Cibles prioritaires : les foyers à plusieurs enfants, puis la 3e (BFEM). Remplacez vos hypothèses de conversion par vos chiffres réels dès que vous en avez.",
    "err": "Juger sa semaine au nombre de messages envoyés. Ce qui compte, ce sont les conversations sérieuses avec des parents.",
    "cle": "Le chiffre à suivre chaque semaine est le nombre de contacts qualifiés.",
+   "exo": "Relevez vos chiffres des quatre dernières semaines : contacts qualifiés, séances de découverte, inscriptions. Calculez vos deux taux de conversion réels.",
    "q": "Combien de contacts qualifiés avez-vous eus la semaine dernière, et d'où venaient-ils ?",
-   "v1": "L3-3",
-   "id": "vente-4"
+   "v1": "L3-3"
   }
  ],
  "cas": {
@@ -437,60 +473,80 @@ FM.modules.push(
  ],
  "lecons": [
   {
+   "id": "parents-1",
    "t": "Les 30 premiers jours d'une famille",
    "p": [
     "Une famille décide de rester ou de partir pendant les premières semaines. Elle observe trois choses : êtes-vous ponctuel, l'enfant accroche-t-il, est-elle informée de ce qui se passe. Ces trois points se préparent.",
     "Le premier mois suit toujours le même parcours. Avant la première séance : message de bienvenue, conditions écrites, horaires confirmés. Première séance : test diagnostique et premiers repères de méthode. Chaque séance : un compte rendu court. Fin du mois : un bilan et un échange de dix minutes avec le parent.",
     "Ce parcours identique pour tous a un autre avantage : vous n'oubliez rien, même quand trois familles commencent la même semaine."
    ],
+   "appro": [
+    "Le premier mois crée les habitudes des deux côtés. Si vous acceptez un changement d'horaire de dernière minute ou un paiement en retard sans rien dire, cela devient la norme. Soyez particulièrement rigoureux sur le cadre pendant ces semaines : il est plus facile d'assouplir ensuite que de resserrer.",
+    "Demandez un retour au bout de deux semaines, sans attendre le bilan : « Comment votre fils vit-il les séances ? Y a-t-il quelque chose que vous aimeriez que j'ajuste ? » Un petit désaccord réglé tôt ne devient jamais une raison de partir."
+   ],
    "ex": "Semaine 1 : diagnostic, « votre fils maîtrise les opérations mais confond les propriétés des parallélogrammes ». Semaine 2 à 4 : deux lignes après chaque séance. Jour 30 : bilan d'une page et appel de dix minutes, « voici ce qui a avancé, voici l'objectif de décembre ».",
    "fm": "Vous disposez déjà des briques : conditions écrites, test diagnostique d'entrée par classe, kit de révision des prérequis pour la première séance, bilan mensuel. Il reste à les enchaîner dans un parcours d'accueil unique.",
    "err": "Démarrer les cours sans diagnostic « pour ne pas perdre de temps ». Sans point de départ, vous ne pourrez rien montrer à la fin du mois.",
    "cle": "Le premier mois suit un parcours écrit : bienvenue, diagnostic, comptes rendus, bilan.",
-   "q": "Qu'est-ce qu'une nouvelle famille reçoit de vous, par écrit, pendant son premier mois ?",
-   "id": "parents-1"
+   "exo": "Écrivez la liste datée de tout ce qu'une nouvelle famille reçoit de vous entre l'inscription et le trentième jour.",
+   "q": "Qu'est-ce qu'une nouvelle famille reçoit de vous, par écrit, pendant son premier mois ?"
   },
   {
+   "id": "parents-2",
    "t": "Informer régulièrement, sans envahir",
    "p": [
     "Le parent paie pour un résultat qu'il ne voit pas : il n'assiste pas à la séance. Votre communication est donc la partie visible du service. Deux lignes après chaque séance valent mieux qu'un long rapport de temps en temps.",
     "Un bon compte rendu dit trois choses : ce qui a été travaillé, comment l'élève s'en est sorti, ce qu'il doit faire avant la prochaine séance. Il ne juge pas l'enfant, il décrit des faits.",
     "Fixez un cadre : un seul canal, des horaires de réponse annoncés, un ton constant. Vous restez disponible sans être joignable à toute heure."
    ],
+   "appro": [
+    "Adaptez la forme au parent. Certains lisent, d'autres préfèrent un message vocal court, d'autres ne veulent qu'un point hebdomadaire. Demandez-le au départ. Le fond reste le même : ce qui a été travaillé, le résultat, le travail à faire.",
+    "Donnez aussi de bonnes nouvelles ciblées. Un message qui signale un progrès précis (« aujourd'hui, il a résolu seul un problème qu'il n'aurait pas tenté il y a un mois ») est le plus lu et le plus partagé dans la famille. Il nourrit la confiance pour le jour où il faudra annoncer une difficulté."
+   ],
    "ex": "« Bonsoir Madame. Aujourd'hui : équations du premier degré. Lamine réussit la résolution, il doit encore s'entraîner à poser l'équation à partir d'un énoncé. Travail pour samedi : exercices 3 et 5 de la fiche. Bonne soirée. »",
    "fm": "Vos préférences de rédaction pour les messages aux parents (ton doux, humain, naturel) s'appliquent ici. Le compte rendu après chaque séance figure déjà dans vos actions de suivi.",
    "err": "N'écrire au parent que pour la facture ou pour un problème. Il associe alors vos messages à de mauvaises nouvelles.",
    "cle": "Deux lignes factuelles après chaque séance : travaillé, résultat, travail à faire.",
-   "q": "Si un parent relisait vos dix derniers messages, que comprendrait-il de la progression de son enfant ?",
-   "id": "parents-2"
+   "exo": "Rédigez votre modèle de compte rendu en trois lignes, puis appliquez-le à votre dernière séance.",
+   "q": "Si un parent relisait vos dix derniers messages, que comprendrait-il de la progression de son enfant ?"
   },
   {
+   "id": "parents-3",
    "t": "Gérer les moments difficiles",
    "p": [
     "Quatre situations reviennent : un paiement en retard, une mauvaise note malgré les cours, des absences répétées, un parent mécontent. Aucune n'est une attaque personnelle ; chacune se traite avec la même méthode.",
     "La méthode tient en cinq temps. Écouter jusqu'au bout sans se justifier. Reformuler pour montrer que vous avez compris. Revenir aux faits : comptes rendus, bilans, conditions annoncées. Proposer une action précise et datée. Confirmer par écrit.",
     "Choisissez le bon moment et le bon canal : jamais devant l'élève, jamais à chaud par message vocal. Un appel calme, puis un écrit qui résume, protège la relation et vous protège."
    ],
+   "appro": [
+    "Préparez l'échange difficile comme un rendez-vous : les faits (dates, comptes rendus, bilans), ce que vous reconnaissez, ce que vous proposez. Commencez par ce que vous avez en commun avec le parent : la réussite de l'enfant. La discussion porte alors sur le moyen d'y arriver, plus sur qui a tort.",
+    "Sachez aussi mettre fin à une collaboration. Un parent qui conteste chaque facture, change sans cesse les horaires ou vous manque de respect vous coûte plus qu'il ne rapporte. Dans ce cas, annoncez la fin calmement, par écrit, avec un préavis et un dernier bilan pour l'élève."
+   ],
    "ex": "Mauvaise note après six semaines : « Je comprends votre déception, je la partage. Le devoir portait sur un chapitre que nous n'avions pas encore repris. Voici ce que montrent les évaluations sur les chapitres travaillés. Je propose de consacrer les deux prochaines séances à ce chapitre et de refaire le devoir avec lui. »",
    "fm": "Vos conditions prévoient déjà le cadre pour les absences (report si la famille prévient 24 h avant) et les paiements (5 jours, suspension au-delà de 10 jours). S'y référer évite d'en faire une affaire personnelle.",
    "err": "Se justifier longuement ou rejeter la faute sur l'élève. Le parent retient le ton, pas les arguments.",
    "cle": "Écouter, reformuler, revenir aux faits, proposer une action datée, confirmer par écrit.",
-   "q": "Quelle situation difficile récente auriez-vous traitée autrement avec cette méthode ?",
-   "id": "parents-3"
+   "exo": "Choisissez une situation difficile probable. Écrivez ce que vous direz dans l'ordre : écoute, reformulation, faits, proposition, confirmation écrite.",
+   "q": "Quelle situation difficile récente auriez-vous traitée autrement avec cette méthode ?"
   },
   {
+   "id": "parents-4",
    "t": "Fidéliser et préparer la réinscription",
    "p": [
     "Garder une famille coûte beaucoup moins que d'en trouver une nouvelle : pas de prospection, pas de séance de découverte, pas de période d'essai. Une famille qui reste deux ans vaut plusieurs familles d'un trimestre.",
     "La fidélité se construit aux moments clés : la fin de chaque trimestre (bilan et objectifs), les résultats de l'établissement (féliciter, ajuster), la fin de l'année (proposition pour les vacances et la rentrée). À chacun de ces moments, prenez l'initiative.",
     "Mesurez-la simplement : combien de familles présentes en octobre le sont encore en juin, et combien se réinscrivent à la rentrée. Quand une famille part, demandez-lui pourquoi ; c'est l'information la plus précieuse que vous puissiez obtenir."
    ],
+   "appro": [
+    "La fidélité tient à la valeur perçue dans la durée. Après quelques mois, l'habitude s'installe et le parent ne remarque plus ce que vous apportez. Rappelez le chemin parcouru à chaque trimestre : point de départ, situation actuelle, prochaine étape. Un service dont on voit les effets se renouvelle sans discussion.",
+    "Anticipez les moments de rupture : passage dans la classe supérieure, changement d'établissement, examen réussi, difficultés financières. Pour chacun, une proposition existe : formule suivante, stage de vacances, pause avec date de reprise. Proposer une pause plutôt que subir un arrêt garde la famille dans votre réseau."
+   ],
    "ex": "En mai, message à chaque famille : « Voici le bilan de l'année de Coumba. Pour bien préparer la 3e, je propose le stage de vacances en août, puis la reprise dès la première semaine d'octobre. Souhaitez-vous que je vous réserve son créneau du samedi ? »",
    "fm": "Votre stage de vacances (8 séances de 2 h sur 2 semaines, 40 000 F) est un pont naturel entre deux années scolaires. Vous avez déjà une famille cliente revenue d'une année sur l'autre : c'est le modèle à reproduire.",
    "err": "Attendre la rentrée pour recontacter les familles. Entre-temps, certaines auront trouvé une autre solution.",
    "cle": "On prépare la réinscription avant la fin de l'année, et on demande toujours la raison d'un départ.",
-   "q": "Combien de vos familles de l'an dernier sont encore avec vous, et que savez-vous des raisons de celles qui sont parties ?",
-   "id": "parents-4"
+   "exo": "Pour chaque famille actuelle, notez la date et la forme de votre prochaine proposition (bilan de trimestre, stage, réinscription).",
+   "q": "Combien de vos familles de l'an dernier sont encore avec vous, et que savez-vous des raisons de celles qui sont parties ?"
   }
  ],
  "cas": {

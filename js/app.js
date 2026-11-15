@@ -6,16 +6,21 @@
 "use strict";
 
 /* ---------- thème clair / sombre ---------- */
-function appliquerTheme(){ if (etat.theme) document.documentElement.dataset.theme = etat.theme; else delete document.documentElement.dataset.theme; }
+function appliquerTheme(){
+  const r = document.documentElement;
+  if (etat.theme) r.dataset.theme = etat.theme; else delete r.dataset.theme;
+  if (etat.taille) r.dataset.taille = etat.taille; else delete r.dataset.taille;      // taille du texte
+}
 
 /* ---------- route : la partie de l'adresse après # ---------- */
 function route(){ const [nom, a, b] = (location.hash || "#accueil").slice(1).split("/"); return {nom, a, b}; }
 
 /* Choisit l'écran à afficher selon la route ; renvoie {html, pole, mod} */
 function ecran(){
-  const r = route(), m = MOD(r.a), p = POLE(r.a), v = MODULES[+r.a - 1];
+  const r = route(), m = MOD(r.a), pp = POLE(r.a), v = MODULES[+r.a - 1];
+  const p = pp || (r.a === "X" && (r.nom === "bilan" || r.nom === "attestation") ? FINAL : null);   // "X" = examen final
   switch (r.nom){
-    case "pole":        if (p) return {html:vuePole(p), pole:p.id}; break;
+    case "pole":        if (pp) return {html:vuePole(pp), pole:pp.id}; break;
     case "module":      if (m) return {html:vueModule(m), pole:m.pole, mod:m.id}; break;
     case "lecon":       { const x = LECON(r.a); if (x) return {html:vueLecon(x), pole:x.m.pole, mod:x.m.id}; break; }
     case "etape":       if (m){ const f = {cas:vueCas, atelier:vueAtelier, outil:vueOutil, quiz:vueQuiz}[r.b]; if (f) return {html:f(m), pole:m.pole, mod:m.id}; } break;
@@ -29,6 +34,8 @@ function ecran(){
     case "journal":     return {html:vueJournal(), cle:"journal"};
     case "ecrits":      return {html:vueEcrits(), cle:"ecrits"};
     case "glossaire":   return {html:vueGlossaire(), cle:"glossaire"};
+    case "favoris":     return {html:vueFavoris(), cle:"favoris"};
+    case "aide":        return {html:vueAide(), cle:"aide"};
     case "recherche":   return {html:vueRecherche(), cle:"recherche"};
     case "sauvegarde":  return {html:vueSauvegarde(), cle:"sauvegarde"};
     case "veille":      return v ? {html:vueVeilleModule(v), cle:"veille"} : {html:vueVeille(), cle:"veille"};
@@ -50,18 +57,21 @@ function rendreNav(e){
     ${lien("veille","E","Entreprises modèles", nb(ESSENTIELLES)+"/"+ESSENTIELLES.length, e.cle === "veille")}
     <div class="nav-sep">S'entraîner</div>
     ${lien("revision","R","Révision espacée", due ? due+" dues" : "", e.cle === "revision")}
-    ${lien("bilans","B","Bilans et attestations", FM.poles.filter(p => poleValide(p.id)).length+"/4", e.cle === "bilans")}
+    ${lien("bilans","B","Bilans et examen final", FM.poles.filter(p => poleValide(p.id)).length+"/4", e.cle === "bilans")}
     <div class="nav-sep">Appliquer</div>
     ${lien("outils","O","Boîte à outils", "", e.cle === "outils")}
     ${lien("actions","A","Plan d'action", A.filter(a => statut(a.k) === "fait").length+"/"+A.length, e.cle === "actions")}
     ${lien("journal","J","Journal de bord", "", e.cle === "journal")}
     ${lien("ecrits","N","Mes écrits", "", e.cle === "ecrits")}
     <div class="nav-sep">Références</div>
+    ${lien("favoris","★","Mes favoris", Object.keys(etat.fav).length || "", e.cle === "favoris")}
     ${lien("glossaire","G","Glossaire", "", e.cle === "glossaire")}
+    ${lien("aide","?","Mode d'emploi", "", e.cle === "aide")}
     ${lien("sauvegarde","S","Sauvegarde et réglages", "", e.cle === "sauvegarde")}
     <div class="minuteur"><div>Minuteur d'étude</div><output id="chrono">${fmtChrono()}</output>
       <button type="button" data-a="chrono">${chronoOn ? "Arrêter et enregistrer" : "Démarrer une séance"}</button></div>
-    <div class="etat" id="etat">${stockageOK ? "Progression enregistrée sur cet ordinateur" : "Enregistrement impossible : exportez une sauvegarde"}</div>`;
+    <div class="etat" id="etat">${stockageOK ? "Progression enregistrée sur cet appareil" : "Enregistrement impossible : exportez une sauvegarde"}</div>
+    <div class="etat" style="padding-top:2px">Version ${APP_VERSION}</div>`;
 }
 
 /* ---------- affichage ---------- */
@@ -100,13 +110,21 @@ const ACTIONS = {
     s.rep[d.q] = +d.c;
     if (Object.keys(s.rep).length === m.quiz.length){ const n = noteQuiz(m.quiz, s.rep); if (n >= (s.best || 0)){ s.best = n; s.d = auj(); } }
     sauver(); rendre(); },
-  "refaire-quiz"(d){ (etat.quizM[d.id] || {}).rep = {}; sauver(); rendre(); window.scrollTo(0,0); },
+  "refaire-quiz"(d){ (etat.quizM[d.id] || {}).rep = {}; delete melanges["M-"+d.id]; sauver(); rendre(); window.scrollTo(0,0); },
+  fav(d){ if (etat.fav[d.id]) delete etat.fav[d.id]; else etat.fav[d.id] = true; sauver(); rendre(); },
+  taille(d){ etat.taille = +d.v; appliquerTheme(); sauver(); rendre(); },
+  partager(){                                // envoie la sauvegarde par WhatsApp, e-mail, Bluetooth… (téléphone surtout)
+    const nom = "FayeMath_Formation_sauvegarde_" + auj() + ".json", f = new File([JSON.stringify(etat, null, 1)], nom, {type:"application/json"});
+    if (navigator.canShare && navigator.canShare({files:[f]}))
+      navigator.share({files:[f], title:"Sauvegarde FayeMath Formation"}).then(() => { etat.dernierExport = auj(); sauver(); msgSauv = "Sauvegarde partagée."; rendre(); }, () => {});
+    else ACTIONS.export();
+  },
   "rep-bilan"(d){ bilan.rep[d.q] = +d.c;
     if (Object.keys(bilan.rep).length === bilan.qs.length){ const n = noteQuiz(bilan.qs, bilan.rep), b = etat.bilanP[bilan.pole]; if (!b || n >= b.best) etat.bilanP[bilan.pole] = {best:n, d:auj()}; sauver(); }
     rendre(); },
   "nouveau-bilan"(d){ tirerBilan(d.id); rendre(); window.scrollTo(0,0); },
   "rep-veille"(d){ (etat.quiz[d.id] = etat.quiz[d.id] || {})[d.q] = +d.c; sauver(); rendre(); },
-  "refaire-veille"(d){ delete etat.quiz[d.id]; sauver(); rendre(); },
+  "refaire-veille"(d){ delete etat.quiz[d.id]; delete melanges["V-"+d.id]; sauver(); rendre(); },
   "rev-go"(){ pile = cartes().filter(carteDue).slice(0,20); face = false; rendre(); },
   "rev-voir"(){ face = true; rendre(); },
   "rev-note"(d){ const c = pile.shift(); noterCarte(c.k, d.su === "1"); face = false; rendre(); },
@@ -115,8 +133,8 @@ const ACTIONS = {
   "notes-res"(d){ notesOuvertes.has(d.id) ? notesOuvertes.delete(d.id) : notesOuvertes.add(d.id); rendre(); },
   "suppr-journal"(d){ if (confirm("Supprimer cette entrée du journal ?")){ etat.journal.splice(+d.i, 1); sauver(); rendre(); } },
   "export-ecrits"(){ telecharger("FayeMath_Formation_mes_ecrits_" + auj() + ".txt", texteEcrits(), "text/plain;charset=utf-8"); },
-  export(){ telecharger("FayeMath_Formation_sauvegarde_" + auj() + ".json", JSON.stringify(etat, null, 1), "application/json"); msgSauv = "Sauvegarde enregistrée dans vos téléchargements. Rangez-la dans le dossier « sauvegardes »."; rendre(); },
-  raz(){ if (confirm("Effacer toute la progression de cet ordinateur ? Cette action est définitive.")){ etat = VIDE(); sauver(); appliquerTheme(); msgSauv = "Progression effacée."; rendre(); } }
+  export(){ telecharger("FayeMath_Formation_sauvegarde_" + auj() + ".json", JSON.stringify(etat, null, 1), "application/json"); etat.dernierExport = auj(); sauver(); msgSauv = "Sauvegarde enregistrée dans vos téléchargements. Rangez-la dans le dossier « sauvegardes »."; rendre(); },
+  raz(){ if (confirm("Effacer toute la progression de cet appareil ? Cette action est définitive.")){ etat = VIDE(); sauver(); appliquerTheme(); msgSauv = "Progression effacée."; rendre(); } }
 };
 document.addEventListener("click", ev => {
   /* Sur téléphone : toucher un lien du menu, ou toucher en dehors du menu, le referme. */
@@ -143,12 +161,16 @@ document.addEventListener("change", ev => {
   if (d.statut){ setStatut(d.statut, t.value); rendre(); }
   else if (d.ech){ if (t.value) etat.ech[d.ech] = t.value; else delete etat.ech[d.ech]; sauver(); rendre(); }
   else if (d.coche){ marquer(d.coche, t.checked); rendre(); }
+  else if (d.exo){ if (t.checked) etat.exo[d.exo] = auj(); else delete etat.exo[d.exo]; sauver(); rendre(); }
   else if (d.bilan){ if (t.checked) etat.bilans[d.bilan] = true; else delete etat.bilans[d.bilan]; sauver(); rendre(); }
   else if (d.champ === "objectif") rendre();
-  else if (t.id === "fichier" && t.files[0]){        // restauration d'une sauvegarde (version 1 ou 2)
-    const lecteur = new FileReader();
+  else if ((t.id === "fichier" || t.id === "fichier-fusion") && t.files[0]){   // remplacement ou fusion d'une sauvegarde (version 1 ou 2)
+    const lecteur = new FileReader(), fusion = t.id === "fichier-fusion";
     lecteur.onload = () => { try { const x = JSON.parse(lecteur.result);
-        etat = x.v === 2 ? normaliser(x) : migrerV1(x); sauver(); appliquerTheme(); msgSauv = "Sauvegarde restaurée.";
+        if (!x || typeof x !== "object" || !(x.lu || x.done)) throw new Error("format");
+        const autre = x.v === 2 ? normaliser(x) : migrerV1(x), avant = Object.keys(etat.lu).length;
+        etat = fusion ? fusionner(etat, autre) : autre; sauver(); appliquerTheme();
+        msgSauv = fusion ? "Fusion terminée : " + Object.keys(etat.lu).length + " leçons lues au total (" + avant + " avant la fusion). Rien n'a été effacé." : "Sauvegarde restaurée.";
       } catch(e){ msgSauv = "Fichier illisible : choisissez un fichier de sauvegarde FayeMath Formation."; }
       rendre(); };
     lecteur.readAsText(t.files[0]);

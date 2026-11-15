@@ -4,12 +4,14 @@
    s'ouvre sans connexion. Ne fonctionne qu'en ligne sécurisée (https),
    donc sur GitHub Pages ; sur l'ordinateur (fichier local) il est ignoré.
 
-   Mise à jour : à chaque ouverture avec connexion, les fichiers sont
-   retéléchargés en arrière-plan ; la nouvelle version s'affiche à
-   l'ouverture suivante. Si vous ajoutez un fichier, ajoutez-le à la
-   liste FICHIERS et changez le numéro de VERSION.
+   Mise à jour : À CHAQUE NOUVELLE VERSION, CHANGEZ LE NUMÉRO DE VERSION
+   ci-dessous (et APP_VERSION dans js/etat.js). Le téléphone télécharge
+   alors tous les fichiers et affiche le bandeau « Nouvelle version ».
+   Sans changement de numéro, les fichiers sont tout de même rafraîchis
+   en arrière-plan et apparaissent à l'ouverture suivante.
+   Si vous ajoutez un fichier, ajoutez-le à la liste FICHIERS.
    ===================================================================== */
-const VERSION = "fayemath-formation-2.1";
+const VERSION = "fayemath-formation-2.2";
 const FICHIERS = [
   "./", "index.html", "manifest.webmanifest", "logo.png", "fayemath.ico",
   "css/style.css",

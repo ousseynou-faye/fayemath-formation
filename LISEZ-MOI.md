@@ -1,4 +1,4 @@
-# FayeMath Formation — application locale (version 2)
+# FayeMath Formation — application locale et mobile (version 2.2)
 
 Application de formation du fondateur de FayeMath Academy. Elle fonctionne sur cet ordinateur, sans compte et sans connexion (sauf pour ouvrir les liens des « Entreprises modèles »).
 
@@ -8,11 +8,11 @@ Double-cliquez sur le raccourci « FayeMath Formation » du Bureau, ou sur `inde
 ## Contenu
 | Partie | Contenu |
 |---|---|
-| **Parcours du fondateur** | 4 pôles, 17 modules, 66 leçons, 17 cas pratiques, 17 ateliers, 17 fiches-outils, 136 questions de quiz, 54 actions |
+| **Parcours du fondateur** | 4 pôles, 17 modules, 66 leçons (chacune avec approfondissement et mise en pratique), 17 cas pratiques, 17 ateliers, 17 fiches-outils, 136 questions de quiz, 54 actions |
 | **Entreprises modèles** | 6 études de cas, 58 ressources en ligne, programme de 6 semaines |
-| **S'entraîner** | Révision espacée par cartes, bilans de pôle, attestations internes |
+| **S'entraîner** | Révision espacée par cartes, bilans de pôle, examen final, attestations internes |
 | **Appliquer** | Boîte à outils, plan d'action, journal de bord, mes écrits |
-| **Références** | Glossaire (44 termes), recherche dans toute la formation |
+| **Références** | Favoris, glossaire (44 termes), mode d'emploi, recherche dans toute la formation |
 
 ### Les 4 pôles
 - **A. Fondations de l'entreprise** : identité, offre et prix, juridique, finances.
@@ -22,6 +22,19 @@ Double-cliquez sur le raccourci « FayeMath Formation » du Bureau, ou sur `inde
 
 ### Comment un module se valide
 Toutes les leçons lues **et** quiz réussi à 80 %. Un pôle donne droit à son attestation quand tous ses modules sont validés et que son bilan (12 questions tirées au hasard) atteint 80 %.
+
+## Nouveautés de la version 2.2 (15 novembre 2026)
+- **Leçons approfondies** : chaque leçon gagne une partie « Pour aller plus loin » et une « Mise en pratique » à cocher.
+- **Quiz** : l'ordre des réponses change à chaque tentative.
+- **Examen final** (20 questions) et attestation générale, une fois les 4 pôles validés.
+- **Fusion de sauvegardes** : réunit la progression du téléphone et celle de l'ordinateur sans rien effacer ; partage direct de la sauvegarde depuis le téléphone ; rappel hebdomadaire.
+- **Favoris**, **historique d'étude sur 28 jours**, **date de fin estimée**, **taille du texte**, **mode d'emploi**.
+- **Avis de mise à jour** sur le téléphone, et numéro de version en bas du menu.
+
+### Publier une nouvelle version
+1. Changer le numéro dans `js/etat.js` (`APP_VERSION`) et dans `sw.js` (`VERSION`).
+2. `git add .` puis `git commit -m "Version x.y"` puis `git push`.
+3. Sur le téléphone, ouvrir l'application avec une connexion : le bandeau « Nouvelle version » apparaît, toucher « Recharger ».
 
 ## Organisation des fichiers
 | Emplacement | Rôle |
@@ -63,9 +76,9 @@ L'application est aussi installable depuis GitHub Pages (version 2.1) :
 **Mettre à jour la version en ligne** après une modification, dans ce dossier :
 `git add .` puis `git commit -m "Mise à jour"` puis `git push`. Le téléphone reçoit la nouvelle version à la deuxième ouverture avec connexion.
 
-**La progression du téléphone et celle de l'ordinateur sont séparées.** Pour passer de l'un à l'autre : « Enregistrer la sauvegarde » sur l'un, « Restaurer une copie » sur l'autre. Le dépôt GitHub est public : n'y déposez jamais vos fichiers de sauvegarde (le `.gitignore` les exclut).
+**La progression du téléphone et celle de l'ordinateur sont séparées.** Pour les réunir : « Partager » ou « Enregistrer la sauvegarde » sur l'un, puis « Fusionner avec une copie » sur l'autre (rien n'est effacé). Le dépôt GitHub est public : n'y déposez jamais vos fichiers de sauvegarde (le `.gitignore` les exclut).
 
 ## Sources
 Chaque module liste ses sources. Les chiffres FayeMath viennent de vos documents de référence ; si un document change, corrigez la ligne correspondante dans `donnees/`. Les durées et coefficients d'examen (module 12) sont à revérifier à chaque rentrée sur les sujets officiels.
 
-Version 2 créée le 12 novembre 2026 · version 2.1 (téléphone) le 13 novembre 2026.
+Version 2 créée le 12 novembre 2026 · version 2.1 (téléphone) le 13 novembre 2026 · version 2.2 le 15 novembre 2026.
