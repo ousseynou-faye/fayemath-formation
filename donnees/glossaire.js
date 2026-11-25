@@ -36,6 +36,11 @@ FM.glossaire = [
   "notoriete"
  ],
  [
+  "Carnet d'erreurs",
+  "Cahier où l'élève note chaque erreur importante, sa cause, la correction et un exercice de vérification.",
+  "autonomie"
+ ],
+ [
   "CDP",
   "Commission de protection des données personnelles, autorité sénégalaise chargée de l'application de la loi n° 2008-12.",
   "juridique"
@@ -56,6 +61,11 @@ FM.glossaire = [
   "parents"
  ],
  [
+  "Conception erronée",
+  "Idée fausse construite par l'expérience quotidienne (par exemple « le courant est consommé »), à faire émerger puis corriger.",
+  "physique"
+ ],
+ [
   "Contact qualifié",
   "Parent avec qui vous avez eu un échange sérieux et dont le besoin correspond à votre offre.",
   "vente"
@@ -74,6 +84,11 @@ FM.glossaire = [
   "Critère de passage",
   "Condition écrite qui déclenche une étape de croissance (recrutement, investissement).",
   "grandir"
+ ],
+ [
+  "Différenciation",
+  "Adaptation de l'accompagnement au profil de chaque élève : bases, méthode, motivation, attention, anxiété.",
+  "profils"
  ],
  [
   "Évaluation diagnostique",
@@ -116,6 +131,16 @@ FM.glossaire = [
   "apprendre"
  ],
  [
+  "Métacognition",
+  "Capacité de l'élève à réfléchir à sa façon d'apprendre : planifier, contrôler et évaluer son travail.",
+  "autonomie"
+ ],
+ [
+  "Météo des familles",
+  "Classement hebdomadaire de chaque famille en vert, orange ou rouge selon les signaux d'alerte observés.",
+  "fidelisation"
+ ],
+ [
   "Objectif observable",
   "Objectif de séance formulé comme une capacité vérifiable : « l'élève sera capable de… ».",
   "seance"
@@ -126,9 +151,19 @@ FM.glossaire = [
   "vente"
  ],
  [
+  "Pédagogie de la maîtrise",
+  "Approche décrite par Bloom : ne passer à l'étape suivante qu'une fois la précédente maîtrisée.",
+  "profils"
+ ],
+ [
   "Pitch",
   "Présentation de 30 secondes : public, problème, solution, preuve, prochaine étape.",
   "identite"
+ ],
+ [
+  "Plan de travail",
+  "Liste d'exercices propre à chaque élève pour une séance, indispensable quand on enseigne à plusieurs.",
+  "profils"
  ],
  [
   "Positionnement",
@@ -171,6 +206,16 @@ FM.glossaire = [
   "apprendre"
  ],
  [
+  "Registre (d'une fonction)",
+  "Forme sous laquelle une fonction est présentée : situation, formule, tableau ou courbe.",
+  "maths"
+ ],
+ [
+  "Registre des problèmes",
+  "Tableau des problèmes rencontrés : date, famille, problème, cause, solution, résultat.",
+  "fidelisation"
+ ],
+ [
   "Relance",
   "Message envoyé à un prospect après un contact, qui apporte une information utile et propose une suite.",
   "vente"
@@ -179,6 +224,11 @@ FM.glossaire = [
   "Résultat",
   "Encaissé du mois moins charges du mois. C'est lui que l'on répartit, jamais le chiffre d'affaires.",
   "finances"
+ ],
+ [
+  "Rétention",
+  "Part des familles présentes en début de période qui le sont encore à la fin.",
+  "fidelisation"
  ],
  [
   "Rétroplanning",

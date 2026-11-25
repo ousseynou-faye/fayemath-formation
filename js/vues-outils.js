@@ -158,6 +158,36 @@ function vueSauvegarde(){
   </div>
   <p class="pied">FayeMath Formation, version ${APP_VERSION}. Dernier enregistrement : ${etat.t ? new Date(etat.t).toLocaleString("fr-FR") : "aucun"}. ${stockageOK ? "" : "Le navigateur refuse l'enregistrement automatique : exportez une sauvegarde avant de fermer."}</p>`;
 }
+/* ---------- guide des situations difficiles ---------- */
+let filtreSit = "tout", rechSit = "";
+function carteSituation(s, ouvert){
+  const m = MOD(s.m);
+  return `<details class="sit" id="${s.id}" ${ouvert ? "open" : ""}><summary><span class="sit-cat">${h(s.c)}</span><b>${h(s.t)}</b></summary>
+    <div class="sit-corps">
+      <p><span class="sit-lab">Signes</span>${h(s.s)}</p>
+      <div><span class="sit-lab">Causes possibles</span><ul>${s.k.map(x => `<li>${h(x)}</li>`).join("")}</ul></div>
+      <div><span class="sit-lab">Solutions</span><ol>${s.sol.map(x => `<li>${h(x)}</li>`).join("")}</ol></div>
+      <div class="bloc ex" style="margin:10px 0"><h3>Message type</h3><p id="msg-${s.id}">${h(s.msg)}</p>
+        <p class="sans-imp" style="margin-top:8px"><button class="btn sec" type="button" data-a="copier-msg" data-id="${s.id}" style="padding:5px 10px;font-size:13px">Copier le message</button> <span class="petit" id="cp-${s.id}" role="status"></span></p></div>
+      <p><span class="sit-lab">Pour éviter que cela se reproduise</span>${h(s.prev)}</p>
+      <p class="petit">Méthode générale : <a href="#lecon/fidelisation-2">protocole en six temps</a> · Module lié : <a href="#module/${m.id}">${m.n} · ${h(m.court)}</a></p>
+    </div></details>`;
+}
+function vueSituations(id){
+  if (id && FM.situations.some(s => s.id === id)){ filtreSit = "tout"; rechSit = ""; }   // lien direct : on affiche la situation demandée
+  const cats = [...new Set(FM.situations.map(s => s.c))];
+  const mots = sansAccent(rechSit).split(/\s+/).filter(x => x.length > 1);
+  const L = FM.situations.filter(s => (filtreSit === "tout" || s.c === filtreSit)
+    && mots.every(w => sansAccent([s.t, s.s].concat(s.k, s.sol, s.msg).join(" ")).includes(w)));
+  return `<div class="sur-titre">Appliquer</div><h1>Guide des situations</h1>
+  <p class="chapeau">${FM.situations.length} problèmes fréquents avec les familles, les élèves, les écoles ou dans votre propre organisation. Pour chacun : les signes, les causes possibles, plusieurs solutions, un message type à adapter et la prévention.</p>
+  <div class="carte retenir" style="margin-bottom:14px"><b>Devant tout problème :</b> accueillir sans se défendre · clarifier les faits · trouver la cause · proposer plusieurs solutions · agir et confirmer par écrit · vérifier et prévenir. <a href="#lecon/fidelisation-2">Revoir la leçon</a></div>
+  <label class="petit" for="rech-sit"><b>Rechercher une situation</b></label>
+  <input class="recherche" id="rech-sit" type="search" placeholder="Exemples : retard, remise, note, téléphone, départ" value="${h(rechSit)}">
+  <div class="filtres filtres-defil" role="group" aria-label="Filtrer par famille de situations" style="margin-top:10px">${[["tout","Toutes (" + FM.situations.length + ")"]].concat(cats.map(c => [c, c + " (" + FM.situations.filter(s => s.c === c).length + ")"])).map(([v,l]) => `<button class="filtre" type="button" data-a="filtre-sit" data-v="${h(v)}" aria-pressed="${filtreSit===v}">${h(l)}</button>`).join("")}</div>
+  <div id="liste-sit">${L.length ? L.map(s => carteSituation(s, s.id === id)).join("") : '<p class="vide">Aucune situation ne correspond. Essayez un autre mot ou retirez le filtre.</p>'}</div>`;
+}
+
 /* ---------- favoris ---------- */
 function vueFavoris(){
   const F = LECONS.filter(x => etat.fav[x.l.id]);
@@ -176,6 +206,7 @@ function vueAide(){
   ${bloc("Valider un module", ["Lisez toutes les leçons du module.","Résolvez le <b>cas pratique</b> par écrit avant de regarder les éléments de réponse.","Rédigez l'<b>atelier</b> : c'est un document réellement utile à FayeMath Academy.","Consultez la <b>fiche-outil</b> et copiez-la là où vous en aurez besoin.","Réussissez le <b>quiz à " + SEUIL + " %</b>. Les réponses changent de place à chaque tentative.","Donnez un statut et une échéance aux <b>actions</b> du module dans le plan d'action."])}
   ${bloc("Valider un pôle, puis le parcours", ["Validez tous les modules du pôle.","Passez le <b>bilan de pôle</b> (12 questions tirées au hasard) et obtenez " + SEUIL + " %.","L'<b>attestation</b> du pôle se débloque et s'imprime.","Les quatre pôles validés, passez l'<b>examen final</b> (20 questions) pour l'attestation générale."])}
   ${bloc("Travailler sur le téléphone et sur l'ordinateur", ["Chaque appareil garde sa propre progression : rien n'est envoyé en ligne.","Pour réunir les deux : sur l'appareil A, <b>Sauvegarde → Partager</b> (ou Enregistrer) ; sur l'appareil B, <b>Sauvegarde → Fusionner avec une copie</b>.","La fusion n'efface rien : elle garde les leçons lues des deux côtés, le meilleur score de chaque quiz et le texte le plus complet de chaque réponse.","Faites-le une fois par semaine ; le tableau de bord vous le rappelle."])}
+  ${bloc("Résoudre un problème avec une famille", ["Ouvrez le <b>Guide des situations</b> et cherchez le cas par un mot (retard, remise, note, départ…).","Lisez les causes possibles et choisissez celle qui correspond à votre cas.","Choisissez parmi les solutions proposées, ou proposez-en deux ou trois à la famille.","Copiez le <b>message type</b>, adaptez-le, puis envoyez-le.","Notez le problème dans votre registre (module « Fidéliser et résoudre »)."])}
   ${bloc("Recevoir une mise à jour sur le téléphone", ["Sur l'ordinateur, dans le dossier de l'application : <code>git add .</code> puis <code>git commit -m \"Mise à jour\"</code> puis <code>git push</code>.","Attendez une à deux minutes.","Ouvrez l'application sur le téléphone, avec une connexion : un bandeau « Nouvelle version » apparaît en bas. Touchez « Recharger ».","Le numéro de version est indiqué en bas du menu et dans « Sauvegarde et réglages »."])}
   ${bloc("Bon à savoir", ["Le dépôt GitHub est public : le contenu de la formation est lisible par qui a l'adresse, mais jamais votre progression ni vos écrits.","Ne déposez jamais un fichier de sauvegarde dans le dépôt (le fichier <code>.gitignore</code> l'empêche).","Si vous videz les données de Chrome ou désinstallez l'application, la progression de l'appareil est perdue : d'où l'importance de la sauvegarde hebdomadaire.","Pour corriger un texte, modifiez la ligne dans <code>donnees/pole-a.js</code> à <code>pole-d.js</code>, puis rechargez."])}`;
 }

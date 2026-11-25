@@ -15,7 +15,7 @@
 FM.modules.push(
 {
  "id": "apprendre",
- "n": 8,
+ "n": 9,
  "pole": "C",
  "court": "Comment on apprend",
  "titre": "Comment un élève apprend",
@@ -258,8 +258,241 @@ FM.modules.push(
  ]
 },
 {
+ "id": "autonomie",
+ "n": 10,
+ "pole": "C",
+ "court": "Apprendre à apprendre",
+ "titre": "Apprendre à apprendre : méthode de travail et autonomie",
+ "but": "Rendre chaque élève capable de travailler efficacement seul entre deux séances, puis de moins en moins dépendant de vous.",
+ "objectifs": [
+  "Enseigner le cycle planifier, contrôler, évaluer",
+  "Organiser le travail personnel de l'élève",
+  "Installer fiches, formulaires et carnet d'erreurs",
+  "Retirer progressivement l'aide jusqu'à l'autonomie"
+ ],
+ "lecons": [
+  {
+   "id": "autonomie-1",
+   "t": "Planifier, contrôler, évaluer son travail",
+   "p": [
+    "La métacognition, c'est la capacité de l'élève à réfléchir à sa propre façon d'apprendre : savoir ce qu'il sait et ce qu'il ne sait pas, choisir une stratégie, vérifier qu'elle fonctionne. La Education Endowment Foundation la classe parmi les approches les plus efficaces et les moins coûteuses, à condition de l'enseigner explicitement et dans la matière, pas comme une leçon générale de « méthodologie ».",
+    "Elle suit un cycle en trois temps, applicable à chaque exercice et à chaque soirée de travail. Planifier : qu'est-ce qu'on me demande, qu'est-ce que je sais déjà qui peut servir, par quoi je commence ? Contrôler : est-ce que j'avance, est-ce que ma méthode fonctionne, dois-je changer d'approche ? Évaluer : ai-je réussi, qu'est-ce qui a marché, que ferai-je autrement la prochaine fois ?",
+    "L'élève en difficulté saute presque toujours le premier et le dernier temps : il se lance sans réfléchir et s'arrête dès qu'il a un résultat. Votre rôle est de rendre ces deux temps visibles, en les faisant à voix haute devant lui, puis en lui posant les questions jusqu'à ce qu'il se les pose seul."
+   ],
+   "appro": [
+    "Faites prédire avant de faire : « À ton avis, combien vas-tu réussir sur ces cinq exercices ? » puis comparez avec le résultat. L'écart apprend à l'élève à mieux se connaître ; la plupart des élèves faibles surestiment ce qu'ils savent, faute d'outils pour le vérifier.",
+    "Terminez chaque séance par une question d'évaluation : « Qu'as-tu appris aujourd'hui, et qu'est-ce qui t'a aidé à comprendre ? ». Au début, les réponses sont vagues ; avec l'habitude, elles deviennent précises, et l'élève commence à choisir ses stratégies."
+   ],
+   "ex": "Avant un problème de géométrie : « Avant de commencer, dis-moi ce que tu vas faire. » L'élève : « Je cherche un triangle rectangle pour utiliser Pythagore. » À la fin : « Ta méthode a-t-elle marché ? Qu'est-ce qui t'a fait penser à Pythagore ? » Il nomme lui-même l'indice : l'angle droit codé sur la figure.",
+   "fm": "La méthode CADRE est un outil métacognitif : Comprendre et Analyser correspondent à la planification, Évaluer à l'évaluation. Enseignez-la comme une suite de questions que l'élève se pose à lui-même.",
+   "err": "Faire un exposé général sur « comment bien travailler », sans lien avec un exercice précis. L'élève approuve, puis ne change rien.",
+   "cle": "Planifier avant, contrôler pendant, évaluer après : à voix haute d'abord, puis par l'élève seul.",
+   "exo": "Pendant votre prochaine séance, posez à l'élève une question de planification avant chaque exercice et une question d'évaluation à la fin. Notez ses réponses.",
+   "q": "Lequel de vos élèves se lance sans réfléchir, et quelle question de planification pourriez-vous lui poser systématiquement ?"
+  },
+  {
+   "id": "autonomie-2",
+   "t": "Organiser le travail personnel",
+   "p": [
+    "Deux séances par semaine ne suffisent pas à apprendre : c'est le travail entre les séances qui consolide. Or la plupart des élèves ne savent pas l'organiser. Ils travaillent la veille du devoir, longtemps, le téléphone à côté, en relisant.",
+    "Aidez l'élève à construire un emploi du temps de travail réaliste : des plages courtes (vingt à trente minutes) plutôt qu'une longue soirée, à heure fixe, dans un lieu calme, téléphone dans une autre pièce. Chaque plage a un objectif précis : finir l'exercice 4, réciter les formules du chapitre, refaire l'exemple du cours.",
+    "Apprenez-lui aussi à prioriser. D'abord ce qui est à rendre bientôt, ensuite la reprise des chapitres récents, enfin les reprises espacées des chapitres anciens. Le cahier de textes devient son tableau de bord, consulté chaque soir."
+   ],
+   "appro": [
+    "Partez de la semaine réelle de l'élève, pas d'un idéal. Un élève qui rentre à 18 h, aide à la maison et partage une pièce avec ses frères ne peut pas suivre le planning d'un manuel. Cherchez avec lui et avec le parent deux ou trois plages tenables, et protégez-les.",
+    "Vérifiez au début de chaque séance ce qui a été fait, sans reproche : « Montre-moi ce que tu as fait cette semaine. » Ce qui est vérifié est fait ; ce qui ne l'est jamais disparaît."
+   ],
+   "ex": "Planning de Khadija, 4e : lundi et jeudi 19 h 30-20 h, exercices donnés ; mercredi 17 h-17 h 20, récitation des propriétés et questions de rappel ; dimanche 10 h-10 h 30, reprise d'un chapitre ancien. Total : 1 h 50 par semaine, réparti, tenable.",
+   "fm": "Vos comptes rendus indiquent déjà le travail à faire avant la séance suivante. Ajoutez-y le moment prévu dans le planning de l'élève, et la vérification au début de la séance suivante.",
+   "err": "Donner beaucoup de travail « pour qu'il progresse vite ». Un travail trop long n'est pas fait, et l'élève prend l'habitude de ne pas le faire.",
+   "cle": "Des plages courtes, fixes et précises ; d'abord l'urgent, puis la reprise.",
+   "exo": "Construisez avec un élève son emploi du temps de travail de la semaine, avec trois plages précises, et faites-le valider par le parent.",
+   "q": "Combien de temps chacun de vos élèves travaille-t-il réellement les mathématiques entre deux séances ?"
+  },
+  {
+   "id": "autonomie-3",
+   "t": "Fiches, formulaires et carnet d'erreurs",
+   "p": [
+    "Trois outils simples rendent l'élève autonome dans ses révisions. La fiche de méthode résume, pour un type d'exercice, les étapes à suivre et un exemple. Le formulaire rassemble les définitions, propriétés et formules du chapitre sur une page. Le carnet d'erreurs garde la trace de chaque erreur importante et de sa correction.",
+    "Ces outils n'ont de valeur que s'ils sont faits par l'élève. Une fiche recopiée ou distribuée ne s'apprend pas ; une fiche construite par l'élève, puis corrigée par vous, est déjà un premier apprentissage. Donnez la structure, faites remplir, vérifiez.",
+    "Le carnet d'erreurs est l'outil le plus puissant et le plus négligé. Chaque ligne contient l'erreur, sa cause (calcul, méthode, rédaction, lecture), la correction, et un exercice voisin pour vérifier. Relu avant chaque devoir, il évite de refaire les mêmes fautes."
+   ],
+   "appro": [
+    "Utilisez les fiches pour se tester, pas pour relire. On cache la colonne des réponses, on récite, on vérifie. Une fiche relue passivement retombe dans la relecture de faible efficacité ; une fiche utilisée comme un jeu de questions devient un outil de rappel.",
+    "Faites mettre à jour le formulaire à chaque chapitre, sur un même cahier. À l'approche de l'examen, l'élève dispose de son propre résumé de l'année, qu'il connaît parce qu'il l'a construit."
+   ],
+   "ex": "Carnet d'erreurs de Moussa : « (x + 4)² = x² + 16. Cause : règle fausse (le carré d'une somme n'est pas la somme des carrés). Correction : (x + 4)² = x² + 8x + 16. Vérification : développer (x + 5)² seul. »",
+   "fm": "Vos cours suivent déjà une structure par notion ; la fiche de méthode de l'élève peut en reprendre les blocs « méthode » et « exemple modèle ». Le code d'erreurs C, M, R, L, S du module « Évaluer » sert de colonne « cause ».",
+   "err": "Distribuer des fiches toutes faites et considérer que l'élève va les apprendre. Il les range et ne les rouvre pas.",
+   "cle": "Fiches faites par l'élève, utilisées pour se tester ; carnet d'erreurs relu avant chaque devoir.",
+   "exo": "Avec un élève, ouvrez un carnet d'erreurs et remplissez-le avec les trois erreurs principales de son dernier devoir.",
+   "q": "Lequel de vos élèves refait sans cesse les mêmes erreurs, et a-t-il un moyen d'en garder la trace ?"
+  },
+  {
+   "id": "autonomie-4",
+   "t": "Rendre progressivement l'autonomie",
+   "p": [
+    "Le but d'un bon accompagnement est que l'élève ait de moins en moins besoin de vous. Ce n'est pas une menace pour votre activité : c'est la preuve de votre valeur, celle qui fait recommander FayeMath Academy et réinscrire la famille pour l'année suivante.",
+    "La démarche est connue sous la forme « je fais, nous faisons, tu fais ». Je fais : vous montrez en pensant à voix haute. Nous faisons : l'élève dicte, vous guidez. Tu fais : il travaille seul, vous observez et intervenez le moins possible. Le passage d'une étape à l'autre dépend de la réussite, pas du calendrier.",
+    "Mesurez l'autonomie. La part des exercices réussis sans aide, la capacité à corriger seul une erreur signalée, la capacité à préparer seul un devoir : ces indicateurs doivent progresser au fil des mois. Notez-les dans le bilan mensuel ; les parents y sont très sensibles."
+   ],
+   "appro": [
+    "Changez votre rôle au fil de l'année. En début d'année, vous expliquez beaucoup ; au deuxième trimestre, vous questionnez davantage ; avant l'examen, vous jouez surtout le rôle de l'entraîneur qui chronomètre, observe et corrige. L'élève doit sentir ce changement et le comprendre.",
+    "Résistez à la tentation d'aider trop vite. Quand l'élève bloque, attendez, puis donnez l'indice le plus petit possible (« relis la question ») avant un indice plus précis. Chaque aide inutile retire une occasion d'apprendre."
+   ],
+   "ex": "Septembre : vous résolvez l'exemple, puis faites ensemble deux exercices. Décembre : l'élève résout seul trois exercices sur cinq, vous n'intervenez que sur demande. Mai : il fait un sujet complet en temps réel, et la séance sert à analyser sa copie.",
+   "fm": "La séance « du guidé à l'autonome » de vos cours applique ce principe à l'échelle d'une séance ; il s'agit ici de l'appliquer à l'échelle de l'année, et de le rendre visible dans les bilans.",
+   "err": "Garder le même niveau d'aide toute l'année. L'élève progresse en séance mais reste démuni seul, le jour du devoir.",
+   "cle": "Je fais, nous faisons, tu fais : l'aide diminue à mesure que la réussite augmente.",
+   "exo": "Pour chaque élève, notez la part des exercices réussis sans aide lors des deux dernières séances et fixez un objectif pour le mois.",
+   "q": "Pour quel élève aidez-vous encore autant qu'en début d'année, et pourquoi ?"
+  }
+ ],
+ "cas": {
+  "t": "L'élève qui réussit en séance et échoue au devoir",
+  "s": "Seynabou, en 2nde, réussit presque tous les exercices pendant vos séances. Pourtant, ses devoirs en classe ne dépassent pas 8/20. Elle dit : « Avec vous je comprends tout, mais seule je bloque. »",
+  "q": [
+   "Qu'est-ce qui explique cet écart ?",
+   "Que changez-vous dans vos séances ?",
+   "Comment vérifiez-vous le progrès ?"
+  ],
+  "r": [
+   "Trop d'aide en séance : elle réussit avec vous, pas seule. Pas de travail personnel structuré, pas d'outil de révision.",
+   "Réduire l'aide (indices minimaux, attente), terminer chaque séance par un exercice seul et chronométré, installer fiches et carnet d'erreurs, construire son planning de travail.",
+   "Mesurer la part d'exercices réussis sans aide, faire un mini-devoir mensuel dans les conditions de la classe, comparer avec ses notes."
+  ]
+ },
+ "atelier": {
+  "t": "Le kit d'autonomie de l'élève",
+  "c": "Rédigez les trois documents que vous remettrez à chaque nouvel élève : le modèle d'emploi du temps de travail, la structure de la fiche de méthode, et le modèle de carnet d'erreurs (colonnes et un exemple rempli)."
+ },
+ "outil": {
+  "t": "Kit d'autonomie de l'élève",
+  "usage": "À expliquer à l'élève en début d'année et à vérifier à chaque séance.",
+  "lignes": [
+   "## Avant de travailler (planifier)",
+   "Qu'est-ce qu'on me demande ? Qu'est-ce que je sais déjà ? Par quoi je commence ?",
+   "## Pendant (contrôler)",
+   "Est-ce que j'avance ? Ma méthode marche-t-elle ? Dois-je changer d'approche ?",
+   "## Après (évaluer)",
+   "Ai-je répondu à la question ? Qu'est-ce qui a marché ? Que ferai-je autrement ?",
+   "## Mon emploi du temps de travail",
+   "Trois plages de 20 à 30 minutes, à heure fixe, téléphone dans une autre pièce, objectif précis pour chaque plage.",
+   "## Mes outils",
+   "Fiche de méthode par type d'exercice · formulaire du chapitre · carnet d'erreurs (erreur, cause, correction, exercice de vérification).",
+   "## Avant chaque devoir",
+   "Relire le carnet d'erreurs · se tester avec les fiches · refaire deux exercices sans aide."
+  ]
+ },
+ "actions": [
+  "Poser une question de planification et une question d'évaluation à chaque séance",
+  "Construire l'emploi du temps de travail de chaque élève avec sa famille",
+  "Ouvrir un carnet d'erreurs avec chaque élève",
+  "Noter chaque mois la part des exercices réussis sans aide"
+ ],
+ "quiz": [
+  [
+   "Qu'est-ce que la métacognition ?",
+   [
+    "La capacité à réfléchir à sa propre façon d'apprendre",
+    "Une technique de calcul mental",
+    "Un type d'évaluation"
+   ],
+   0,
+   "Savoir ce qu'on sait, choisir et vérifier une stratégie."
+  ],
+  [
+   "Quels sont les trois temps du cycle métacognitif ?",
+   [
+    "Lire, écrire, compter",
+    "Planifier, contrôler, évaluer",
+    "Apprendre, réciter, oublier"
+   ],
+   1,
+   "Avant, pendant et après le travail."
+  ],
+  [
+   "Comment enseigner la métacognition ?",
+   [
+    "Par un cours général de méthodologie",
+    "Explicitement, dans la matière, à partir d'exercices précis",
+    "Elle ne s'enseigne pas"
+   ],
+   1,
+   "L'EEF insiste sur l'enseignement explicite dans la discipline."
+  ],
+  [
+   "Quelle durée privilégier pour les plages de travail personnel ?",
+   [
+    "Une longue soirée la veille du devoir",
+    "Des plages courtes et régulières de 20 à 30 minutes",
+    "Une fois par mois"
+   ],
+   1,
+   "Répartir vaut mieux que concentrer."
+  ],
+  [
+   "Qui doit faire la fiche de méthode ?",
+   [
+    "L'encadreur, distribuée toute faite",
+    "L'élève, avec une structure donnée et une correction",
+    "Personne"
+   ],
+   1,
+   "La construction est déjà un apprentissage."
+  ],
+  [
+   "Que contient une ligne du carnet d'erreurs ?",
+   [
+    "L'erreur, sa cause, la correction et un exercice de vérification",
+    "La note du devoir",
+    "La date de la séance"
+   ],
+   0,
+   "Relu avant chaque devoir."
+  ],
+  [
+   "Que signifie « je fais, nous faisons, tu fais » ?",
+   [
+    "Une aide qui diminue à mesure que la réussite augmente",
+    "Trois séances par semaine",
+    "Faire les devoirs à la place de l'élève"
+   ],
+   0,
+   "Le passage dépend de la réussite."
+  ],
+  [
+   "Quel indicateur mesure l'autonomie ?",
+   [
+    "Le nombre d'heures de cours",
+    "La part des exercices réussis sans aide",
+    "Le prix de la formule"
+   ],
+   1,
+   "À suivre dans le bilan mensuel."
+  ]
+ ],
+ "sources": [
+  [
+   "Education Endowment Foundation — Metacognition and self-regulated learning (guidance report)",
+   "https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/metacognition"
+  ],
+  [
+   "Dunlosky et al. (2013). Improving Students' Learning With Effective Learning Techniques — résumé de l'Association for Psychological Science",
+   "https://www.psychologicalscience.org/news/releases/which-study-strategies-make-the-grade.html"
+  ],
+  [
+   "Rosenshine, B. (2012). Principles of Instruction. American Educator, 36(1)",
+   "https://www.aft.org/sites/default/files/periodicals/Rosenshine.pdf"
+  ]
+ ],
+ "veille": [
+  5
+ ]
+},
+{
  "id": "didactique",
- "n": 9,
+ "n": 11,
  "pole": "C",
  "court": "Enseigner maths et PC",
  "titre": "Enseigner les maths et la physique-chimie",
@@ -524,8 +757,466 @@ FM.modules.push(
  ]
 },
 {
+ "id": "maths",
+ "n": 12,
+ "pole": "C",
+ "court": "Didactique des maths",
+ "titre": "Enseigner chaque domaine des mathématiques",
+ "but": "Connaître, pour chaque grand domaine des mathématiques du collège et du lycée, les enjeux, les obstacles et les gestes qui font comprendre.",
+ "objectifs": [
+  "Enseigner le sens des nombres et du calcul",
+  "Faire comprendre la lettre, l'équation et la mise en équation",
+  "Conduire l'élève de la figure à la démonstration",
+  "Relier formule, tableau, courbe et situation pour les fonctions",
+  "Éviter les pièges des statistiques, des probabilités et du dénombrement"
+ ],
+ "lecons": [
+  {
+   "id": "maths-1",
+   "t": "Nombres et calcul",
+   "p": [
+    "Tout repose sur le sens des nombres et des opérations. Un élève qui ne voit pas qu'une fraction est un nombre, qui croit que multiplier agrandit toujours, ou qui applique les règles des signes sans les comprendre, accumulera les erreurs dans tous les chapitres suivants. Le calcul est la fondation : quand il est fragile, rien de ce qui est construit dessus ne tient.",
+    "Les obstacles sont bien connus. Les décimaux : 2,15 paraît plus grand que 2,5 parce que 15 est plus grand que 5. Les fractions : 1/2 + 1/3 devient 2/5. Les relatifs : −3 − 5 donne 2. Les priorités : 2 + 3 × 4 donne 20. Les puissances : −3² et (−3)² sont confondus. Chacun de ces obstacles vient d'une règle juste dans un cadre plus étroit, étendue au-delà.",
+    "Trois gestes aident. Le calcul mental quotidien, cinq minutes en début de séance, entretient les automatismes. La droite graduée donne une image aux décimaux, aux fractions et aux relatifs. L'estimation (« environ combien ? ») avant chaque calcul permet à l'élève de repérer seul un résultat absurde."
+   ],
+   "appro": [
+    "Faites justifier les règles plutôt que les réciter. Pourquoi « moins par moins donne plus » ? Par la régularité d'une suite de produits (3 × (−2), 2 × (−2), 1 × (−2), 0 × (−2), −1 × (−2)…) ou par l'image des dettes. Une règle comprise se retrouve ; une règle récitée se confond avec la voisine.",
+    "Au lycée, les mêmes fragilités réapparaissent dans le calcul algébrique, les exponentielles et les logarithmes. Un élève de Terminale qui bloque sur un calcul de limite bloque souvent sur une fraction ou une puissance. Le diagnostic doit donc toujours vérifier le calcul de base."
+   ],
+   "ex": "Comparer 2,15 et 2,5 : placer les deux nombres sur une droite graduée de 2 à 3, puis écrire 2,50 pour aligner les chiffres. L'élève constate que 2,5 est le plus grand et comprend pourquoi le nombre de chiffres ne compte pas.",
+   "fm": "Vos tests diagnostiques et vos livrets de révision des prérequis repèrent ces fragilités dès l'entrée. Le module « Profils d'élèves » montre comment organiser la reprise sans perdre le fil de la classe.",
+   "err": "Considérer le calcul comme acquis au lycée et ne jamais le vérifier. Une partie des erreurs de Terminale est en réalité une erreur de 6e ou de 5e.",
+   "cle": "Le sens avant la règle, la droite graduée comme image, l'estimation avant le calcul.",
+   "exo": "Préparez dix questions de calcul mental couvrant décimaux, fractions, relatifs, priorités et puissances, à utiliser en ouverture de séance avec un élève du collège.",
+   "q": "Quel obstacle sur les nombres retrouvez-vous le plus chez vos élèves, y compris au lycée ?"
+  },
+  {
+   "id": "maths-2",
+   "t": "Calcul littéral et équations",
+   "p": [
+    "La lettre change de rôle selon le contexte, et c'est la source principale des difficultés. Elle peut désigner un nombre quelconque (dans une formule ou une identité), un nombre inconnu à trouver (dans une équation) ou une quantité qui varie (dans une fonction). L'élève qui ne perçoit pas ces trois rôles manipule des symboles sans savoir ce qu'il fait.",
+    "Pour le calcul littéral, l'image de l'aire aide beaucoup : un rectangle de côtés a et (b + c) montre la distributivité ; un carré de côté (a + b) découpé en quatre morceaux montre pourquoi (a + b)² contient le terme 2ab. L'élève voit alors que (a + b)² ≠ a² + b².",
+    "Pour les équations, l'image de la balance donne le sens des transformations : on peut ajouter ou retirer la même chose des deux côtés, multiplier ou diviser les deux côtés par un même nombre non nul. Les erreurs typiques (3x = 12 donc x = 12 − 3 ; changer de côté sans changer de signe) disparaissent quand l'élève sait ce qu'il fait à chaque ligne."
+   ],
+   "appro": [
+    "La mise en équation est la difficulté majeure, bien plus que la résolution. Enseignez-la en étapes : choisir l'inconnue et l'écrire en toutes lettres (« soit x le nombre de cahiers »), exprimer chaque quantité en fonction de x, traduire la phrase qui donne l'égalité, résoudre, vérifier dans l'énoncé. Faites d'abord seulement écrire l'équation, sans résoudre.",
+    "Pour les inéquations, insistez sur le seul vrai piège : multiplier ou diviser par un nombre négatif change le sens. Faites-le constater sur un exemple numérique (2 < 3 mais −2 > −3) plutôt que de l'imposer."
+   ],
+   "ex": "« Un taxi facture 500 F de prise en charge puis 300 F par kilomètre. Avec 3 200 F, combien de kilomètres ? » Soit x le nombre de kilomètres. Coût : 500 + 300x. Équation : 500 + 300x = 3 200. Solution : x = 9. Vérification : 500 + 2 700 = 3 200.",
+   "fm": "La méthode CADRE s'applique directement à la mise en équation : Comprendre (que cherche-t-on ?), Analyser (quelles quantités ?), Décomposer (les exprimer en fonction de x), Résoudre, Évaluer (vérifier dans l'énoncé).",
+   "err": "Multiplier les équations toutes prêtes à résoudre. L'élève devient habile en résolution et reste incapable de poser une équation à partir d'un problème.",
+   "cle": "Distinguer les rôles de la lettre, l'aire pour le calcul, la balance pour les équations, et des étapes pour la mise en équation.",
+   "exo": "Rédigez trois problèmes tirés du quotidien de vos élèves (transport, marché, crédit téléphonique) dont l'élève devra seulement écrire l'équation, sans la résoudre.",
+   "q": "Vos élèves savent-ils poser une équation seuls, ou seulement résoudre celles qu'on leur donne ?"
+  },
+  {
+   "id": "maths-3",
+   "t": "Géométrie et démonstration",
+   "p": [
+    "La géométrie est souvent le premier lieu où l'élève rencontre la démonstration : il ne suffit plus de voir, il faut prouver. Beaucoup ne comprennent pas pourquoi démontrer ce qui « se voit sur la figure ». Expliquez la différence entre le dessin, qui peut tromper, et les propriétés codées ou données, seules utilisables.",
+    "Le raisonnement se construit souvent à rebours. On part de ce qu'il faut démontrer et l'on se demande : « Quelles propriétés permettent de conclure à cela ? ». Pour montrer que deux droites sont parallèles, on peut passer par des angles, par une réciproque, par des perpendiculaires communes. On choisit ensuite la piste pour laquelle on a les données.",
+    "Les théorèmes clés du collège (Pythagore, Thalès, trigonométrie dans le triangle rectangle) ont chacun une propriété directe et une réciproque, avec des conditions d'application précises. La confusion entre une propriété et sa réciproque, ou l'oubli d'une condition (le triangle doit être rectangle, les points alignés dans le même ordre), coûte de nombreux points aux examens."
+   ],
+   "appro": [
+    "Faites tenir une liste des propriétés du chapitre sous la forme « Si… alors… ». L'élève voit immédiatement ce qu'il faut avoir (la partie « si ») pour conclure (la partie « alors »). C'est l'outil le plus efficace pour construire une démonstration et éviter de citer une propriété hors de ses conditions.",
+    "Ne négligez pas les constructions aux instruments. Construire une figure à partir d'un énoncé oblige à lire précisément, à identifier les données et à respecter les propriétés. Au lycée, la géométrie s'appuie davantage sur les vecteurs et les coordonnées : le passage d'une figure à un calcul est alors l'obstacle à travailler."
+   ],
+   "ex": "« Montrer que (MN) est parallèle à (BC). » À rebours : quelle propriété conclut au parallélisme ? La réciproque de Thalès. Que faut-il ? Des points alignés dans le même ordre et l'égalité AM/AB = AN/AC. Les données le permettent-elles ? On calcule les deux quotients, puis on rédige.",
+   "fm": "Votre bibliothèque de 3e démarre par le cours sur Thalès : c'est l'occasion d'installer la liste « Si… alors… » et la rédaction « On sait que… Or… Donc… » avant les autres chapitres de géométrie.",
+   "err": "Accepter « on voit que » dans une démonstration. Le correcteur ne voit qu'une affirmation non justifiée.",
+   "cle": "Le dessin ne prouve rien ; on raisonne à rebours avec des propriétés « Si… alors… » dont on vérifie les conditions.",
+   "exo": "Rédigez la liste « Si… alors… » des propriétés du chapitre de géométrie que vous enseignez en ce moment, en distinguant propriétés et réciproques.",
+   "q": "Vos élèves savent-ils distinguer une propriété de sa réciproque et en vérifier les conditions ?"
+  },
+  {
+   "id": "maths-4",
+   "t": "Fonctions",
+   "p": [
+    "La fonction est une des notions les plus importantes et les plus difficiles du secondaire, parce qu'elle se présente sous quatre formes : une situation (le prix dépend de la quantité), une formule (f(x) = 3x + 2), un tableau de valeurs et une courbe. Comprendre une fonction, c'est passer de l'une à l'autre dans tous les sens.",
+    "La progression suit un fil : la proportionnalité au collège, puis la fonction linéaire, puis la fonction affine, puis au lycée les fonctions de référence, l'étude des variations et la dérivée. Chaque étape s'appuie sur la précédente : un élève qui n'a pas compris la proportionnalité aura du mal avec la fonction linéaire.",
+    "Les erreurs typiques sont le vocabulaire (image et antécédent confondus), la notation (f(x) lu comme « f fois x »), la lecture graphique (axes inversés, graduations mal lues) et la confusion entre la fonction et sa valeur en un point."
+   ],
+   "appro": [
+    "Faites traduire régulièrement d'un registre à l'autre : à partir d'une situation, établir la formule ; à partir de la formule, dresser le tableau et tracer la courbe ; à partir de la courbe, retrouver la formule d'une fonction affine. Chaque traduction consolide le sens.",
+    "Au lycée, donnez une image concrète de la dérivée : la pente de la tangente, ou la vitesse instantanée. Le signe de la dérivée et les variations de la fonction se comprennent alors comme « monter » ou « descendre », avant d'être une technique de calcul."
+   ],
+   "ex": "Situation : une recharge de crédit coûte 1 000 F de frais fixes plus 50 F par unité. Formule : f(x) = 50x + 1 000. Tableau pour x = 0, 10, 20. Courbe : une droite qui coupe l'axe des ordonnées en 1 000. Question inverse : combien d'unités pour 3 000 F ? C'est un antécédent.",
+   "fm": "Les vidéos FayeMath sur les méthodes express peuvent porter sur ces traductions entre registres : elles répondent à une difficulté très répandue et intéressent autant les élèves que les parents.",
+   "err": "Enseigner la fonction uniquement par des calculs d'images. L'élève sait calculer f(2) mais ne voit pas ce que représente la fonction.",
+   "cle": "Situation, formule, tableau, courbe : comprendre une fonction, c'est passer de l'une à l'autre.",
+   "exo": "Préparez une situation tirée du quotidien et l'enchaînement complet : formule, tableau de valeurs, courbe, une question d'image et une question d'antécédent.",
+   "q": "Dans quel registre vos élèves sont-ils le plus à l'aise, et lequel évitent-ils ?"
+  },
+  {
+   "id": "maths-5",
+   "t": "Statistiques, probabilités et dénombrement",
+   "p": [
+    "Ces domaines demandent moins de technique que de raisonnement, et c'est ce qui les rend difficiles. En statistiques, l'enjeu est le sens des indicateurs : la moyenne est sensible aux valeurs extrêmes, la médiane partage la série en deux, l'étendue mesure la dispersion. Un élève qui calcule la moyenne sans savoir ce qu'elle dit ne peut pas interpréter un résultat.",
+    "En probabilités, la première difficulté est de décrire l'expérience : quelles sont les issues possibles, sont-elles équiprobables ? Les erreurs viennent souvent de là : croire que deux issues sont également probables alors qu'elles ne le sont pas (obtenir 7 ou 12 avec deux dés, par exemple).",
+    "Le dénombrement, au lycée, repose sur deux questions à poser avant tout calcul : l'ordre compte-t-il ? Les répétitions sont-elles possibles ? Les réponses orientent vers le bon outil. Une erreur fréquente est d'appliquer une formule avant d'avoir répondu à ces deux questions."
+   ],
+   "appro": [
+    "Utilisez systématiquement les arbres et les tableaux à double entrée. Ils rendent visibles toutes les issues et évitent les oublis. Faites d'abord construire l'arbre complet sur un petit exemple, avant de passer aux formules.",
+    "Faites vérifier par l'expérience ou la simulation quand c'est possible : lancer réellement deux dés vingt fois et noter les sommes montre que 7 sort plus souvent que 12. L'intuition fausse est corrigée par l'observation avant d'être corrigée par le calcul."
+   ],
+   "ex": "Deux dés : quelle somme est la plus probable ? L'élève répond souvent « toutes pareilles ». Tableau à double entrée de 36 cases : la somme 7 apparaît 6 fois, la somme 12 une seule fois. Probabilités : 6/36 et 1/36.",
+   "fm": "Votre cours de dénombrement de 1re S1 peut s'ouvrir sur les deux questions (ordre, répétition) sous forme de fiche de méthode, à faire compléter par l'élève.",
+   "err": "Commencer par les formules du dénombrement. L'élève applique une formule au hasard parce qu'il n'a pas analysé la situation.",
+   "cle": "Interpréter avant de calculer : sens des indicateurs, description des issues, ordre et répétition.",
+   "exo": "Préparez un exercice de probabilités qui piège l'intuition (deux dés, deux pièces) et le tableau ou l'arbre qui permet de le résoudre.",
+   "q": "Vos élèves interprètent-ils un résultat statistique ou probabiliste, ou se contentent-ils de le calculer ?"
+  }
+ ],
+ "cas": {
+  "t": "L'élève de 1re qui bloque partout",
+  "s": "Pape, en 1re S2, échoue à tous les exercices sur les fonctions et les dérivées. En l'observant, vous voyez qu'il se trompe dans les fractions et oublie les parenthèses quand il remplace x par une valeur négative.",
+  "q": [
+   "Où se trouve réellement la difficulté ?",
+   "Comment organisez-vous les séances ?",
+   "Comment le lui présentez-vous ?"
+  ],
+  "r": [
+   "Dans le calcul de base (fractions, signes, parenthèses), pas dans les fonctions elles-mêmes.",
+   "Un temps court de calcul ciblé à chaque séance, puis le chapitre de la classe ; à chaque erreur de calcul, la noter dans le carnet d'erreurs.",
+   "Comme une réparation ciblée : « tu comprends les fonctions ; deux outils de calcul te font perdre les points, on les répare »."
+  ]
+ },
+ "atelier": {
+  "t": "Votre carte des obstacles par domaine",
+  "c": "Pour chacun des cinq domaines, écrivez les trois erreurs que vous rencontrez le plus chez vos élèves, la règle fausse qui les explique, et l'image ou l'activité que vous utiliserez pour les corriger."
+ },
+ "outil": {
+  "t": "Aide-mémoire didactique des mathématiques",
+  "usage": "À relire avant de préparer une séance sur un nouveau chapitre.",
+  "lignes": [
+   "## Nombres et calcul",
+   "Droite graduée · estimation avant calcul · calcul mental quotidien · pièges : décimaux, fractions, relatifs, priorités, puissances.",
+   "## Calcul littéral et équations",
+   "Trois rôles de la lettre · aire pour la distributivité et les identités · balance pour les équations · mise en équation en étapes · sens de l'inégalité avec un négatif.",
+   "## Géométrie",
+   "Dessin ≠ preuve · raisonnement à rebours · liste « Si… alors… » · propriété ≠ réciproque · conditions d'application.",
+   "## Fonctions",
+   "Situation, formule, tableau, courbe · image et antécédent · dérivée = pente, vitesse.",
+   "## Statistiques et probabilités",
+   "Sens des indicateurs · description des issues · arbres et tableaux · ordre et répétition avant les formules."
+  ]
+ },
+ "actions": [
+  "Ouvrir chaque séance de collège par cinq minutes de calcul mental",
+  "Faire tenir à chaque élève la liste « Si… alors… » des propriétés de géométrie",
+  "Faire seulement poser l'équation, sans résoudre, sur trois problèmes par chapitre"
+ ],
+ "quiz": [
+  [
+   "Pourquoi 2,15 paraît-il plus grand que 2,5 à certains élèves ?",
+   [
+    "Parce qu'ils comparent 15 et 5 comme des entiers",
+    "Parce qu'ils ont mal lu",
+    "Parce que c'est vrai"
+   ],
+   0,
+   "Une règle des entiers étendue aux décimaux."
+  ],
+  [
+   "Quelle image aide à comprendre que (a + b)² ≠ a² + b² ?",
+   [
+    "La balance",
+    "Le carré découpé en quatre morceaux",
+    "La droite graduée"
+   ],
+   1,
+   "Le découpage fait apparaître le terme 2ab."
+  ],
+  [
+   "Quelle est la difficulté majeure des équations ?",
+   [
+    "La résolution",
+    "La mise en équation",
+    "La vérification"
+   ],
+   1,
+   "Elle s'enseigne en étapes."
+  ],
+  [
+   "Que se passe-t-il quand on multiplie une inéquation par un nombre négatif ?",
+   [
+    "Rien",
+    "Le sens de l'inégalité change",
+    "On obtient une équation"
+   ],
+   1,
+   "2 < 3 mais −2 > −3."
+  ],
+  [
+   "Comment construire une démonstration ?",
+   [
+    "En décrivant la figure",
+    "À rebours, à partir de ce qu'il faut démontrer",
+    "En mesurant"
+   ],
+   1,
+   "Quelles propriétés permettent de conclure ?"
+  ],
+  [
+   "Quelles sont les quatre formes d'une fonction ?",
+   [
+    "Situation, formule, tableau, courbe",
+    "Addition, soustraction, multiplication, division",
+    "Image, antécédent, axe, origine"
+   ],
+   0,
+   "Comprendre, c'est passer de l'une à l'autre."
+  ],
+  [
+   "Avec deux dés, quelle somme est la plus probable ?",
+   [
+    "Toutes sont également probables",
+    "7",
+    "12"
+   ],
+   1,
+   "6 cas sur 36."
+  ],
+  [
+   "Quelles questions poser avant un calcul de dénombrement ?",
+   [
+    "L'ordre compte-t-il ? Les répétitions sont-elles possibles ?",
+    "Quelle est la formule ? Quel est le résultat ?",
+    "Combien de temps ai-je ?"
+   ],
+   0,
+   "Elles orientent vers le bon outil."
+  ]
+ ],
+ "sources": [
+  [
+   "Programmes officiels sénégalais et livrets de classe (vos documents de référence) — à consulter pour la répartition exacte des notions par classe",
+   ""
+  ],
+  [
+   "Rosenshine, B. (2012). Principles of Instruction. American Educator, 36(1)",
+   "https://www.aft.org/sites/default/files/periodicals/Rosenshine.pdf"
+  ],
+  [
+   "Pólya, G. (1945). How to Solve It (Comment poser et résoudre un problème)",
+   ""
+  ]
+ ],
+ "veille": [
+  2,
+  5
+ ]
+},
+{
+ "id": "physique",
+ "n": 13,
+ "pole": "C",
+ "court": "Didactique de la PC",
+ "titre": "Enseigner la physique-chimie",
+ "but": "Faire comprendre les phénomènes avant les formules, et corriger les idées reçues propres à la physique-chimie.",
+ "objectifs": [
+  "Pratiquer la démarche expérimentale, même à domicile",
+  "Maîtriser grandeurs, unités et conversions",
+  "Corriger les conceptions erronées en électricité et en mécanique",
+  "Enseigner la chimie par les modèles et la conservation"
+ ],
+ "lecons": [
+  {
+   "id": "physique-1",
+   "t": "Démarche expérimentale, grandeurs et unités",
+   "p": [
+    "La physique-chimie se distingue des mathématiques par son objet : elle explique des phénomènes réels. Une notion se comprend mieux quand on part d'une observation (une lampe qui brille moins, un objet qui tombe, une solution qui change de couleur), qu'on formule une hypothèse, qu'on la teste, puis qu'on en tire une loi.",
+    "À domicile, sans laboratoire, la démarche reste possible : expériences simples avec du matériel courant (pile, ampoule, balance de cuisine, verre d'eau, sel, sucre), mesures dans la maison, vidéos d'expériences commentées. L'important est que l'élève observe et prévoie avant que vous n'expliquiez.",
+    "Les grandeurs et les unités sont la grammaire de la discipline. Une valeur sans unité n'a pas de sens ; une formule appliquée avec des unités incohérentes donne un résultat faux. Faites systématiquement écrire la grandeur, son symbole et son unité, et entraînez les conversions comme un automatisme."
+   ],
+   "appro": [
+    "Enseignez une méthode de conversion unique et sûre, par exemple le tableau de conversion ou les puissances de 10, plutôt que des astuces différentes selon les cas. Les conversions de surfaces, de volumes et de vitesses (km/h en m/s) sont les plus piégeuses.",
+    "Faites contrôler la vraisemblance de chaque résultat : une voiture à 300 m/s, une masse de 5 000 kg pour un élève ou une intensité de 200 A dans une lampe de poche doivent alerter. Ce réflexe rattrape de nombreuses erreurs d'unités."
+   ],
+   "ex": "Avant d'expliquer la masse volumique, demander : « Un litre d'huile pèse-t-il plus ou moins qu'un litre d'eau ? » L'élève prévoit, on vérifie avec une balance de cuisine ou une vidéo, puis on définit ρ = m/V et on calcule.",
+   "fm": "Vos supports de physique-chimie peuvent ouvrir chaque chapitre par une observation ou une question de prévision, sur le modèle de l'activité qui ouvre vos cours de mathématiques.",
+   "err": "Commencer par la formule et faire des applications numériques. L'élève calcule sans savoir ce que représente la grandeur.",
+   "cle": "Observer et prévoir avant d'expliquer ; grandeur, symbole et unité à chaque calcul.",
+   "exo": "Préparez une expérience ou une observation réalisable à domicile pour le chapitre de physique-chimie que vous enseignez, avec la question de prévision à poser.",
+   "q": "Dans vos séances de physique-chimie, l'élève observe-t-il un phénomène, ou seulement des formules ?"
+  },
+  {
+   "id": "physique-2",
+   "t": "Électricité et mécanique : corriger les idées reçues",
+   "p": [
+    "L'élève arrive avec des idées construites par l'expérience quotidienne, souvent fausses du point de vue scientifique, et très résistantes. Les connaître permet de les faire émerger et de les corriger, au lieu de les laisser coexister avec la leçon.",
+    "En électricité, les plus fréquentes : le courant serait « consommé » par la lampe (il y en aurait moins après qu'avant) ; la pile serait un réservoir de courant ; la tension et l'intensité seraient la même chose. L'analogie du circuit d'eau en boucle, avec la pompe pour la pile, aide à corriger ces idées : l'eau circule, elle n'est pas consommée.",
+    "En mécanique : un objet en mouvement aurait besoin d'une force pour continuer à avancer ; un objet lourd tomberait plus vite qu'un objet léger ; masse et poids seraient synonymes. Le principe d'inertie heurte l'intuition, car sur Terre les frottements arrêtent tout ; il faut le faire comprendre par des situations où les frottements sont faibles."
+   ],
+   "appro": [
+    "Faites d'abord exprimer la conception de l'élève par une question de prévision : « Si on ajoute une deuxième lampe en série, que deviennent les éclats ? » Puis confrontez à l'observation ou au calcul. Une idée reçue ne disparaît que si l'élève constate qu'elle ne marche pas.",
+    "En mécanique, imposez le bilan des forces avant tout calcul : système étudié, liste des forces, représentation par des vecteurs. Cette étape organise la résolution et évite d'oublier une force ou d'en inventer une."
+   ],
+   "ex": "Mesurer l'intensité avant et après une lampe dans un circuit en série (ou montrer la mesure en vidéo) : les deux valeurs sont égales. L'élève qui pensait que la lampe « consomme » le courant voit son idée contredite, et l'on peut parler d'énergie convertie plutôt que de courant consommé.",
+   "fm": "Ces idées reçues sont des pièges classiques, et donc d'excellents sujets pour vos vidéos et vos fiches « erreur fréquente ».",
+   "err": "Expliquer la bonne loi sans faire émerger l'idée fausse de l'élève. Il récite la loi pour le devoir et garde son intuition pour le reste.",
+   "cle": "Faire prévoir, confronter à l'observation, puis expliquer ; bilan des forces avant tout calcul.",
+   "exo": "Listez trois idées reçues de vos élèves en électricité ou en mécanique, et pour chacune la question de prévision et l'observation qui la contredit.",
+   "q": "Quelle idée reçue en physique avez-vous déjà entendue chez un élève, et l'avez-vous réellement corrigée ?"
+  },
+  {
+   "id": "physique-3",
+   "t": "Chimie : modèles, équations et conservation",
+   "p": [
+    "La chimie demande de passer constamment entre trois niveaux : ce que l'on observe (une couleur, un gaz, un dépôt), le modèle microscopique (atomes, molécules, ions) et l'écriture symbolique (formules, équations). L'élève en difficulté reste souvent bloqué dans un seul niveau, généralement les symboles appris par cœur.",
+    "Le principe central est la conservation : au cours d'une réaction chimique, les atomes se réarrangent, ils ne disparaissent pas et ne se créent pas. C'est ce qui justifie l'équilibrage des équations et la conservation de la masse. Une équation équilibrée n'est pas un exercice de calcul : c'est l'écriture de cette conservation.",
+    "Les erreurs typiques : équilibrer en modifiant les indices des formules au lieu des coefficients ; confondre masse et quantité de matière ; croire qu'une substance disparaît lors d'une dissolution ; confondre molécule et atome."
+   ],
+   "appro": [
+    "Utilisez des modèles concrets : boules de pâte à modeler ou cercles dessinés pour représenter les atomes, réarrangés d'un côté à l'autre de l'équation. L'élève voit alors pourquoi on change les coefficients et jamais les indices : changer un indice changerait la substance.",
+    "Pour la mole et la quantité de matière, au lycée, partez d'une analogie de comptage par paquets (une douzaine, une rame de papier) avant la définition. Puis entraînez les relations n = m/M et C = n/V avec un tableau d'avancement clair."
+   ],
+   "ex": "Combustion du méthane : CH₄ + O₂ → CO₂ + H₂O. On compte les atomes de chaque côté, on ajuste les coefficients : CH₄ + 2 O₂ → CO₂ + 2 H₂O. Avec des cercles dessinés, l'élève vérifie qu'il retrouve un carbone, quatre hydrogènes et quatre oxygènes de chaque côté.",
+   "fm": "Votre standard de production impose de vérifier chaque calcul : appliquez la même rigueur à l'équilibrage des équations et aux calculs de quantité de matière de vos corrigés.",
+   "err": "Équilibrer une équation en changeant un indice (écrire H₂O₂ au lieu de 2 H₂O). L'élève a changé la substance sans s'en rendre compte.",
+   "cle": "Observation, modèle, symbole ; les atomes se conservent, on change les coefficients, jamais les indices.",
+   "exo": "Préparez trois équations à équilibrer de difficulté croissante, avec leur représentation par des cercles pour la première.",
+   "q": "Vos élèves comprennent-ils pourquoi on équilibre une équation, ou appliquent-ils seulement une technique ?"
+  }
+ ],
+ "cas": {
+  "t": "« La pile est vide parce que les lampes ont pris tout le courant »",
+  "s": "Lors d'une séance sur les circuits en 4e, Aïda explique qu'une pile s'use parce que les lampes « prennent le courant ». Elle a pourtant appris la loi d'unicité de l'intensité dans un circuit en série.",
+  "q": [
+   "Que révèle sa phrase ?",
+   "Comment la faites-vous évoluer ?",
+   "Comment vérifiez-vous qu'elle a changé d'idée ?"
+  ],
+  "r": [
+   "Une conception erronée (courant consommé) qui coexiste avec la loi apprise par cœur.",
+   "Prévision sur l'intensité avant et après la lampe, mesure ou vidéo, puis analogie du circuit d'eau ; distinguer le courant, qui circule, de l'énergie, qui est transférée.",
+   "Une question nouvelle : prévoir l'intensité dans plusieurs points d'un circuit, et expliquer avec ses mots pourquoi la pile s'use."
+  ]
+ },
+ "atelier": {
+  "t": "Votre banque d'expériences et d'idées reçues",
+  "c": "Pour quatre chapitres de physique-chimie que vous enseignez, notez une expérience réalisable à domicile ou une vidéo, la question de prévision associée, et l'idée reçue la plus fréquente avec sa correction."
+ },
+ "outil": {
+  "t": "Aide-mémoire didactique de la physique-chimie",
+  "usage": "À relire avant de préparer une séance de physique-chimie.",
+  "lignes": [
+   "## Démarche",
+   "Observer · prévoir · tester · conclure · formaliser.",
+   "## Calcul",
+   "Grandeur, symbole, unité · conversions par une méthode unique · expression littérale avant l'application numérique · contrôle de vraisemblance.",
+   "## Électricité",
+   "Le courant circule, il n'est pas consommé · la pile n'est pas un réservoir de courant · tension ≠ intensité · analogie du circuit d'eau.",
+   "## Mécanique",
+   "Bilan des forces d'abord · inertie · masse ≠ poids · la chute ne dépend pas de la masse (sans frottements).",
+   "## Chimie",
+   "Observation, modèle, symbole · conservation des atomes · coefficients et jamais indices · masse ≠ quantité de matière."
+  ]
+ },
+ "actions": [
+  "Ouvrir chaque chapitre de physique-chimie par une question de prévision",
+  "Exiger grandeur, symbole et unité dans chaque calcul",
+  "Tenir une liste des idées reçues rencontrées et de leur correction"
+ ],
+ "quiz": [
+  [
+   "Par quoi commencer une notion de physique-chimie ?",
+   [
+    "Par la formule",
+    "Par une observation et une question de prévision",
+    "Par un exercice d'application"
+   ],
+   1,
+   "L'élève prévoit avant que vous n'expliquiez."
+  ],
+  [
+   "Que vaut une valeur numérique sans unité ?",
+   [
+    "Elle suffit",
+    "Elle n'a pas de sens physique",
+    "Elle est en unité internationale"
+   ],
+   1,
+   "Grandeur, symbole et unité à chaque calcul."
+  ],
+  [
+   "Le courant est-il consommé par une lampe dans un circuit en série ?",
+   [
+    "Oui",
+    "Non, l'intensité est la même avant et après",
+    "Seulement si la pile est faible"
+   ],
+   1,
+   "C'est l'énergie qui est convertie, pas le courant."
+  ],
+  [
+   "Comment corriger une idée reçue ?",
+   [
+    "En répétant la bonne loi",
+    "En la faisant exprimer puis en la confrontant à l'observation",
+    "En l'ignorant"
+   ],
+   1,
+   "L'élève doit constater qu'elle ne marche pas."
+  ],
+  [
+   "Que faire avant tout calcul en mécanique ?",
+   [
+    "Le bilan des forces",
+    "Choisir la calculatrice",
+    "Écrire le résultat attendu"
+   ],
+   0,
+   "Système, forces, vecteurs."
+  ],
+  [
+   "Masse et poids sont-ils la même grandeur ?",
+   [
+    "Oui",
+    "Non : la masse en kg, le poids est une force en N",
+    "Seulement sur la Lune"
+   ],
+   1,
+   "P = m × g."
+  ],
+  [
+   "Comment équilibre-t-on une équation chimique ?",
+   [
+    "En changeant les indices",
+    "En changeant les coefficients",
+    "En ajoutant des atomes"
+   ],
+   1,
+   "Changer un indice change la substance."
+  ],
+  [
+   "Quel principe justifie l'équilibrage ?",
+   [
+    "La conservation des atomes",
+    "La vitesse de réaction",
+    "La température"
+   ],
+   0,
+   "Les atomes se réarrangent sans disparaître."
+  ]
+ ],
+ "sources": [
+  [
+   "Programmes officiels sénégalais et livrets de classe (vos documents de référence) — à consulter pour la répartition exacte des notions par classe",
+   ""
+  ],
+  [
+   "Conceptions des élèves en sciences : travaux de didactique de la physique (par exemple Driver, R. et al., 1985, Children's Ideas in Science)",
+   ""
+  ]
+ ],
+ "veille": [
+  5
+ ]
+},
+{
  "id": "seance",
- "n": 10,
+ "n": 14,
  "pole": "C",
  "court": "Conduire une séance",
  "titre": "Concevoir et conduire une séance à domicile",
@@ -621,6 +1312,25 @@ FM.modules.push(
    "cle": "Ponctualité, lieu calme, espace ouvert, fin de séance identique à chaque fois.",
    "exo": "Rédigez les cinq règles de fonctionnement que vous énoncerez à la première visite chez une nouvelle famille.",
    "q": "Chez quelle famille les conditions de travail ne sont-elles pas bonnes, et que pouvez-vous demander ?"
+  },
+  {
+   "id": "seance-5",
+   "t": "La première séance chez une nouvelle famille",
+   "p": [
+    "La première séance décide souvent de la suite. La famille y juge votre ponctualité, votre façon de parler à l'enfant et la clarté de ce que vous annoncez. L'élève, lui, se demande s'il va encore subir un cours qu'il ne comprend pas. Préparez-la plus soigneusement que toutes les autres.",
+    "Elle suit un déroulé particulier. Accueil et cadre (cinq minutes, avec le parent) : lieu, horaires, téléphone, travail à faire, façon de prévenir. Échange avec l'élève : ce qu'il aime, ce qui lui pose problème, ce qu'il attend. Test diagnostique court. Une première réussite sur une notion à sa portée. Clôture avec le parent : premiers constats, objectif du premier mois, date du premier bilan.",
+    "Le soir même, envoyez un compte rendu un peu plus complet que d'habitude : résultats du diagnostic en trois points, plan des premières semaines, et remerciement pour la confiance. C'est le premier document écrit que la famille reçoit de vous ; il installe le ton de toute la relation."
+   ],
+   "appro": [
+    "Ne commencez pas par le chapitre le plus difficile, même si un devoir approche. L'élève doit repartir de cette séance avec le sentiment d'avoir compris quelque chose ; c'est cette première réussite qui le rendra coopératif. Le devoir pourra être préparé dès la deuxième séance, sur des bases plus sûres.",
+    "Observez autant que vous enseignez : façon de lire un énoncé, réaction à l'erreur, concentration, tenue du cahier. Notez ces observations après la séance ; elles alimentent la grille de profil du module « Profils d'élèves »."
+   ],
+   "ex": "Première séance avec Bintou, 4e : présentation du cadre avec sa mère, cinq minutes d'échange (« qu'est-ce qui est le plus difficile pour toi en maths ? »), test de vingt minutes, puis une notion de calcul fractionnaire réussie trois fois de suite. Avant de partir : « Bintou maîtrise les opérations de base ; nous allons consolider les fractions avant le prochain devoir. Premier bilan le 30. »",
+   "fm": "Le parcours d'accueil du module « Relation parents » prévoit cette séance ; vos tests diagnostiques et le kit de révision des prérequis en sont les supports.",
+   "err": "Faire de la première séance un cours ordinaire sur le chapitre du moment. Vous manquez le diagnostic, le cadre et la première impression.",
+   "cle": "Cadre, échange, diagnostic, première réussite, objectif annoncé, compte rendu le soir même.",
+   "exo": "Rédigez votre déroulé type de première séance et le modèle du compte rendu envoyé le soir même.",
+   "q": "Que retient aujourd'hui une famille de votre première séance chez elle ?"
   }
  ],
  "cas": {
@@ -766,8 +1476,241 @@ FM.modules.push(
  ]
 },
 {
+ "id": "profils",
+ "n": 15,
+ "pole": "C",
+ "court": "Profils d'élèves",
+ "titre": "Profils d'élèves et différenciation",
+ "but": "Reconnaître ce qui bloque chaque élève et adapter l'accompagnement, de l'élève avancé à l'élève très fragile, seul ou en groupe.",
+ "objectifs": [
+  "Identifier le profil et la source du blocage",
+  "Adapter l'accompagnement à l'élève avancé et à l'élève fragile",
+  "Repérer les signes de troubles des apprentissages et adapter sans diagnostiquer",
+  "Enseigner à plusieurs : fratries, petits groupes, stages"
+ ],
+ "lecons": [
+  {
+   "id": "profils-1",
+   "t": "Identifier ce qui bloque vraiment",
+   "p": [
+    "Deux élèves qui ont la même note peuvent avoir des besoins opposés. L'un manque de bases, l'autre de méthode, un troisième de motivation, un quatrième perd ses moyens en devoir. Le même accompagnement ne peut pas convenir à tous ; il faut d'abord savoir ce qui bloque.",
+    "Six sources de blocage reviennent : les bases (prérequis non acquis), la méthode (l'élève ne sait pas s'y prendre), le travail personnel (rien n'est fait entre les séances), la motivation (il ne voit pas l'intérêt ou se croit incapable), l'attention (il décroche vite), l'anxiété (il sait faire mais échoue sous pression). Souvent plusieurs se combinent.",
+    "Le diagnostic croise trois sources : le test d'entrée (les bases), l'observation pendant les premières séances (méthode, attention, réaction à l'erreur), et l'échange avec l'élève et le parent (travail à la maison, vécu des devoirs). Une seule source ne suffit pas."
+   ],
+   "appro": [
+    "Observez l'élève au travail plutôt que son résultat. Comment commence-t-il un exercice ? Que fait-il quand il bloque ? Combien de temps reste-t-il concentré ? Comment réagit-il à une erreur ? Ces observations, notées dès les premières séances, en disent plus qu'une note.",
+    "Revoyez le profil chaque trimestre. Un élève dont les bases sont réparées peut révéler un problème de méthode ; un élève qui reprend confiance peut révéler des lacunes qu'il masquait. Le profil évolue, l'accompagnement aussi."
+   ],
+   "ex": "Deux élèves de 3e à 9/20. Diagnostic : Abdou a des bases solides mais rend des copies sans rédaction ni vérification (méthode). Fatima a des lacunes en calcul depuis la 5e (bases). Plans différents : rédaction et relecture pour le premier, reconstruction du calcul pour la seconde.",
+   "fm": "Votre test diagnostique d'entrée par classe couvre les bases ; ajoutez une grille d'observation des premières séances pour les cinq autres sources de blocage.",
+   "err": "Appliquer le même déroulé de séance à tous les élèves d'une même classe, parce qu'ils ont le même programme.",
+   "cle": "Même note ne veut pas dire même besoin : bases, méthode, travail, motivation, attention, anxiété.",
+   "exo": "Pour chacun de vos élèves, cochez les sources de blocage observées et notez celle qui est prioritaire.",
+   "q": "Pour quel élève avez-vous peut-être traité le mauvais blocage ?"
+  },
+  {
+   "id": "profils-2",
+   "t": "L'élève avancé et l'élève très fragile",
+   "p": [
+    "L'élève avancé s'ennuie vite si on lui fait refaire ce qu'il sait. Il a besoin de défi : des problèmes plus ouverts, des exercices de type examen ou concours, des démonstrations, des liens entre chapitres. Sa progression se mesure à la difficulté des problèmes qu'il résout seul, pas au nombre d'exercices.",
+    "L'élève très fragile a besoin, à l'inverse, de paliers très fins, de réussites fréquentes et d'un rythme qui respecte sa capacité. Benjamin Bloom a montré, avec la pédagogie de la maîtrise, qu'un enseignement individuel qui ne passe à l'étape suivante qu'une fois la précédente maîtrisée permet à des élèves faibles de progresser très fortement.",
+    "Dans les deux cas, gardez le lien avec la classe. L'élève avancé doit rester excellent sur ce qui est évalué ; l'élève fragile doit pouvoir suivre en classe, même avec un objectif réduit. Un accompagnement déconnecté de la classe perd une partie de son effet."
+   ],
+   "appro": [
+    "Pour l'élève avancé, attention aux lacunes cachées : un élève brillant peut avoir appris à contourner une notion mal comprise. Un exercice de type examen, en temps limité, les révèle. Visez aussi la rigueur de la rédaction, souvent négligée par les élèves rapides.",
+    "Pour l'élève fragile, choisissez chaque semaine un objectif atteignable et visible, et célébrez-le. Une réussite par séance, même petite, entretient l'effort. Associez le parent pour qu'il valorise ces progrès plutôt que la seule note de l'école."
+   ],
+   "ex": "Élève avancé de Terminale S1 : après le chapitre de la classe, un problème de concours d'entrée en école d'ingénieurs sur le même thème, à résoudre en autonomie. Élève fragile de 5e : objectif de la semaine, additionner deux fractions de dénominateurs différents, trois fois sur trois.",
+   "fm": "Votre formule EXCELLENCE (annales et examen blanc mensuel) convient bien aux élèves avancés de Terminale ; les livrets de prérequis et les kits des classes inférieures servent aux élèves fragiles.",
+   "err": "Garder un élève avancé sur des exercices faciles « pour consolider ». Il se désintéresse, et la famille juge l'accompagnement inutile.",
+   "cle": "Défi pour l'élève avancé, paliers fins et réussites fréquentes pour l'élève fragile, lien avec la classe pour les deux.",
+   "exo": "Pour votre élève le plus avancé, préparez trois problèmes de niveau supérieur ; pour le plus fragile, trois paliers d'une même notion.",
+   "q": "Lequel de vos élèves avancés s'ennuie peut-être en séance ?"
+  },
+  {
+   "id": "profils-3",
+   "t": "Troubles des apprentissages : repérer et adapter sans diagnostiquer",
+   "p": [
+    "Certains élèves rencontrent des difficultés persistantes malgré un travail régulier et un bon accompagnement : lecture très lente ou hésitante, confusions durables entre chiffres ou symboles, grande difficulté à mémoriser les faits numériques, écriture très coûteuse, attention qui décroche en quelques minutes, agitation. Ces signes peuvent évoquer un trouble des apprentissages (dyslexie, dyscalculie, dyspraxie, trouble de l'attention).",
+    "Votre rôle n'est pas de poser un diagnostic : il revient à des professionnels de santé. Il est d'observer, de noter précisément ce que vous voyez, d'en parler avec tact aux parents, et de suggérer qu'ils en discutent avec l'établissement ou un professionnel. Évitez les mots de diagnostic : décrivez des faits.",
+    "En attendant, ou en complément, des adaptations simples aident beaucoup : consignes courtes et une à la fois, documents aérés avec une police lisible, lecture à voix haute des énoncés, fractionnement des tâches, temps supplémentaire, réduction du nombre d'exercices plutôt que de leur difficulté, supports visuels, pauses courtes."
+   ],
+   "appro": [
+    "Tenez un relevé d'observations daté pendant quelques semaines : ce que l'élève réussit, ce qui reste difficile malgré l'entraînement, dans quelles conditions. Ce relevé factuel est précieux pour les parents et pour un éventuel professionnel, et il évite les impressions.",
+    "Ne réduisez jamais l'élève à ses difficultés. Un trouble des apprentissages n'empêche pas de raisonner ; beaucoup de ces élèves réussissent très bien en mathématiques quand on adapte la forme. Gardez la même exigence sur le fond."
+   ],
+   "ex": "Message au parent : « Depuis six semaines, j'observe qu'Ibou lit les énoncés très lentement et confond souvent 6 et 9, même sur des exercices qu'il réussit à l'oral. Je lui lis désormais les consignes et cela l'aide. Il pourrait être utile d'en parler avec son professeur principal ou un professionnel, pour mieux comprendre ce qui se passe. »",
+   "fm": "Le cadre de confidentialité de FayeMath Academy s'applique pleinement ici : ces observations ne se partagent qu'avec les parents, jamais dans un groupe ni avec un autre client.",
+   "err": "Annoncer à un parent que son enfant « est dyslexique » ou « a un TDAH ». Ce n'est pas votre rôle, et une erreur aurait des conséquences lourdes.",
+   "cle": "Observer et noter des faits, en parler avec tact, orienter vers les professionnels, adapter la forme sans baisser l'exigence.",
+   "exo": "Préparez votre grille d'observation (lecture, mémorisation, écriture, attention, organisation) et la liste des cinq adaptations que vous pouvez appliquer dès la prochaine séance.",
+   "q": "Un de vos élèves présente-t-il des difficultés qui résistent à tout entraînement, et qu'avez-vous noté ?"
+  },
+  {
+   "id": "profils-4",
+   "t": "Enseigner à plusieurs : fratries, petits groupes et stages",
+   "p": [
+    "Enseigner à deux ou plusieurs élèves change la séance. L'attention est partagée, les niveaux diffèrent, et chaque élève dispose de moins de temps individuel. La recherche montre que le tutorat en petit groupe reste efficace, d'autant plus que le groupe est petit et les besoins proches.",
+    "Le plan de travail est l'outil central : chaque élève a sa liste d'exercices pour la séance, avec des paliers. Pendant que l'un travaille seul, vous expliquez à l'autre ; puis vous alternez. Préparez plus que pour une séance individuelle : dans un groupe, un temps mort se multiplie.",
+    "Pour une fratrie de niveaux différents (un enfant de 6e et un de 3e), organisez la séance en rotation : explication courte à l'un pendant que l'autre fait un exercice autonome, puis l'inverse. Pour un stage de vacances, groupez les élèves par niveau et par besoin, et alternez temps collectifs (méthode, correction commune) et temps individuels."
+   ],
+   "appro": [
+    "Utilisez les élèves les uns pour les autres, avec mesure. Expliquer à un camarade consolide l'apprentissage de celui qui explique ; corriger ensemble une erreur fréquente fait gagner du temps. Mais gardez la maîtrise : une explication fausse entre élèves s'installe vite.",
+    "Fixez les règles du groupe dès le début : chacun travaille sur son plan, on lève la main ou l'on attend son tour, on ne compare pas les notes. Dans une fratrie, évitez toute comparaison entre frères et sœurs, devant eux comme devant les parents."
+   ],
+   "ex": "Fratrie 6e et 3e, deux heures. 0:00 rappel commun de cinq minutes. 0:05-0:30 explication au 3e pendant que le 6e fait son plan de travail. 0:30-0:55 l'inverse. Ensuite, deux blocs de pratique autonome avec passages alternés. Fin : bilan individuel de deux minutes chacun.",
+   "fm": "Les fratries suivies le même jour sont une cible prioritaire de votre stratégie de vente, et le stage de vacances un format à plusieurs élèves : ce savoir-faire en conditionne la qualité.",
+   "err": "Expliquer la même chose aux deux enfants d'une fratrie de niveaux différents. L'un s'ennuie, l'autre est perdu.",
+   "cle": "Un plan de travail par élève, des rotations préparées, des groupes homogènes, aucune comparaison.",
+   "exo": "Rédigez le déroulé d'une séance de deux heures pour une fratrie de deux niveaux différents, avec le plan de travail de chaque enfant.",
+   "q": "Comment se déroulent aujourd'hui vos séances avec plusieurs enfants, et qui attend sans rien faire ?"
+  }
+ ],
+ "cas": {
+  "t": "La fratrie qui ne fonctionne pas",
+  "s": "Chez les Kane, vous suivez Mariama (6e) et Oumar (Terminale S2) dans la même séance de deux heures. Mariama s'agite pendant que vous travaillez avec Oumar, et Oumar se plaint de ne pas avancer assez vite pour le Bac.",
+  "q": [
+   "Quel est le problème de fond ?",
+   "Comment réorganisez-vous la séance ?",
+   "Que proposez-vous aux parents si cela ne suffit pas ?"
+  ],
+  "r": [
+   "Deux niveaux très éloignés dans un même créneau, sans plan de travail autonome pour la plus jeune.",
+   "Plans de travail préparés pour chacun, rotations courtes, exercices autonomes adaptés à Mariama, temps continu suffisant pour Oumar.",
+   "Deux créneaux distincts le même jour, consécutifs, dans le respect de la grille : la formule de chacun correspond déjà à sa classe."
+  ]
+ },
+ "atelier": {
+  "t": "Votre grille de profil d'élève",
+  "c": "Construisez une grille d'une page à remplir pour chaque nouvel élève : les six sources de blocage, les observations des trois premières séances, le blocage prioritaire, les adaptations décidées et la date de révision du profil."
+ },
+ "outil": {
+  "t": "Grille de profil et d'adaptation",
+  "usage": "À remplir après les trois premières séances, puis à revoir chaque trimestre.",
+  "lignes": [
+   "## Sources de blocage (cocher)",
+   "Bases · méthode · travail personnel · motivation · attention · anxiété.",
+   "## Observations",
+   "Comment il commence un exercice · ce qu'il fait quand il bloque · durée de concentration · réaction à l'erreur.",
+   "## Profil",
+   "Avancé (défi, problèmes de niveau supérieur) · standard · fragile (paliers fins, réussites fréquentes).",
+   "## Adaptations possibles",
+   "Consignes courtes · énoncés lus à voix haute · documents aérés · tâches fractionnées · temps supplémentaire · moins d'exercices, même exigence.",
+   "## Si les difficultés persistent",
+   "Relevé d'observations daté · échange avec les parents (faits, pas de diagnostic) · orientation vers l'établissement ou un professionnel.",
+   "## Révision",
+   "Date du prochain point sur le profil."
+  ]
+ },
+ "actions": [
+  "Remplir une grille de profil pour chaque élève après trois séances",
+  "Préparer un plan de travail individuel pour chaque séance avec plusieurs enfants",
+  "Tenir un relevé d'observations daté pour tout élève dont les difficultés persistent"
+ ],
+ "quiz": [
+  [
+   "Deux élèves ont la même note. Ont-ils le même besoin ?",
+   [
+    "Oui",
+    "Pas forcément : bases, méthode, motivation… peuvent différer",
+    "Seulement s'ils sont dans la même classe"
+   ],
+   1,
+   "Le diagnostic précède l'accompagnement."
+  ],
+  [
+   "Combien de sources de blocage la leçon distingue-t-elle ?",
+   [
+    "Deux",
+    "Six",
+    "Dix"
+   ],
+   1,
+   "Bases, méthode, travail personnel, motivation, attention, anxiété."
+  ],
+  [
+   "De quoi a besoin un élève avancé ?",
+   [
+    "De refaire les exercices faciles",
+    "De défi : problèmes ouverts, niveau supérieur",
+    "De moins de séances"
+   ],
+   1,
+   "Sinon il s'ennuie."
+  ],
+  [
+   "Que propose la pédagogie de la maîtrise de Bloom ?",
+   [
+    "Passer à l'étape suivante une fois la précédente maîtrisée",
+    "Avancer au rythme de la classe quoi qu'il arrive",
+    "Supprimer les évaluations"
+   ],
+   0,
+   "Particulièrement efficace en individuel."
+  ],
+  [
+   "Que faire face à des signes évoquant un trouble des apprentissages ?",
+   [
+    "Annoncer un diagnostic aux parents",
+    "Observer, noter des faits, en parler avec tact et orienter vers un professionnel",
+    "Ne rien dire"
+   ],
+   1,
+   "Le diagnostic revient aux professionnels de santé."
+  ],
+  [
+   "Quelle adaptation est appropriée ?",
+   [
+    "Baisser l'exigence sur le fond",
+    "Réduire le nombre d'exercices et lire les consignes à voix haute",
+    "Supprimer les devoirs"
+   ],
+   1,
+   "On adapte la forme, pas le fond."
+  ],
+  [
+   "Quel est l'outil central d'une séance à plusieurs ?",
+   [
+    "Le plan de travail par élève",
+    "Le tableau noir",
+    "La note commune"
+   ],
+   0,
+   "Pendant que l'un travaille seul, vous expliquez à l'autre."
+  ],
+  [
+   "Que faut-il éviter avec une fratrie ?",
+   [
+    "Les rotations",
+    "Toute comparaison entre frères et sœurs",
+    "Les plans de travail"
+   ],
+   1,
+   "Ni devant eux, ni devant les parents."
+  ]
+ ],
+ "sources": [
+  [
+   "Bloom, B. (1984). The 2 Sigma Problem. Educational Researcher, 13(6)",
+   ""
+  ],
+  [
+   "Education Endowment Foundation — One to one tuition et Small group tuition",
+   "https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit/one-to-one-tuition"
+  ],
+  [
+   "Pour les troubles des apprentissages : s'adresser aux professionnels de santé et à l'établissement scolaire de l'élève",
+   ""
+  ]
+ ],
+ "veille": [
+  2,
+  5
+ ]
+},
+{
  "id": "evaluer",
- "n": 11,
+ "n": 16,
  "pole": "C",
  "court": "Évaluer et suivre",
  "titre": "Évaluer et suivre la progression",
@@ -1011,7 +1954,7 @@ FM.modules.push(
 },
 {
  "id": "examens",
- "n": 12,
+ "n": 17,
  "pole": "C",
  "court": "BFEM et Bac",
  "titre": "Préparer au BFEM et au Bac",
@@ -1255,7 +2198,7 @@ FM.modules.push(
 },
 {
  "id": "motivation",
- "n": 13,
+ "n": 18,
  "pole": "C",
  "court": "Motivation et difficultés",
  "titre": "Motivation et élèves en difficulté",

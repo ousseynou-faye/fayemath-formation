@@ -5,7 +5,7 @@
    l'écran « Sauvegarde » permet d'en exporter une copie.
    ===================================================================== */
 "use strict";
-const APP_VERSION = "2.2";               // numéro affiché dans le menu et l'écran de réglages
+const APP_VERSION = "2.3";               // numéro affiché dans le menu et l'écran de réglages
 const CLE = "fayemath-formation-v2";      // clé de sauvegarde de la version 2
 const CLE_V1 = "fayemath-formation-v1";   // ancienne clé, relue une seule fois pour reprendre la progression
 

@@ -1,4 +1,4 @@
-# FayeMath Formation — application locale et mobile (version 2.2)
+# FayeMath Formation — application locale et mobile (version 2.3)
 
 Application de formation du fondateur de FayeMath Academy. Elle fonctionne sur cet ordinateur, sans compte et sans connexion (sauf pour ouvrir les liens des « Entreprises modèles »).
 
@@ -8,20 +8,26 @@ Double-cliquez sur le raccourci « FayeMath Formation » du Bureau, ou sur `inde
 ## Contenu
 | Partie | Contenu |
 |---|---|
-| **Parcours du fondateur** | 4 pôles, 17 modules, 66 leçons (chacune avec approfondissement et mise en pratique), 17 cas pratiques, 17 ateliers, 17 fiches-outils, 136 questions de quiz, 54 actions |
+| **Parcours du fondateur** | 4 pôles, 22 modules, 87 leçons (chacune avec approfondissement et mise en pratique), 22 cas pratiques, 22 ateliers, 22 fiches-outils, 176 questions de quiz, 71 actions |
 | **Entreprises modèles** | 6 études de cas, 58 ressources en ligne, programme de 6 semaines |
 | **S'entraîner** | Révision espacée par cartes, bilans de pôle, examen final, attestations internes |
-| **Appliquer** | Boîte à outils, plan d'action, journal de bord, mes écrits |
-| **Références** | Favoris, glossaire (44 termes), mode d'emploi, recherche dans toute la formation |
+| **Appliquer** | Guide des situations (33 problèmes résolus), boîte à outils, plan d'action, journal de bord, mes écrits |
+| **Références** | Favoris, glossaire (54 termes), mode d'emploi, recherche dans toute la formation |
 
 ### Les 4 pôles
 - **A. Fondations de l'entreprise** : identité, offre et prix, juridique, finances.
-- **B. Développement commercial** : se faire connaître, vendre, relation parents et fidélisation.
-- **C. Pédagogie** : comment un élève apprend, enseigner les maths et la PC, conduire une séance, évaluer et suivre, BFEM et Bac, motivation et difficultés.
+- **B. Développement commercial** : se faire connaître, vendre, relation parents, fidéliser et résoudre les problèmes clients.
+- **C. Pédagogie** : comment un élève apprend, apprendre à apprendre, enseigner maths et PC (méthode générale), didactique de chaque domaine des maths, didactique de la physique-chimie, conduire une séance, profils d'élèves et différenciation, évaluer et suivre, BFEM et Bac, motivation et difficultés.
 - **D. Pilotage et croissance** : organisation, outils numériques et IA, posture du fondateur, grandir.
 
 ### Comment un module se valide
 Toutes les leçons lues **et** quiz réussi à 80 %. Un pôle donne droit à son attestation quand tous ses modules sont validés et que son bilan (12 questions tirées au hasard) atteint 80 %.
+
+## Nouveautés de la version 2.3 (25 novembre 2026)
+- **Pôle Pédagogie renforcé (6 → 10 modules)** : Apprendre à apprendre ; Enseigner chaque domaine des mathématiques ; Enseigner la physique-chimie ; Profils d'élèves et différenciation ; nouvelle leçon « La première séance chez une nouvelle famille ».
+- **Nouveau module « Fidéliser durablement et résoudre les problèmes clients »** (pôle B).
+- **Guide des situations** : 33 problèmes en 9 familles, chacun avec signes, causes, solutions, message type à copier et prévention ; recherche et filtres ; liens depuis les modules.
+- Les modules sont désormais numérotés de 1 à 22 ; la progression déjà faite est conservée.
 
 ## Nouveautés de la version 2.2 (15 novembre 2026)
 - **Leçons approfondies** : chaque leçon gagne une partie « Pour aller plus loin » et une « Mise en pratique » à cocher.
@@ -49,6 +55,7 @@ Toutes les leçons lues **et** quiz réussi à 80 %. Un pôle donne droit à son
 | `js/app.js` | Navigation, minuteur, clics et saisies |
 | `donnees/pole-a.js` … `pole-d.js` | Texte des 17 modules (**modifiable** : corrigez une ligne, rechargez la page) |
 | `donnees/glossaire.js` | Glossaire |
+| `donnees/situations.js` | Guide des situations (**modifiable** : ajoutez un bloc pour une nouvelle situation) |
 | `donnees/veille.js` | Les 58 ressources et le programme de 6 semaines |
 | `sauvegardes/` | Rangez ici vos fichiers de sauvegarde |
 | `_archive-v1/` | Copie de la version 1 (12 novembre 2026) |
@@ -81,4 +88,4 @@ L'application est aussi installable depuis GitHub Pages (version 2.1) :
 ## Sources
 Chaque module liste ses sources. Les chiffres FayeMath viennent de vos documents de référence ; si un document change, corrigez la ligne correspondante dans `donnees/`. Les durées et coefficients d'examen (module 12) sont à revérifier à chaque rentrée sur les sujets officiels.
 
-Version 2 créée le 12 novembre 2026 · version 2.1 (téléphone) le 13 novembre 2026 · version 2.2 le 15 novembre 2026.
+Version 2 créée le 12 novembre 2026 · version 2.1 (téléphone) le 13 novembre 2026 · version 2.2 le 15 novembre 2026 · version 2.3 le 25 novembre 2026.

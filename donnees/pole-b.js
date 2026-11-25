@@ -687,5 +687,237 @@ FM.modules.push(
  "veille": [
   1
  ]
+},
+{
+ "id": "fidelisation",
+ "n": 8,
+ "pole": "B",
+ "court": "Fidéliser et résoudre",
+ "titre": "Fidéliser durablement et résoudre les problèmes clients",
+ "but": "Garder chaque client sur la durée, repérer tôt ce qui menace la relation et résoudre n'importe quel problème avec méthode.",
+ "objectifs": [
+  "Connaître les causes de départ et repérer les signaux d'alerte",
+  "Résoudre un problème client avec un protocole en six temps",
+  "Réparer une erreur et regagner la confiance",
+  "Mettre en place un système de fidélité pour les familles et les écoles"
+ ],
+ "lecons": [
+  {
+   "id": "fidelisation-1",
+   "t": "Pourquoi les clients partent",
+   "p": [
+    "Une famille quitte rarement un encadreur sur un coup de tête. Les départs ont presque toujours une des six causes suivantes : la progression n'est pas visible ou pas perçue ; la famille ne se sent pas informée ni écoutée ; l'organisation déçoit (retards, reports, horaires qui changent) ; le budget devient difficile ; un événement de vie survient (déménagement, examen passé, fin d'année) ; l'élève lui-même refuse ou se lasse.",
+    "La plupart de ces départs s'annoncent. Les signaux sont connus : un parent qui payait à l'heure commence à payer en retard, les reports se multiplient, les messages deviennent plus courts ou restent sans réponse, le parent ne réagit plus aux bilans, l'élève ne fait plus le travail donné ou arrive à la séance sans son cahier.",
+    "Tenez donc une « météo » de chaque famille, revue chaque semaine pendant votre revue hebdomadaire. Vert : tout va bien. Orange : un signal est apparu. Rouge : plusieurs signaux ou un mécontentement exprimé. Chaque orange déclenche une action dans la semaine, chaque rouge un appel sous 48 heures."
+   ],
+   "appro": [
+    "Distinguez les départs évitables (manque d'information, organisation, progrès non montré) des départs inévitables (déménagement, examen réussi). Les premiers se traitent par la méthode ; les seconds se préparent, pour partir en bons termes et garder une porte ouverte.",
+    "Mesurez votre rétention chaque mois : nombre de familles encore présentes en fin de mois parmi celles du début. Et demandez toujours la raison d'un départ, en une question simple et sans insister. Ces réponses sont votre meilleure source d'amélioration."
+   ],
+   "ex": "Mme Ndour a payé trois mois à l'heure, puis paie avec huit jours de retard et reporte deux séances de suite. Feu orange. Un appel de dix minutes (« Comment cela se passe-t-il pour vous en ce moment ? ») révèle une inquiétude sur la note du trimestre. Un plan ciblé sur trois semaines est proposé ; la famille reste.",
+   "fm": "Vos conditions (paiement sous 5 jours, report si la famille prévient 24 h avant), vos comptes rendus et vos bilans mensuels fournissent déjà les données des signaux. Votre objectif de revenu mensuel repose sur la durée : chaque famille gardée est un foyer de moins à trouver.",
+   "err": "Attendre que la famille annonce son départ pour réagir. À ce stade, la décision est généralement prise.",
+   "cle": "Les départs s'annoncent : surveiller les signaux et agir dès le premier orange.",
+   "exo": "Classez chacune de vos familles actuelles en vert, orange ou rouge, notez le signal observé et une action datée pour chaque orange ou rouge.",
+   "q": "Quelle famille montre aujourd'hui un signal d'alerte, et lequel ?"
+  },
+  {
+   "id": "fidelisation-2",
+   "t": "Une méthode pour résoudre n'importe quel problème",
+   "p": [
+    "Retards de paiement, résultats décevants, élève qui ne travaille pas, parent mécontent : chaque problème paraît unique, mais tous se traitent avec la même méthode en six temps. Appliquée à chaque fois, elle évite les réactions à chaud et les solutions improvisées.",
+    "1. Accueillir : écouter jusqu'au bout, sans se défendre. 2. Clarifier : établir les faits (quoi, depuis quand, avec quelles conséquences) et reformuler. 3. Chercher la cause réelle : demander « pourquoi ? » plusieurs fois, jusqu'à la cause sur laquelle on peut agir. 4. Proposer deux ou trois solutions et laisser la famille choisir. 5. Agir vite et confirmer par écrit, avec une date. 6. Vérifier ensuite que le problème est réglé, et changer ce qui l'a permis (une règle, un modèle de message, une habitude).",
+    "Tenez un registre des problèmes : date, famille, problème, cause, solution retenue, résultat. Après quelques mois, il montre ce qui revient et vous permet de traiter les causes plutôt que les symptômes."
+   ],
+   "appro": [
+    "Distinguez trois niveaux. Un problème ponctuel se règle une fois. Un problème récurrent chez une même famille demande une conversation de fond. Un problème qui touche plusieurs familles est systémique : il vient de votre fonctionnement (conditions floues, planning trop serré, compte rendu irrégulier) et se corrige à la source.",
+    "Deux règles protègent la relation : accuser réception dans la journée, même si la solution prend plus de temps (« J'ai bien reçu votre message, je vous rappelle demain à 18 h ») ; et ne jamais promettre ce que vous ne contrôlez pas, comme une note."
+   ],
+   "ex": "Un parent écrit : « Mon fils dit qu'il ne comprend rien à vos explications. » Accueillir : remercier de l'avoir dit. Clarifier : quel chapitre, depuis quand. Cause : rythme trop rapide et vocabulaire nouveau. Solutions proposées : ralentir et vérifier par questions, reprendre les bases du chapitre, faire un point à trois. Le parent choisit les deux premières ; message de confirmation ; vérification deux semaines plus tard.",
+   "fm": "Le « Guide des situations » de cette application applique ce protocole à plus de trente cas fréquents, avec plusieurs solutions et un message type pour chacun.",
+   "err": "Proposer une seule solution, la sienne, sans demander l'avis de la famille. Elle l'accepte du bout des lèvres, puis part.",
+   "cle": "Écouter, clarifier, trouver la cause, proposer plusieurs solutions, agir par écrit, vérifier.",
+   "exo": "Reprenez un problème réel récent, déroulez-le par écrit dans les six temps, puis inscrivez-le dans votre registre des problèmes.",
+   "q": "Quel problème revient chez plusieurs familles, et quelle règle permettrait de l'éviter ?"
+  },
+  {
+   "id": "fidelisation-3",
+   "t": "Réparer une erreur et regagner la confiance",
+   "p": [
+    "Vous ferez des erreurs : un retard, une séance oubliée, une erreur dans un corrigé, une facture fausse. Ce qui compte pour la famille, c'est surtout la façon dont vous les traitez. Une erreur bien réparée montre votre sérieux ; une erreur niée ou minimisée détruit la confiance.",
+    "La réparation suit quatre temps. Reconnaître clairement ce qui s'est passé, sans détour. S'excuser une fois, simplement, sans excuses en cascade. Réparer concrètement : rattraper la séance, corriger le document, refaire la facture. Expliquer ce qui change pour que cela ne se reproduise pas.",
+    "Le geste de réparation doit être proportionné. Une séance rattrapée répare une séance manquée ; inutile d'y ajouter une remise, qui fragiliserait votre grille de prix et créerait un précédent. Le geste le plus fort est souvent la rapidité : réparer le jour même vaut plus qu'un cadeau la semaine suivante."
+   ],
+   "appro": [
+    "Quand la faute n'est pas la vôtre (oubli de la famille, malentendu), restez sur les faits sans accuser : rappelez la règle convenue, proposez une solution, et voyez ce qui pourrait éviter la confusion la prochaine fois (un rappel la veille, par exemple).",
+    "Un client mécontent bien traité peut devenir un de vos meilleurs ambassadeurs. Rappelez-le deux semaines après la réparation pour vérifier que tout va bien : ce geste simple est rare et marque les esprits."
+   ],
+   "ex": "Vous oubliez une séance à cause d'une erreur d'agenda. Le soir même : « Bonsoir Madame, je vous présente mes excuses : j'ai manqué la séance d'aujourd'hui à cause d'une erreur dans mon agenda. Je vous propose de la rattraper jeudi à 17 h ou samedi à 10 h. J'ai mis en place un rappel la veille de chaque séance pour que cela ne se reproduise pas. »",
+   "fm": "Vos conditions prévoient déjà le report de la séance en cas d'empêchement de l'encadreur. Le rattrapage est donc le geste naturel, qui respecte vos prix nets identiques pour toutes les familles.",
+   "err": "Se justifier longuement ou minimiser (« ce n'est pas grave »). Le parent retient que vous ne prenez pas le problème au sérieux.",
+   "cle": "Reconnaître, s'excuser une fois, réparer vite, montrer ce qui change.",
+   "exo": "Rédigez vos messages types de réparation pour trois erreurs possibles : séance oubliée, erreur dans un corrigé, facture fausse.",
+   "q": "Quelle erreur de votre part serait la plus dommageable pour une famille, et comment la prévenir dès maintenant ?"
+  },
+  {
+   "id": "fidelisation-4",
+   "t": "Construire un système de fidélité",
+   "p": [
+    "La fidélité ne repose pas sur la chance : elle se construit par un système qui tient en quatre éléments. Écouter : une courte enquête chaque trimestre. Ritualiser : des rendez-vous fixes aux moments clés de l'année. Prolonger : proposer la suite avant que la famille ne se pose la question. Remercier : reconnaître chaque recommandation.",
+    "L'enquête tient en trois questions : « Sur une échelle de 0 à 10, recommanderiez-vous FayeMath Academy à un proche ? », « Qu'est-ce qui vous satisfait le plus ? », « Qu'est-ce que je pourrais améliorer ? ». Une note de 9 ou 10 signale un ambassadeur potentiel ; une note de 6 ou moins appelle un appel dans la semaine.",
+    "Les mêmes principes s'appliquent aux clients institutionnels, comme une école qui vous confie des cours : un interlocuteur identifié, des horaires tenus, un bilan écrit chaque trimestre au directeur, et une proposition pour l'année suivante avant la fin de l'année en cours."
+   ],
+   "appro": [
+    "Remerciez une recommandation sans toucher au prix : un message personnel, des nouvelles de la famille recommandée si elle s'inscrit, une priorité sur les créneaux ou l'invitation au stage avant son ouverture. Ces gestes coûtent peu et respectent l'égalité de traitement entre familles.",
+    "Préparez aussi les fins de collaboration. Un départ bien accompagné (dernier bilan, conseils pour la suite, porte ouverte) laisse une famille qui parlera bien de vous et reviendra peut-être, pour un autre enfant ou l'année d'examen."
+   ],
+   "ex": "Calendrier annuel : octobre, accueil et diagnostic ; décembre, bilan du trimestre et enquête ; mars, bilan et message d'encouragement avant les compositions ; mai, proposition de stage et de réinscription ; juillet, message avant les examens puis félicitations ou soutien selon les résultats.",
+   "fm": "Votre stage de vacances (8 séances de 2 h sur 2 semaines) est un pont naturel entre deux années. La réinscription d'une famille d'une année sur l'autre est le meilleur indicateur de votre qualité.",
+   "err": "Ne recontacter les familles qu'à la rentrée. Entre-temps, certaines auront trouvé une autre solution.",
+   "cle": "Écouter chaque trimestre, ritualiser les moments clés, proposer la suite avant la fin.",
+   "exo": "Remplissez votre calendrier annuel de fidélité : pour chaque mois, l'action prévue et les familles concernées.",
+   "q": "Que fait aujourd'hui une famille satisfaite pour vous recommander, et comment pourriez-vous le lui faciliter ?"
+  }
+ ],
+ "cas": {
+  "t": "La famille qui veut arrêter en février",
+  "s": "M. Thiam vous annonce par message qu'il arrête à la fin du mois : « Je ne vois pas vraiment de changement, et on m'a proposé quelqu'un de moins cher. » Son fils est en 3e et vous le suivez depuis octobre.",
+  "q": [
+   "Que faites-vous avant de répondre ?",
+   "Comment conduisez-vous l'échange ?",
+   "Que faites-vous si le départ est confirmé ?"
+  ],
+  "r": [
+   "Relire comptes rendus, bilans et notes depuis octobre ; préparer les faits (point de départ, progrès mesurés, ce qui reste à travailler) ; demander un appel plutôt que répondre par écrit.",
+   "Écouter sans se défendre ; clarifier ce que « pas de changement » veut dire pour lui (les notes de l'école ?) ; montrer les progrès mesurés ; proposer deux ou trois options (plan ciblé BFEM sur six semaines avec point d'étape, devoir blanc pour objectiver) ; ne pas baisser le prix.",
+   "Le remercier, envoyer un dernier bilan avec des conseils pour la préparation du BFEM, demander la raison principale du départ, laisser la porte ouverte et noter la famille pour un contact avant l'examen."
+  ]
+ },
+ "atelier": {
+  "t": "Votre météo des familles et votre registre",
+  "c": "Créez deux tableaux. La météo : une ligne par famille, couleur, signal observé, action prévue, date. Le registre des problèmes : date, famille, problème, cause, solution, résultat. Remplissez-les avec la situation de cette semaine."
+ },
+ "outil": {
+  "t": "Protocole de résolution en six temps",
+  "usage": "À garder sous les yeux avant tout échange délicat avec une famille ou une école.",
+  "lignes": [
+   "## 1. Accueillir",
+   "Écouter jusqu'au bout, sans se défendre. Remercier d'avoir parlé.",
+   "## 2. Clarifier",
+   "Quoi ? Depuis quand ? Quelles conséquences ? Reformuler : « Si je comprends bien… »",
+   "## 3. Trouver la cause",
+   "Demander « pourquoi ? » jusqu'à la cause sur laquelle on peut agir.",
+   "## 4. Proposer",
+   "Deux ou trois solutions ; laisser choisir.",
+   "## 5. Agir et confirmer",
+   "Message écrit : ce qui est décidé, qui fait quoi, pour quand.",
+   "## 6. Vérifier et prévenir",
+   "Point de suivi à date fixée ; changer la règle, le modèle ou l'habitude en cause ; inscrire au registre.",
+   "## Règles",
+   "Accuser réception dans la journée · jamais devant l'élève · jamais à chaud · ne jamais promettre une note."
+  ]
+ },
+ "actions": [
+  "Faire la météo des familles chaque semaine pendant la revue hebdomadaire",
+  "Ouvrir le registre des problèmes et y noter chaque problème",
+  "Envoyer l'enquête de satisfaction à chaque famille chaque trimestre",
+  "Préparer le calendrier annuel de fidélité"
+ ],
+ "quiz": [
+  [
+   "Quelle est la cause de départ la plus fréquente à surveiller ?",
+   [
+    "Une progression non visible ou non perçue",
+    "La couleur des supports",
+    "Le jour de la semaine"
+   ],
+   0,
+   "D'où l'importance de mesurer et de montrer les progrès."
+  ],
+  [
+   "Que signifie une famille en « orange » ?",
+   [
+    "Tout va bien",
+    "Un signal d'alerte est apparu",
+    "Elle est partie"
+   ],
+   1,
+   "Chaque orange déclenche une action dans la semaine."
+  ],
+  [
+   "Quel est le premier temps du protocole ?",
+   [
+    "Proposer une solution",
+    "Accueillir et écouter sans se défendre",
+    "Envoyer la facture"
+   ],
+   1,
+   "On écoute avant de clarifier."
+  ],
+  [
+   "Combien de solutions proposer ?",
+   [
+    "Une seule, la meilleure",
+    "Deux ou trois, en laissant choisir",
+    "Aucune"
+   ],
+   1,
+   "La famille s'engage davantage dans une solution qu'elle a choisie."
+  ],
+  [
+   "Qu'est-ce qu'un problème systémique ?",
+   [
+    "Un problème qui touche plusieurs familles et vient de votre fonctionnement",
+    "Un problème informatique",
+    "Un problème ponctuel"
+   ],
+   0,
+   "Il se corrige à la source."
+  ],
+  [
+   "Quel geste répare une séance oubliée ?",
+   [
+    "Une remise sur le mois",
+    "Un rattrapage rapide et l'explication de ce qui change",
+    "Rien"
+   ],
+   1,
+   "Proportionné, sans toucher à la grille de prix."
+  ],
+  [
+   "Que faire d'une note de 6 ou moins à l'enquête de satisfaction ?",
+   [
+    "L'ignorer",
+    "Appeler la famille dans la semaine",
+    "Augmenter le prix"
+   ],
+   1,
+   "C'est un signal rouge."
+  ],
+  [
+   "Comment remercier une recommandation ?",
+   [
+    "Par une remise",
+    "Par un message personnel, des nouvelles, une priorité sur les créneaux",
+    "Ne rien faire"
+   ],
+   1,
+   "Reconnaître sans toucher au prix."
+  ]
+ ],
+ "sources": [
+  [
+   "Reichheld, F. (2003). The One Number You Need to Grow. Harvard Business Review (question de recommandation)",
+   ""
+  ],
+  [
+   "Conditions générales et grille tarifaire FayeMath Academy (vos documents)",
+   ""
+  ]
+ ],
+ "veille": [
+  1,
+  6
+ ]
 }
 );

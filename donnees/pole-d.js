@@ -15,7 +15,7 @@
 FM.modules.push(
 {
  "id": "organisation",
- "n": 14,
+ "n": 19,
  "pole": "D",
  "court": "Organisation",
  "titre": "Organisation et gestion du temps",
@@ -247,7 +247,7 @@ FM.modules.push(
 },
 {
  "id": "numerique",
- "n": 15,
+ "n": 20,
  "pole": "D",
  "court": "Outils et IA",
  "titre": "Outils numériques et IA",
@@ -484,7 +484,7 @@ FM.modules.push(
 },
 {
  "id": "posture",
- "n": 16,
+ "n": 21,
  "pole": "D",
  "court": "Posture du fondateur",
  "titre": "Posture et leadership du fondateur",
@@ -721,7 +721,7 @@ FM.modules.push(
 },
 {
  "id": "grandir",
- "n": 17,
+ "n": 22,
  "pole": "D",
  "court": "Grandir",
  "titre": "Grandir sans se perdre",

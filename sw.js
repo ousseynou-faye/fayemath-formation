@@ -11,12 +11,12 @@
    en arrière-plan et apparaissent à l'ouverture suivante.
    Si vous ajoutez un fichier, ajoutez-le à la liste FICHIERS.
    ===================================================================== */
-const VERSION = "fayemath-formation-2.2";
+const VERSION = "fayemath-formation-2.3";
 const FICHIERS = [
   "./", "index.html", "manifest.webmanifest", "logo.png", "fayemath.ico",
   "css/style.css",
   "js/etat.js", "js/moteur.js", "js/vues-parcours.js", "js/vues-outils.js", "js/vues-veille.js", "js/app.js",
-  "donnees/poles.js", "donnees/pole-a.js", "donnees/pole-b.js", "donnees/pole-c.js", "donnees/pole-d.js", "donnees/glossaire.js", "donnees/veille.js",
+  "donnees/poles.js", "donnees/pole-a.js", "donnees/pole-b.js", "donnees/pole-c.js", "donnees/pole-d.js", "donnees/glossaire.js", "donnees/situations.js", "donnees/veille.js",
   "icones/icone-192.png", "icones/icone-512.png", "icones/icone-masquable-512.png", "icones/icone-180.png"
 ];
 

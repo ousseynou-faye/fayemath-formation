@@ -38,8 +38,8 @@ const libStatut = {ok:"Validé", cours:"En cours", "":"À commencer"};
 function progListe(L){ return pct(L.reduce((a,m) => a + faitsModule(m), 0), L.reduce((a,m) => a + pasModule(m), 0)); }
 const progPole = p => progListe(modsPole(p));
 const progGlobale = () => progListe(FM.modules);
-/* Examen final : pseudo-pôle "X" qui couvre les 17 modules */
-const FINAL = {id:"X", titre:"Examen final du parcours", but:"20 questions tirées dans les 17 modules."};
+/* Examen final : pseudo-pôle "X" qui couvre tous les modules */
+const FINAL = {id:"X", titre:"Examen final du parcours", but:"20 questions tirées dans tous les modules."};
 const modsBilan = p => p === "X" ? FM.modules : modsPole(p);
 const poleValide = p => (p === "X" ? FM.poles.every(q => poleValide(q.id)) : modsPole(p).every(valide)) && ((etat.bilanP[p] || {}).best || 0) >= SEUIL;
 
@@ -124,6 +124,7 @@ function indexRecherche(){
     I.push({type:"Fiche-outil · module "+m.n, titre:m.outil.t, txt:m.outil.t+" "+m.outil.usage+" "+m.outil.lignes.join(" "), href:"#etape/"+m.id+"/outil"});
     I.push({type:"Module "+m.n, titre:m.titre, txt:m.titre+" "+m.but+" "+m.objectifs.join(" ")+" "+m.actions.join(" "), href:"#module/"+m.id});
   });
+  FM.situations.forEach(s => I.push({type:"Guide des situations · " + s.c, titre:s.t, txt:[s.t, s.s].concat(s.k, s.sol, s.msg, s.prev).join(" "), href:"#situations/" + s.id}));
   FM.glossaire.forEach(g => I.push({type:"Glossaire", titre:g[0], txt:g[0]+" "+g[1], href:"#glossaire"}));
   MODULES.forEach(v => { I.push({type:"Entreprises modèles", titre:v.titre, txt:v.titre+" "+v.intro+" "+v.retenir.join(" ")+" "+v.idee, href:"#veille/"+v.n});
     v.r.forEach(r => I.push({type:"Ressource "+r[0], titre:r[1], txt:r[1]+" "+r[2]+" "+r[5], href:"#veille/"+v.n})); });

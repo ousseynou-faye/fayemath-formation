@@ -35,6 +35,7 @@ function ecran(){
     case "ecrits":      return {html:vueEcrits(), cle:"ecrits"};
     case "glossaire":   return {html:vueGlossaire(), cle:"glossaire"};
     case "favoris":     return {html:vueFavoris(), cle:"favoris"};
+    case "situations":  return {html:vueSituations(r.a), cle:"situations"};
     case "aide":        return {html:vueAide(), cle:"aide"};
     case "recherche":   return {html:vueRecherche(), cle:"recherche"};
     case "sauvegarde":  return {html:vueSauvegarde(), cle:"sauvegarde"};
@@ -59,6 +60,7 @@ function rendreNav(e){
     ${lien("revision","R","Révision espacée", due ? due+" dues" : "", e.cle === "revision")}
     ${lien("bilans","B","Bilans et examen final", FM.poles.filter(p => poleValide(p.id)).length+"/4", e.cle === "bilans")}
     <div class="nav-sep">Appliquer</div>
+    ${lien("situations","!","Guide des situations", FM.situations.length, e.cle === "situations")}
     ${lien("outils","O","Boîte à outils", "", e.cle === "outils")}
     ${lien("actions","A","Plan d'action", A.filter(a => statut(a.k) === "fait").length+"/"+A.length, e.cle === "actions")}
     ${lien("journal","J","Journal de bord", "", e.cle === "journal")}
@@ -81,7 +83,11 @@ function rendre(){
   document.getElementById("vue").innerHTML = e.html;
   rendreNav(e);
   document.getElementById("nav").classList.remove("ouvert");
-  if (ici !== derniereRoute){ window.scrollTo(0,0); derniereRoute = ici; }   // on ne remonte en haut que lors d'un changement d'écran
+  if (ici !== derniereRoute){
+    const r = route(), cible = r.nom === "situations" && r.a && document.getElementById(r.a);
+    if (cible && cible.scrollIntoView) cible.scrollIntoView({block:"start"}); else window.scrollTo(0,0);
+    derniereRoute = ici;
+  }   // on ne remonte en haut que lors d'un changement d'écran
 }
 
 /* ---------- minuteur d'étude ---------- */
@@ -130,6 +136,9 @@ const ACTIONS = {
   "rev-note"(d){ const c = pile.shift(); noterCarte(c.k, d.su === "1"); face = false; rendre(); },
   "filtre-act"(d){ filtreAct = d.v; rendre(); },
   "filtre-res"(d){ filtreRes = d.v; rendre(); },
+  "filtre-sit"(d){ filtreSit = d.v; rendre(); },
+  "copier-msg"(d){ const txt = FM.situations.find(s => s.id === d.id).msg, el = document.getElementById("cp-" + d.id);
+    (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject()).then(() => el.textContent = "Message copié.", () => el.textContent = "Copie impossible : sélectionnez le texte."); },
   "notes-res"(d){ notesOuvertes.has(d.id) ? notesOuvertes.delete(d.id) : notesOuvertes.add(d.id); rendre(); },
   "suppr-journal"(d){ if (confirm("Supprimer cette entrée du journal ?")){ etat.journal.splice(+d.i, 1); sauver(); rendre(); } },
   "export-ecrits"(){ telecharger("FayeMath_Formation_mes_ecrits_" + auj() + ".txt", texteEcrits(), "text/plain;charset=utf-8"); },
@@ -147,6 +156,7 @@ document.addEventListener("click", ev => {
 /* ---------- saisies : enregistrées à chaque frappe, sans réafficher l'écran ---------- */
 document.addEventListener("input", ev => {
   const t = ev.target, d = t.dataset;
+  if (t.id === "rech-sit"){ rechSit = t.value; const tmp = document.createElement("div"); tmp.innerHTML = vueSituations(); document.getElementById("liste-sit").innerHTML = tmp.querySelector("#liste-sit").innerHTML; return; }
   if (d.champ){
     const [champ, id] = d.champ.split(":");
     if (champ === "objectif") etat.objectif = Math.min(20, Math.max(1, +t.value || 1));

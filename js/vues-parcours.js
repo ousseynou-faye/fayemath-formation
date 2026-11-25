@@ -41,6 +41,7 @@ function vueAccueil(){
   <h2>Appliquer</h2>
   <div class="grille g3">
     <a class="carte mod-carte" href="#actions"><h3>Plan d'action</h3><p>${faites} action${faites>1?"s":""} faite${faites>1?"s":""}, ${enCours} en cours, sur ${A.length}.</p></a>
+    <a class="carte mod-carte" href="#situations"><h3>Guide des situations</h3><p>${FM.situations.length} problèmes fréquents, avec causes, solutions et message type.</p></a>
     <a class="carte mod-carte" href="#outils"><h3>Boîte à outils</h3><p>${FM.modules.length} fiches prêtes à l'emploi : scripts, trames, check-lists.</p></a>
     <a class="carte mod-carte" href="#veille"><h3>Entreprises modèles</h3><p>${nb(ESSENTIELLES)} ressources essentielles étudiées sur ${ESSENTIELLES.length}.</p></a>
   </div>`;
@@ -75,6 +76,7 @@ function vueModule(m){
   </ol>
   <h2>Actions à mettre en place</h2>
   <div class="carte">${m.actions.map((a,k) => ligneAction({k:"A-"+m.id+"-"+k, txt:a})).join("")}<p class="petit" style="margin:10px 0 0">Ces actions figurent dans votre <a href="#actions">plan d'action</a>.</p></div>
+  ${(() => { const S = FM.situations.filter(s => s.m === m.id); return S.length ? `<h2>Situations difficiles liées</h2><div class="carte">${S.map(s => `<a class="trouve" href="#situations/${s.id}" style="margin-top:0;margin-bottom:8px"><small>${h(s.c)}</small><div><b>${h(s.t)}</b></div></a>`).join("")}<p class="petit" style="margin:4px 0 0">Toutes les situations : <a href="#situations">Guide des situations</a>.</p></div>` : ""; })()}
   ${m.veille.length ? `<h2>Études de cas liées</h2><div class="puces">${m.veille.map(n => { const v = MODULES[n-1]; return `<a class="puce" href="#veille/${n}" style="text-decoration:none;font-size:13.5px;padding:5px 12px">${h(v.court)}</a>`; }).join("")}</div>` : ""}
   <h2>Sources</h2><ul class="obj petit">${m.sources.map(s => `<li>${s[1] ? `<a href="${h(s[1])}" target="_blank" rel="noopener">${h(s[0])}</a>` : h(s[0])}</li>`).join("")}</ul>
   <div class="suivant"><span>${av ? `<a class="btn sec" href="#module/${av.id}">Module ${av.n}</a>` : ""} <a class="btn sec" href="#imprimer/${m.id}">Version imprimable</a></span>
@@ -184,7 +186,7 @@ function vueBilans(){
       ${ok ? `<a class="btn vert" href="#attestation/${p.id}">Voir l'attestation</a>` : `<span class="pastille">Attestation verrouillée</span>`}</p></div>`; }).join("")}</div>
   <h2>Examen final</h2>
   ${(() => { const b = etat.bilanP.X, tous = FM.poles.every(p => poleValide(p.id)), ok = poleValide("X");
-    return `<div class="carte" style="border-top:5px solid var(--or)"><div class="pole-lettre">Parcours complet</div><h3 style="font-size:18px">Examen final : 20 questions sur les 17 modules</h3>
+    return `<div class="carte" style="border-top:5px solid var(--or)"><div class="pole-lettre">Parcours complet</div><h3 style="font-size:18px">Examen final : 20 questions sur les ${FM.modules.length} modules</h3>
       <div class="chiffres"><span><b>${FM.poles.filter(p => poleValide(p.id)).length}</b> / 4 pôles validés</span><span>Examen : <b>${b ? b.best+" %" : "—"}</b>${b ? " le "+frDate(b.d) : ""}</span></div>
       <p style="margin:12px 0 0;display:flex;gap:8px;flex-wrap:wrap"><a class="btn${b ? " sec" : ""}" href="#bilan/X">${b ? "Repasser l'examen" : "Passer l'examen final"}</a>
       ${ok ? `<a class="btn vert" href="#attestation/X">Attestation générale</a>` : `<span class="pastille">${tous ? "Réussissez l'examen à " + SEUIL + " %" : "Attestation générale : validez d'abord les 4 pôles"}</span>`}</p></div>`; })()}
