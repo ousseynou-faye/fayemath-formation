@@ -17,7 +17,7 @@ function vueAccueil(){
   const favs = LECONS.filter(x => etat.fav[x.l.id]);
   return `${aSauver ? `<div class="carte rappel"><div><b>Pensez à votre sauvegarde.</b> <span class="petit">${jd === null ? "Aucune copie enregistrée pour l'instant." : "Dernière copie il y a " + jd + " jours."}</span></div><a class="btn sec" href="#sauvegarde">Sauvegarder</a></div>` : ""}
   <div class="sur-titre">Tableau de bord</div><h1>Bonjour ${h(etat.nom.split(" ")[0])}</h1>
-  <p class="chapeau">Votre formation de fondateur : 4 pôles, ${FM.modules.length} modules, ${LECONS.length} leçons. Chaque module se valide par ses leçons et un quiz réussi à ${SEUIL} %.</p>
+  <p class="chapeau">Votre formation : ${POLES_FONDATEUR.length} pôles du fondateur et le parcours du formateur en ligne, ${FM.modules.length} modules, ${LECONS.length} leçons. Chaque module se valide par ses leçons et un quiz réussi à ${SEUIL} %.</p>
   ${e ? `<div class="carte reprise"><div><div class="sur-titre">Reprendre · ${h(e.sur)}</div><h3 style="font-size:19px">${h(e.titre)}</h3><div class="petit">${h(e.quoi)}</div></div><a class="btn" href="${e.href}">Continuer</a></div>`
       : `<div class="carte reprise"><div><h3>Parcours terminé</h3><div class="petit">Tous les modules sont validés. Passez les bilans de pôle et entretenez vos acquis avec la révision.</div></div><a class="btn" href="#bilans">Bilans et attestations</a></div>`}
   <div class="kpis">
@@ -30,10 +30,12 @@ function vueAccueil(){
   </div>
   <div class="carte"><h3>Ma semaine</h3><div class="petit">Objectif : ${etat.objectif} leçons par semaine. Les jours d'étude sont en vert. ${fin ? `À ce rythme, il reste ${fin.reste} leçons, soit environ ${fin.semaines} semaine${fin.semaines>1?"s":""} (vers le ${fin.date}). ` : ""}<a href="#journal">Modifier l'objectif</a></div>
     <div class="semaine">${J.map((j,i) => `<span class="${etat.jours[j] ? "on" : ""}">${"LMMJVSD"[i]}</span>`).join("")}</div></div>
-  <h2>Les 4 pôles</h2>
-  <div class="grille g2">${FM.poles.map(p => { const L = modsPole(p.id), v = L.filter(valide).length;
-    return `<a class="carte pole-carte" href="#pole/${p.id}"><div class="pole-lettre">Pôle ${p.id}</div><h3 style="font-size:18px">${h(p.titre)}</h3><p class="petit" style="margin:0">${h(p.but)}</p>
-      ${barre(progPole(p.id))}<div class="chiffres"><span><b>${v}</b> / ${L.length} modules validés</span><span><b>${progPole(p.id)} %</b></span>${poleValide(p.id) ? '<span class="pastille ok">Pôle validé</span>' : ""}</div></a>`; }).join("")}</div>
+  <h2>Parcours du fondateur</h2>
+  <div class="grille g2">${POLES_FONDATEUR.map(cartePole).join("")}</div>
+  <h2>Parcours du formateur en ligne</h2>
+  <div class="grille g2">${POLES_FORMATEUR.map(cartePole).join("")}
+    <a class="carte pole-carte media-entree" href="#mediatheque"><div class="pole-lettre">Médiathèque</div><h3 style="font-size:18px">Vidéos, formations, articles et outils</h3><p class="petit" style="margin:0">${FM.media.length} ressources vérifiées pour bien enseigner en ligne, plus les vôtres, avec lecteur vidéo intégré.</p>
+      ${barre(pct(toutesRes().filter(r => etat.resV[r.id]).length, toutesRes().length))}<div class="chiffres"><span><b>${toutesRes().filter(r => etat.resV[r.id]).length}</b> / ${toutesRes().length} vues</span></div></a></div>
   <h2>Carte des compétences</h2>
   <div class="comp">${FM.modules.map(m => `<a class="${statutModule(m)}" href="#module/${m.id}" title="${h(m.titre)} — ${libStatut[statutModule(m)]}"><i>${m.n}</i><span>${h(m.court)}</span></a>`).join("")}</div>
   <p class="petit" style="margin-top:8px">Vert : module validé · ocre : en cours · blanc : à commencer.</p>
@@ -47,15 +49,23 @@ function vueAccueil(){
   </div>`;
 }
 
+/* Carte d'un pôle sur le tableau de bord */
+function cartePole(p){
+  const L = modsPole(p.id), v = L.filter(valide).length;
+  return `<a class="carte pole-carte${p.parcours ? " pole-formateur" : ""}" href="#pole/${p.id}"><div class="pole-lettre">Pôle ${p.id}</div><h3 style="font-size:18px">${h(p.titre)}</h3><p class="petit" style="margin:0">${h(p.but)}</p>
+    ${barre(progPole(p.id))}<div class="chiffres"><span><b>${v}</b> / ${L.length} modules validés</span><span><b>${progPole(p.id)} %</b></span>${poleValide(p.id) ? '<span class="pastille ok">Pôle validé</span>' : ""}</div></a>`;
+}
+
 /* ---------- un pôle ---------- */
 function vuePole(p){
   const L = modsPole(p.id), b = etat.bilanP[p.id];
-  return `<div class="sur-titre">Pôle ${p.id}</div><h1>${h(p.titre)}</h1><p class="chapeau">${h(p.but)}</p>
+  return `<div class="sur-titre">${p.parcours ? "Parcours du formateur en ligne · " : ""}Pôle ${p.id}</div><h1>${h(p.titre)}</h1><p class="chapeau">${h(p.but)}</p>
   <div class="carte">${barre(progPole(p.id))}<div class="chiffres"><span><b>${L.filter(valide).length}</b> / ${L.length} modules validés</span><span><b>${progPole(p.id)} %</b> accompli</span><span>Bilan de pôle : <b>${b ? b.best+" %" : "—"}</b></span></div></div>
   <h2>Modules</h2>
   <div class="grille g2">${L.map(m => `<a class="carte mod-carte" href="#module/${m.id}"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><span class="sur-titre" style="margin:0">Module ${m.n}</span>${pastille(statutModule(m))}</div>
     <h3 style="font-size:17px">${h(m.titre)}</h3><p>${h(m.but)}</p>${barre(progModule(m))}
     <div class="petit">${lues(m)} / ${m.lecons.length} leçons · quiz ${scoreQuiz(m) ? scoreQuiz(m)+" %" : "à faire"} · environ ${fmtMin(dureeModule(m))}</div></a>`).join("")}</div>
+  ${p.parcours ? `<a class="carte media-entree" href="#mediatheque" style="display:block;margin-top:14px;text-decoration:none"><b>Médiathèque du formateur</b><div class="petit">${FM.media.length} vidéos, formations, articles et outils reliés à ces modules, plus vos propres ressources.</div></a>` : ""}
   <div class="suivant"><a class="btn sec" href="#accueil">Tableau de bord</a><a class="btn" href="#bilan/${p.id}">Passer le bilan du pôle ${p.id}</a></div>`;
 }
 
@@ -78,6 +88,7 @@ function vueModule(m){
   <div class="carte">${m.actions.map((a,k) => ligneAction({k:"A-"+m.id+"-"+k, txt:a})).join("")}<p class="petit" style="margin:10px 0 0">Ces actions figurent dans votre <a href="#actions">plan d'action</a>.</p></div>
   ${(() => { const S = FM.situations.filter(s => s.m === m.id); return S.length ? `<h2>Situations difficiles liées</h2><div class="carte">${S.map(s => `<a class="trouve" href="#situations/${s.id}" style="margin-top:0;margin-bottom:8px"><small>${h(s.c)}</small><div><b>${h(s.t)}</b></div></a>`).join("")}<p class="petit" style="margin:4px 0 0">Toutes les situations : <a href="#situations">Guide des situations</a>.</p></div>` : ""; })()}
   ${m.veille.length ? `<h2>Études de cas liées</h2><div class="puces">${m.veille.map(n => { const v = MODULES[n-1]; return `<a class="puce" href="#veille/${n}" style="text-decoration:none;font-size:13.5px;padding:5px 12px">${h(v.court)}</a>`; }).join("")}</div>` : ""}
+  ${(() => { const R = FM.media.filter(r => r.m === m.id); return R.length ? `<h2>Médiathèque du module</h2><div class="grille g2">${R.map(carteMedia).join("")}</div><p class="petit">Toutes les ressources : <a href="#mediatheque">Médiathèque du formateur</a>.</p>` : ""; })()}
   <h2>Sources</h2><ul class="obj petit">${m.sources.map(s => `<li>${s[1] ? `<a href="${h(s[1])}" target="_blank" rel="noopener">${h(s[0])}</a>` : h(s[0])}</li>`).join("")}</ul>
   <div class="suivant"><span>${av ? `<a class="btn sec" href="#module/${av.id}">Module ${av.n}</a>` : ""} <a class="btn sec" href="#imprimer/${m.id}">Version imprimable</a></span>
     ${ap ? `<a class="btn" href="#module/${ap.id}">Module ${ap.n} : ${h(ap.court)}</a>` : '<a class="btn" href="#bilans">Bilans et attestations</a>'}</div>`;
@@ -185,11 +196,11 @@ function vueBilans(){
       <p style="margin:12px 0 0;display:flex;gap:8px;flex-wrap:wrap"><a class="btn${b ? " sec" : ""}" href="#bilan/${p.id}">${b ? "Repasser le bilan" : "Passer le bilan"}</a>
       ${ok ? `<a class="btn vert" href="#attestation/${p.id}">Voir l'attestation</a>` : `<span class="pastille">Attestation verrouillée</span>`}</p></div>`; }).join("")}</div>
   <h2>Examen final</h2>
-  ${(() => { const b = etat.bilanP.X, tous = FM.poles.every(p => poleValide(p.id)), ok = poleValide("X");
+  ${(() => { const b = etat.bilanP.X, tous = POLES_FONDATEUR.every(p => poleValide(p.id)), ok = poleValide("X");
     return `<div class="carte" style="border-top:5px solid var(--or)"><div class="pole-lettre">Parcours complet</div><h3 style="font-size:18px">Examen final : 20 questions sur les ${FM.modules.length} modules</h3>
-      <div class="chiffres"><span><b>${FM.poles.filter(p => poleValide(p.id)).length}</b> / 4 pôles validés</span><span>Examen : <b>${b ? b.best+" %" : "—"}</b>${b ? " le "+frDate(b.d) : ""}</span></div>
+      <div class="chiffres"><span><b>${POLES_FONDATEUR.filter(p => poleValide(p.id)).length}</b> / ${POLES_FONDATEUR.length} pôles du fondateur validés</span><span>Examen : <b>${b ? b.best+" %" : "—"}</b>${b ? " le "+frDate(b.d) : ""}</span></div>
       <p style="margin:12px 0 0;display:flex;gap:8px;flex-wrap:wrap"><a class="btn${b ? " sec" : ""}" href="#bilan/X">${b ? "Repasser l'examen" : "Passer l'examen final"}</a>
-      ${ok ? `<a class="btn vert" href="#attestation/X">Attestation générale</a>` : `<span class="pastille">${tous ? "Réussissez l'examen à " + SEUIL + " %" : "Attestation générale : validez d'abord les 4 pôles"}</span>`}</p></div>`; })()}
+      ${ok ? `<a class="btn vert" href="#attestation/X">Attestation générale</a>` : `<span class="pastille">${tous ? "Réussissez l'examen à " + SEUIL + " %" : "Attestation générale : validez d'abord les pôles A à D"}</span>`}</p></div>`; })()}
   <p class="pied">Ces attestations sont des documents internes de suivi de votre formation personnelle. Elles n'ont pas valeur de diplôme.</p>`;
 }
 function vueBilan(p){
@@ -204,19 +215,20 @@ function vueBilan(p){
 }
 function vueAttestation(p){
   if (!poleValide(p.id)) return p.id === "X"
-    ? `<h1>Attestation générale verrouillée</h1><p class="chapeau">Validez les quatre pôles, puis réussissez l'examen final à ${SEUIL} %.</p><a class="btn" href="#bilans">Bilans et attestations</a>`
+    ? `<h1>Attestation générale verrouillée</h1><p class="chapeau">Validez les quatre pôles du fondateur (A à D), puis réussissez l'examen final à ${SEUIL} %.</p><a class="btn" href="#bilans">Bilans et attestations</a>`
     : `<h1>Attestation verrouillée</h1><p class="chapeau">Validez tous les modules du pôle ${p.id} et réussissez son bilan à ${SEUIL} % pour l'obtenir.</p><a class="btn" href="#pole/${p.id}">Ouvrir le pôle ${p.id}</a>`;
   const b = etat.bilanP[p.id];
   if (p.id === "X") return `<div class="attest"><img src="logo.png" alt="" width="84" height="84"><div class="sur-titre">FayeMath Academy · Formation du fondateur</div>
     <h1>Attestation générale de formation interne</h1><p>Il est attesté que</p><div class="nom">${h(etat.nom)}</div>
-    <p>a validé l'ensemble du parcours du fondateur : <b>4 pôles, ${FM.modules.length} modules, ${LECONS.length} leçons</b></p>
-    <ul>${FM.poles.map(q => `<li>Pôle ${q.id} · ${h(q.titre)} — bilan ${etat.bilanP[q.id].best} %</li>`).join("")}</ul>
+    <p>a validé l'ensemble du parcours du fondateur : <b>${POLES_FONDATEUR.length} pôles, ${modsBilan("X").length} modules, ${modsBilan("X").reduce((a,m) => a + m.lecons.length, 0)} leçons</b></p>
+    <ul>${POLES_FONDATEUR.map(q => `<li>Pôle ${q.id} · ${h(q.titre)} — bilan ${etat.bilanP[q.id].best} %</li>`).join("")}</ul>
     <p>Examen final : <b>${b.best} %</b> · le ${frDate(b.d)}</p>
     <p class="petit" style="margin-top:22px">Document interne de suivi d'une formation personnelle. Sans valeur de diplôme.<br>« La Réussite se construit à Domicile »</p></div>
   <p class="sans-imp" style="text-align:center"><button class="btn" type="button" data-a="imprimer">Imprimer l'attestation</button> <a class="btn sec" href="#bilans">Retour</a></p>`;
-  return `<div class="attest"><img src="logo.png" alt="" width="84" height="84"><div class="sur-titre">FayeMath Academy · Formation du fondateur</div>
+  const formateur = p.parcours === "formateur";         // pôle E : parcours du formateur en ligne
+  return `<div class="attest"><img src="logo.png" alt="" width="84" height="84"><div class="sur-titre">FayeMath Academy · ${formateur ? "Parcours du formateur en ligne" : "Formation du fondateur"}</div>
     <h1>Attestation de formation interne</h1><p>Il est attesté que</p><div class="nom">${h(etat.nom)}</div>
-    <p>a validé le pôle <b>${p.id} — ${h(p.titre)}</b></p>
+    <p>a validé ${formateur ? "le parcours" : "le pôle"} <b>${p.id} — ${h(p.titre)}</b></p>
     <ul>${modsPole(p.id).map(m => `<li>Module ${m.n} · ${h(m.titre)} — quiz ${scoreQuiz(m)} %</li>`).join("")}</ul>
     <p>Bilan de pôle : <b>${b.best} %</b> · le ${frDate(b.d)}</p>
     <p class="petit" style="margin-top:22px">Document interne de suivi d'une formation personnelle. Sans valeur de diplôme.<br>« La Réussite se construit à Domicile »</p></div>

@@ -41,24 +41,30 @@ function ecran(){
     case "sauvegarde":  return {html:vueSauvegarde(), cle:"sauvegarde"};
     case "veille":      return v ? {html:vueVeilleModule(v), cle:"veille"} : {html:vueVeille(), cle:"veille"};
     case "programme":   return {html:vueProgramme(), cle:"veille"};
+    case "mediatheque": return {html:vueMediatheque(), cle:"mediatheque", pole:"E"};
   }
   return {html:vueAccueil(), cle:"accueil"};
 }
 
 /* ---------- menu de gauche ---------- */
 function rendreNav(e){
+  /* un pôle dans le menu, avec ses modules dépliés quand on s'y trouve */
+  const navPole = p => lien("pole/"+p.id, p.id, h(p.titre), progPole(p.id)+" %", e.pole === p.id && !e.mod && e.cle !== "mediatheque", modsPole(p.id).every(valide), "nav-pole")
+    + (e.pole === p.id ? modsPole(p.id).map(m => lien("module/"+m.id, m.n, h(m.court), lues(m)+"/"+m.lecons.length, e.mod === m.id, valide(m), "nav-sous")).join("") : "");
   const lien = (cible, num, txt, extra, actif, fini, cls) => `<a class="nav-lien ${cls || ""}" href="#${cible}" ${actif ? 'aria-current="page"' : ""}><span class="nav-num${fini ? " fini" : ""}">${num}</span><span class="nav-txt">${txt}</span>${extra ? `<span class="nav-pct">${extra}</span>` : ""}</a>`;
   const A = actions(), due = cartes().filter(carteDue).length;
   document.getElementById("nav").innerHTML = `<div class="marque"><img src="logo.png" alt=""><div>Faye<span>Math</span> Formation</div></div><div class="sous-marque">La Réussite se construit à Domicile</div>
     ${lien("accueil","T","Tableau de bord", progGlobale()+" %", e.cle === "accueil")}
     <div class="nav-sep">Parcours du fondateur</div>
-    ${FM.poles.map(p => lien("pole/"+p.id, p.id, h(p.titre), progPole(p.id)+" %", e.pole === p.id && !e.mod, modsPole(p.id).every(valide), "nav-pole")
-      + (e.pole === p.id ? modsPole(p.id).map(m => lien("module/"+m.id, m.n, h(m.court), lues(m)+"/"+m.lecons.length, e.mod === m.id, valide(m), "nav-sous")).join("") : "")).join("")}
+    ${POLES_FONDATEUR.map(navPole).join("")}
+    <div class="nav-sep">Parcours du formateur en ligne</div>
+    ${POLES_FORMATEUR.map(navPole).join("")}
+    ${lien("mediatheque","M","Médiathèque", toutesRes().filter(r => etat.resV[r.id]).length+"/"+toutesRes().length, e.cle === "mediatheque")}
     <div class="nav-sep">Études de cas</div>
-    ${lien("veille","E","Entreprises modèles", nb(ESSENTIELLES)+"/"+ESSENTIELLES.length, e.cle === "veille")}
+    ${lien("veille","V","Entreprises modèles", nb(ESSENTIELLES)+"/"+ESSENTIELLES.length, e.cle === "veille")}
     <div class="nav-sep">S'entraîner</div>
     ${lien("revision","R","Révision espacée", due ? due+" dues" : "", e.cle === "revision")}
-    ${lien("bilans","B","Bilans et examen final", FM.poles.filter(p => poleValide(p.id)).length+"/4", e.cle === "bilans")}
+    ${lien("bilans","B","Bilans et attestations", FM.poles.filter(p => poleValide(p.id)).length+"/"+FM.poles.length, e.cle === "bilans")}
     <div class="nav-sep">Appliquer</div>
     ${lien("situations","!","Guide des situations", FM.situations.length, e.cle === "situations")}
     ${lien("outils","O","Boîte à outils", "", e.cle === "outils")}
@@ -137,6 +143,10 @@ const ACTIONS = {
   "filtre-act"(d){ filtreAct = d.v; rendre(); },
   "filtre-res"(d){ filtreRes = d.v; rendre(); },
   "filtre-sit"(d){ filtreSit = d.v; rendre(); },
+  "filtre-med"(d){ filtreMed = d.v; msgMed = ""; rendre(); },
+  "med-lire"(d){ medLecteur = medLecteur === d.id ? "" : d.id; rendre(); },
+  "med-notes"(d){ medOuverte.has(d.id) ? medOuverte.delete(d.id) : medOuverte.add(d.id); rendre(); },
+  "med-suppr"(d){ if (confirm("Retirer cette ressource de votre médiathèque ?")){ etat.mesRes = etat.mesRes.filter(r => r.id !== d.id); delete etat.resV[d.id]; delete etat.resN[d.id]; sauver(); msgMed = "Ressource retirée."; rendre(); } },
   "copier-msg"(d){ const txt = FM.situations.find(s => s.id === d.id).msg, el = document.getElementById("cp-" + d.id);
     (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject()).then(() => el.textContent = "Message copié.", () => el.textContent = "Copie impossible : sélectionnez le texte."); },
   "notes-res"(d){ notesOuvertes.has(d.id) ? notesOuvertes.delete(d.id) : notesOuvertes.add(d.id); rendre(); },
@@ -165,12 +175,14 @@ document.addEventListener("input", ev => {
     sauver();
   } else if (d.note){ (etat.notes[d.note] = etat.notes[d.note] || {})[d.c] = t.value; sauver(); }
   else if (d.synth){ etat.synth[d.synth] = t.value; sauver(); }
+  else if (d.mednote){ etat.resN[d.mednote] = t.value; sauver(); }
 });
 document.addEventListener("change", ev => {
   const t = ev.target, d = t.dataset;
   if (d.statut){ setStatut(d.statut, t.value); rendre(); }
   else if (d.ech){ if (t.value) etat.ech[d.ech] = t.value; else delete etat.ech[d.ech]; sauver(); rendre(); }
   else if (d.coche){ marquer(d.coche, t.checked); rendre(); }
+  else if (d.medvu){ if (t.checked) etat.resV[d.medvu] = auj(); else delete etat.resV[d.medvu]; sauver(); rendre(); }
   else if (d.exo){ if (t.checked) etat.exo[d.exo] = auj(); else delete etat.exo[d.exo]; sauver(); rendre(); }
   else if (d.bilan){ if (t.checked) etat.bilans[d.bilan] = true; else delete etat.bilans[d.bilan]; sauver(); rendre(); }
   else if (d.champ === "objectif") rendre();
@@ -192,6 +204,14 @@ document.addEventListener("submit", ev => {
   else if (ev.target.id === "form-journal"){
     etat.journal.unshift({d:auj(), appris:document.getElementById("j-appris").value.trim(), applique:document.getElementById("j-applique").value.trim()});
     sauver(); rendre();
+  }
+  else if (ev.target.id === "form-med"){                       // ajout d'une ressource personnelle
+    const url = document.getElementById("med-u").value.trim(), t = document.getElementById("med-t").value.trim();
+    if (!/^https:\/\//i.test(url) || !t){ msgMed = "Indiquez un titre et un lien qui commence par https://"; rendre(); return; }
+    const id = "P" + Date.now().toString(36);
+    etat.mesRes.push({id, t, url, type:document.getElementById("med-type").value, m:document.getElementById("med-m").value});
+    sauver(); filtreMed = "perso"; msgMed = idYoutube(url) ? "Vidéo ajoutée : touchez « Regarder ici » pour la lire." : "Ressource ajoutée.";
+    medLecteur = ""; rendre();
   }
 });
 

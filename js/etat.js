@@ -5,7 +5,7 @@
    l'écran « Sauvegarde » permet d'en exporter une copie.
    ===================================================================== */
 "use strict";
-const APP_VERSION = "2.3";               // numéro affiché dans le menu et l'écran de réglages
+const APP_VERSION = "2.4";               // numéro affiché dans le menu et l'écran de réglages
 const CLE = "fayemath-formation-v2";      // clé de sauvegarde de la version 2
 const CLE_V1 = "fayemath-formation-v1";   // ancienne clé, relue une seule fois pour reprendre la progression
 
@@ -30,6 +30,10 @@ const VIDE = () => ({
   objectif:4,   // objectif de leçons par semaine
   temps:{},     // minutes d'étude       : {"AAAA-MM-JJ": minutes}
   jours:{},     // jours d'activité      : {"AAAA-MM-JJ": 1}
+  /* --- médiathèque du formateur en ligne (version 2.4) --- */
+  resV:{},      // ressources vues       : {idRessource: "AAAA-MM-JJ"}
+  resN:{},      // notes sur une ressource : {idRessource: texte}
+  mesRes:[],    // ressources ajoutées   : [{id, t, url, type, m}]
   /* --- partie « Entreprises modèles » (inchangée depuis la version 1) --- */
   done:{}, dates:{}, notes:{}, bilans:{}, tests:{}, quiz:{}, synth:{}, debut:""
 });
@@ -85,7 +89,9 @@ function fusionner(a, b){
   for (const k of cles(e.lu, b.lu)) e.lu[k] = [e.lu[k], b.lu[k]].filter(Boolean).sort()[0];            // date la plus ancienne
   for (const c of ["refl","cas","atel","synth"]) for (const k of cles(e[c], b[c])) e[c][k] = long(e[c][k], b[c][k]);
   for (const c of ["casVu","fav","jours","done","bilans","tests"]) Object.assign(e[c], b[c], e[c]);
-  for (const c of ["exo","dates","ech"]) e[c] = Object.assign({}, b[c], e[c]);
+  for (const c of ["exo","dates","ech","resV"]) e[c] = Object.assign({}, b[c], e[c]);
+  for (const k of cles(e.resN, b.resN)) e.resN[k] = long(e.resN[k], b.resN[k]);
+  const mes = new Set(e.mesRes.map(x => x.id)); b.mesRes.forEach(x => { if (!mes.has(x.id)) e.mesRes.push(x); });
   for (const k of cles(e.quizM, b.quizM)){ const x = e.quizM[k], y = b.quizM[k]; e.quizM[k] = !x ? y : !y ? x : ((y.best || 0) > (x.best || 0) ? y : x); }
   for (const k of cles(e.bilanP, b.bilanP)){ const x = e.bilanP[k], y = b.bilanP[k]; e.bilanP[k] = !x ? y : !y ? x : (y.best > x.best ? y : x); }
   const rang = {todo:0, cours:1, fait:2};

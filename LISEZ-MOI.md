@@ -1,6 +1,6 @@
-# FayeMath Formation — application locale et mobile (version 2.3)
+# FayeMath Formation — application locale et mobile (version 2.4)
 
-Application de formation du fondateur de FayeMath Academy. Elle fonctionne sur cet ordinateur, sans compte et sans connexion (sauf pour ouvrir les liens des « Entreprises modèles »).
+Application de formation du fondateur de FayeMath Academy. Elle fonctionne sur cet ordinateur et sur le téléphone, sans compte et sans connexion (sauf pour ouvrir les liens externes et regarder les vidéos).
 
 ## Ouvrir
 Double-cliquez sur le raccourci « FayeMath Formation » du Bureau, ou sur `index.html` dans ce dossier (Chrome ou Edge).
@@ -8,20 +8,29 @@ Double-cliquez sur le raccourci « FayeMath Formation » du Bureau, ou sur `inde
 ## Contenu
 | Partie | Contenu |
 |---|---|
-| **Parcours du fondateur** | 4 pôles, 22 modules, 87 leçons (chacune avec approfondissement et mise en pratique), 22 cas pratiques, 22 ateliers, 22 fiches-outils, 176 questions de quiz, 71 actions |
+| **Parcours du fondateur** | 4 pôles (A à D), 22 modules, 87 leçons, 22 cas pratiques, 22 ateliers, 22 fiches-outils, 176 questions de quiz |
+| **Parcours du formateur en ligne** | Pôle E, 7 modules, 23 leçons, 7 cas, 7 ateliers, 7 fiches-outils, 56 questions de quiz, bilan et attestation propres |
+| **Médiathèque du formateur** | 34 ressources vérifiées (formations, synthèses de recherche, tutoriels vidéo, outils gratuits), vos propres ressources, lecteur YouTube intégré, notes « 3 idées + 1 action » |
 | **Entreprises modèles** | 6 études de cas, 58 ressources en ligne, programme de 6 semaines |
 | **S'entraîner** | Révision espacée par cartes, bilans de pôle, examen final, attestations internes |
-| **Appliquer** | Guide des situations (33 problèmes résolus), boîte à outils, plan d'action, journal de bord, mes écrits |
-| **Références** | Favoris, glossaire (54 termes), mode d'emploi, recherche dans toute la formation |
+| **Appliquer** | Guide des situations (37 problèmes résolus), 98 actions au total, boîte à outils, plan d'action, journal de bord, mes écrits |
+| **Références** | Favoris, glossaire (70 termes), mode d'emploi, recherche dans toute la formation |
 
-### Les 4 pôles
+### Les pôles
 - **A. Fondations de l'entreprise** : identité, offre et prix, juridique, finances.
 - **B. Développement commercial** : se faire connaître, vendre, relation parents, fidéliser et résoudre les problèmes clients.
 - **C. Pédagogie** : comment un élève apprend, apprendre à apprendre, enseigner maths et PC (méthode générale), didactique de chaque domaine des maths, didactique de la physique-chimie, conduire une séance, profils d'élèves et différenciation, évaluer et suivre, BFEM et Bac, motivation et difficultés.
 - **D. Pilotage et croissance** : organisation, outils numériques et IA, posture du fondateur, grandir.
+- **E. Enseigner en ligne** (parcours du formateur) : fondamentaux et recherche, équipement et connexion, conduire une séance, maths et physique-chimie à distance, évaluer et suivre, cadre et protection des élèves, produire des vidéos de cours.
 
 ### Comment un module se valide
 Toutes les leçons lues **et** quiz réussi à 80 %. Un pôle donne droit à son attestation quand tous ses modules sont validés et que son bilan (12 questions tirées au hasard) atteint 80 %.
+
+## Nouveautés de la version 2.4 (25 novembre 2026)
+- **Parcours du formateur en ligne (pôle E)** : 7 modules et 23 leçons fondés sur la recherche (synthèse de l'EEF, étude de Guo et al. sur les vidéos, principes multimédias de Mayer, guides de protection des enfants), adaptés au Sénégal (connexion, données, loi 2008-12).
+- **Médiathèque** : formations, articles, outils et tutoriels vidéo filtrables ; case « vu », notes, ajout de vos propres liens ; les vidéos YouTube que vous ajoutez se regardent dans l'application.
+- 4 nouvelles situations « Cours en ligne », 16 termes de glossaire, menu en deux parcours.
+- L'examen final et l'attestation générale restent ceux du fondateur (pôles A à D) ; le pôle E a son bilan et son attestation.
 
 ## Nouveautés de la version 2.3 (25 novembre 2026)
 - **Pôle Pédagogie renforcé (6 → 10 modules)** : Apprendre à apprendre ; Enseigner chaque domaine des mathématiques ; Enseigner la physique-chimie ; Profils d'élèves et différenciation ; nouvelle leçon « La première séance chez une nouvelle famille ».
@@ -32,7 +41,7 @@ Toutes les leçons lues **et** quiz réussi à 80 %. Un pôle donne droit à son
 ## Nouveautés de la version 2.2 (15 novembre 2026)
 - **Leçons approfondies** : chaque leçon gagne une partie « Pour aller plus loin » et une « Mise en pratique » à cocher.
 - **Quiz** : l'ordre des réponses change à chaque tentative.
-- **Examen final** (20 questions) et attestation générale, une fois les 4 pôles validés.
+- **Examen final** (20 questions) et attestation générale, une fois les pôles A à D validés.
 - **Fusion de sauvegardes** : réunit la progression du téléphone et celle de l'ordinateur sans rien effacer ; partage direct de la sauvegarde depuis le téléphone ; rappel hebdomadaire.
 - **Favoris**, **historique d'étude sur 28 jours**, **date de fin estimée**, **taille du texte**, **mode d'emploi**.
 - **Avis de mise à jour** sur le téléphone, et numéro de version en bas du menu.
@@ -52,11 +61,13 @@ Toutes les leçons lues **et** quiz réussi à 80 %. Un pôle donne droit à son
 | `js/vues-parcours.js` | Écrans du parcours (tableau de bord, modules, leçons, quiz, bilans) |
 | `js/vues-outils.js` | Révision, boîte à outils, plan d'action, journal, écrits, glossaire, sauvegarde |
 | `js/vues-veille.js` | Entreprises modèles |
+| `js/vues-media.js` | Médiathèque du formateur |
 | `js/app.js` | Navigation, minuteur, clics et saisies |
-| `donnees/pole-a.js` … `pole-d.js` | Texte des 17 modules (**modifiable** : corrigez une ligne, rechargez la page) |
+| `donnees/pole-a.js` … `pole-e.js` | Texte des 29 modules (**modifiable** : corrigez une ligne, rechargez la page) |
 | `donnees/glossaire.js` | Glossaire |
 | `donnees/situations.js` | Guide des situations (**modifiable** : ajoutez un bloc pour une nouvelle situation) |
 | `donnees/veille.js` | Les 58 ressources et le programme de 6 semaines |
+| `donnees/mediatheque.js` | Les ressources de la médiathèque (**modifiable**) |
 | `sauvegardes/` | Rangez ici vos fichiers de sauvegarde |
 | `_archive-v1/` | Copie de la version 1 (12 novembre 2026) |
 

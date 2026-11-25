@@ -1,7 +1,7 @@
 {
   "name": "FayeMath Formation",
   "short_name": "FM Formation",
-  "description": "Formation du fondateur de FayeMath Academy : 4 pôles, 22 modules, quiz, révision, guide des situations et plan d'action.",
+  "description": "Formation du fondateur de FayeMath Academy : parcours du fondateur (4 pôles) et parcours du formateur en ligne, 29 modules, quiz, révision, médiathèque, guide des situations et plan d'action.",
   "lang": "fr",
   "start_url": "./index.html",
   "scope": "./",

@@ -9,6 +9,9 @@ const SEUIL = 80;                                   // % de bonnes réponses pou
 const MOD = id => FM.modules.find(m => m.id === id);
 const POLE = id => FM.poles.find(p => p.id === id);
 const modsPole = p => FM.modules.filter(m => m.pole === p);
+/* Pôles du parcours du fondateur (A à D) ; le pôle E est le parcours du formateur en ligne */
+const POLES_FONDATEUR = FM.poles.filter(p => !p.parcours);
+const POLES_FORMATEUR = FM.poles.filter(p => p.parcours === "formateur");
 /* Liste à plat de toutes les leçons, avec leur module et leur rang */
 const LECONS = FM.modules.flatMap(m => m.lecons.map((l,i) => ({l, m, i})));
 const LECON = id => LECONS.find(x => x.l.id === id);
@@ -38,10 +41,10 @@ const libStatut = {ok:"Validé", cours:"En cours", "":"À commencer"};
 function progListe(L){ return pct(L.reduce((a,m) => a + faitsModule(m), 0), L.reduce((a,m) => a + pasModule(m), 0)); }
 const progPole = p => progListe(modsPole(p));
 const progGlobale = () => progListe(FM.modules);
-/* Examen final : pseudo-pôle "X" qui couvre tous les modules */
-const FINAL = {id:"X", titre:"Examen final du parcours", but:"20 questions tirées dans tous les modules."};
-const modsBilan = p => p === "X" ? FM.modules : modsPole(p);
-const poleValide = p => (p === "X" ? FM.poles.every(q => poleValide(q.id)) : modsPole(p).every(valide)) && ((etat.bilanP[p] || {}).best || 0) >= SEUIL;
+/* Examen final : pseudo-pôle "X" qui couvre tous les modules du parcours du fondateur (pôles A à D) */
+const FINAL = {id:"X", titre:"Examen final du parcours du fondateur", but:"20 questions tirées dans tous les modules des pôles A à D."};
+const modsBilan = p => p === "X" ? FM.modules.filter(m => POLES_FONDATEUR.some(q => q.id === m.pole)) : modsPole(p);
+const poleValide = p => (p === "X" ? POLES_FONDATEUR.every(q => poleValide(q.id)) : modsPole(p).every(valide)) && ((etat.bilanP[p] || {}).best || 0) >= SEUIL;
 
 /* ---------- prochaine étape conseillée ---------- */
 function prochaineEtape(){
@@ -87,7 +90,7 @@ const fmtMin = n => n >= 60 ? Math.floor(n/60) + " h " + String(n%60).padStart(2
 function actions(){                     // toutes les actions : celles des modules, puis les idées à tester des entreprises modèles
   const L = [];
   FM.modules.forEach(m => m.actions.forEach((txt,i) => L.push({k:"A-"+m.id+"-"+i, txt, src:"Module "+m.n+" · "+m.court, pole:m.pole, href:"#module/"+m.id})));
-  MODULES.forEach(v => L.push({k:"T"+v.n, txt:v.idee, src:"Entreprises modèles · "+v.court, pole:"E", href:"#veille/"+v.n}));
+  MODULES.forEach(v => L.push({k:"T"+v.n, txt:v.idee, src:"Entreprises modèles · "+v.court, pole:"V", href:"#veille/"+v.n}));
   return L;
 }
 const statut = k => etat.act[k] || (k[0] === "T" && etat.tests[k.slice(1)] ? "fait" : "todo");
@@ -126,6 +129,7 @@ function indexRecherche(){
   });
   FM.situations.forEach(s => I.push({type:"Guide des situations · " + s.c, titre:s.t, txt:[s.t, s.s].concat(s.k, s.sol, s.msg, s.prev).join(" "), href:"#situations/" + s.id}));
   FM.glossaire.forEach(g => I.push({type:"Glossaire", titre:g[0], txt:g[0]+" "+g[1], href:"#glossaire"}));
+  FM.media.forEach(r => I.push({type:"Médiathèque · " + LIB_MEDIA[r.type], titre:r.t, txt:r.t+" "+r.src+" "+r.desc, href:"#mediatheque"}));
   MODULES.forEach(v => { I.push({type:"Entreprises modèles", titre:v.titre, txt:v.titre+" "+v.intro+" "+v.retenir.join(" ")+" "+v.idee, href:"#veille/"+v.n});
     v.r.forEach(r => I.push({type:"Ressource "+r[0], titre:r[1], txt:r[1]+" "+r[2]+" "+r[5], href:"#veille/"+v.n})); });
   I.forEach(x => x.n = sansAccent(x.txt));
@@ -143,6 +147,15 @@ function extrait(txt, q){               // phrase autour du premier mot trouvé,
   let s = h((a ? "… " : "") + txt.slice(a, b) + (b < txt.length ? " …" : ""));
   if (w) s = s.replace(new RegExp("(" + w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&") + ")", "i"), "<mark>$1</mark>");
   return s;
+}
+
+/* ---------- médiathèque du formateur en ligne ---------- */
+const LIB_MEDIA = {video:"Vidéo", formation:"Formation", article:"Article", outil:"Outil", perso:"Mes ressources"};
+const toutesRes = () => FM.media.concat(etat.mesRes.map(r => Object.assign({src:"Ajoutée par vous", lang:"", desc:"", perso:true}, r)));
+/* Identifiant YouTube d'un lien de vidéo précise (pas d'une recherche) ; sert au lecteur intégré */
+function idYoutube(url){
+  const m = String(url).match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/)|youtu\.be\/)([\w-]{11})/);
+  return m ? m[1] : "";
 }
 
 /* ---------- entreprises modèles : outils repris de la version 1 ---------- */

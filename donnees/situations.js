@@ -652,5 +652,90 @@ FM.situations = [
   "prev": "Préparer chaque séance ; connaître le chapitre suivant de la classe.",
   "m": "seance",
   "id": "S33"
+ },
+ {
+  "c": "Cours en ligne",
+  "t": "La connexion coupe pendant une séance en ligne",
+  "s": "Image figée, son haché, appel interrompu, élève qui n'arrive pas à revenir.",
+  "k": [
+   "Réseau saturé à cette heure",
+   "Données mobiles épuisées",
+   "Appareil ou lieu inadapté",
+   "Problème de votre côté"
+  ],
+  "sol": [
+   "Appliquer le plan B annoncé : caméras coupées, puis appel audio et photos du cahier",
+   "Rappeler sous cinq minutes comme prévu, sans reproche",
+   "Terminer l'essentiel avec le plan court et envoyer le reste en plan de travail",
+   "Appliquer la règle des coupures des conditions (rattrapage si la coupure vient de vous)",
+   "Si cela se répète : chercher la cause avec le parent (heure, lieu, appareil, opérateur)"
+  ],
+  "msg": "Bonsoir Madame, la connexion a coupé plusieurs fois ce soir. Nous avons terminé l'essentiel en audio et j'ai envoyé à Awa les deux exercices restants. Je vous propose d'essayer samedi à 10 h, quand le réseau est souvent plus stable. Qu'en pensez-vous ?",
+  "prev": "Essai de connexion avant la première séance ; plan B et règle des coupures écrits dans les conditions ; supports envoyés la veille.",
+  "m": "enligne-equipement",
+  "id": "S34"
+ },
+ {
+  "c": "Cours en ligne",
+  "t": "L'élève reste caméra éteinte et répond à peine",
+  "s": "Caméra coupée, réponses en un mot, longs silences, travail non montré.",
+  "k": [
+   "Connexion faible",
+   "Gêne ou timidité",
+   "Lieu partagé ou bruyant",
+   "Décrochage ou lassitude"
+  ],
+  "sol": [
+   "Demander simplement s'il y a un problème technique ou de lieu",
+   "Accepter la caméra éteinte pendant l'écoute, demander de l'allumer pour montrer le cahier",
+   "Poser des questions qui obligent à produire (lis ta ligne, explique cette étape)",
+   "Renforcer le rituel d'accueil et valoriser chaque réussite précise",
+   "Informer le parent par un compte rendu positif et chercher ensemble un lieu calme"
+  ],
+  "msg": "Bonsoir Monsieur, Moussa a bien travaillé ce soir sur les puissances. Pour l'aider davantage, il faudrait qu'il puisse me montrer son cahier à la caméra pendant les exercices. Serait-il possible qu'il s'installe dans un endroit calme pour les prochaines séances ? Merci beaucoup.",
+  "prev": "Charte du cours en ligne envoyée avant la première séance ; caméra sur le cahier comme règle ; parent invité au début du suivi.",
+  "m": "enligne-seance",
+  "id": "S35"
+ },
+ {
+  "c": "Cours en ligne",
+  "t": "Un parent veut enregistrer ou partager les séances",
+  "s": "Le parent demande l'enregistrement, ou vous découvrez qu'un extrait a circulé dans un groupe.",
+  "k": [
+   "Besoin de revoir les explications",
+   "Envie de montrer le travail à la famille",
+   "Méconnaissance des règles sur l'image des mineurs"
+  ],
+  "sol": [
+   "Accepter l'enregistrement seulement avec un accord écrit précis (quoi, qui conserve, combien de temps, qui y a accès)",
+   "Proposer une alternative : capsules vidéo courtes sur les méthodes, sans élève à l'écran",
+   "Si un extrait a circulé : demander calmement son retrait et rappeler la charte",
+   "Inscrire la règle dans les conditions du cours en ligne"
+  ],
+  "msg": "Bonsoir Madame, c'est avec plaisir que j'enregistre la partie explication des séances pour que Fatou puisse la revoir. Je vous propose de convenir par écrit que la vidéo vous est envoyée à vous seule, qu'elle n'est pas partagée et qu'elle est supprimée en fin d'année. Cela vous convient-il ?",
+  "prev": "Accord d'enregistrement et règle sur l'image dans la charte du cours en ligne.",
+  "m": "enligne-cadre",
+  "id": "S36"
+ },
+ {
+  "c": "Cours en ligne",
+  "t": "Vous soupçonnez une triche lors d'une évaluation en ligne",
+  "s": "Réponses parfaites mais démarche absente, durée anormalement courte, explication orale impossible.",
+  "k": [
+   "Réponse cherchée sur internet ou par une application",
+   "Aide d'un proche",
+   "Peur de la mauvaise note"
+  ],
+  "sol": [
+   "Ne pas accuser : demander à l'élève d'expliquer sa démarche à l'oral",
+   "Rappeler que l'évaluation sert à l'aider, pas à le juger",
+   "Refaire un exercice proche en direct, caméra sur le cahier",
+   "Revoir vos évaluations : démarche exigée, questions « explique pourquoi », oral court après le quiz",
+   "Établir un protocole écrit pour les devoirs blancs en ligne"
+  ],
+  "msg": "Bonsoir Monsieur, le devoir d'Ibrahima était très juste, mais il a eu du mal à m'expliquer sa démarche ce soir. Je vais lui proposer des exercices proches en séance pour vérifier que la méthode est bien acquise, et je vous tiendrai informé. Bonne soirée.",
+  "prev": "Évaluations où l'on demande la démarche ; oral systématique après les quiz ; protocole de devoir blanc envoyé à l'avance.",
+  "m": "enligne-suivi",
+  "id": "S37"
  }
 ];

@@ -6,6 +6,11 @@ FM.glossaire = [
   "vente"
  ],
  [
+  "Asynchrone",
+  "Se dit d'un contenu consulté en différé (vidéo, fiche, quiz), au rythme de l'élève.",
+  "enligne-bases"
+ ],
+ [
   "Automatisme",
   "Savoir ou procédure disponible sans effort (tables, identités remarquables). Il libère la mémoire de travail pour le raisonnement.",
   "apprendre"
@@ -31,9 +36,19 @@ FM.glossaire = [
   "didactique"
  ],
  [
+  "Caméra-document",
+  "Téléphone ou caméra fixé au-dessus d'une feuille pour montrer son écriture en direct.",
+  "enligne-equipement"
+ ],
+ [
   "Canal",
   "Moyen par lequel une famille vous découvre : réseau, terrain, WhatsApp, Facebook.",
   "notoriete"
+ ],
+ [
+  "Capsule vidéo",
+  "Vidéo pédagogique courte (six minutes au plus) consacrée à une seule notion ou méthode.",
+  "enligne-video"
  ],
  [
   "Carnet d'erreurs",
@@ -66,6 +81,11 @@ FM.glossaire = [
   "physique"
  ],
  [
+  "Consentement parental",
+  "Accord écrit du parent, nécessaire pour enregistrer une séance ou publier l'image d'un élève mineur.",
+  "enligne-cadre"
+ ],
+ [
   "Contact qualifié",
   "Parent avec qui vous avez eu un échange sérieux et dont le besoin correspond à votre offre.",
   "vente"
@@ -89,6 +109,11 @@ FM.glossaire = [
   "Différenciation",
   "Adaptation de l'accompagnement au profil de chaque élève : bases, méthode, motivation, attention, anxiété.",
   "profils"
+ ],
+ [
+  "Enseignement hybride",
+  "Combinaison d'un contenu en différé, vu avant, et d'une séance en direct consacrée à la pratique.",
+  "enligne-bases"
  ],
  [
   "Évaluation diagnostique",
@@ -151,6 +176,11 @@ FM.glossaire = [
   "vente"
  ],
  [
+  "Page squelette",
+  "Page préparée avec l'énoncé et la figure, complétée en direct pendant la séance.",
+  "enligne-mathspc"
+ ],
+ [
   "Pédagogie de la maîtrise",
   "Approche décrite par Bloom : ne passer à l'étape suivante qu'une fois la précédente maîtrisée.",
   "profils"
@@ -159,6 +189,16 @@ FM.glossaire = [
   "Pitch",
   "Présentation de 30 secondes : public, problème, solution, preuve, prochaine étape.",
   "identite"
+ ],
+ [
+  "Plan B technique",
+  "Solution de repli annoncée à l'avance en cas de problème de connexion : caméras coupées, appel audio, report.",
+  "enligne-equipement"
+ ],
+ [
+  "Plan court",
+  "Liste des exercices indispensables à garder si une séance en ligne est raccourcie.",
+  "enligne-seance"
  ],
  [
   "Plan de travail",
@@ -199,6 +239,26 @@ FM.glossaire = [
   "Prestataire (modèle)",
   "Organisation où l'entreprise engage les encadreurs et facture les familles ; elle garde la maîtrise de la qualité.",
   "grandir"
+ ],
+ [
+  "Principe de cohérence",
+  "Principe de Mayer : retirer d'un support tout ce qui n'aide pas à apprendre.",
+  "enligne-video"
+ ],
+ [
+  "Principe de segmentation",
+  "Principe de Mayer : découper une explication en petites parties que l'élève peut contrôler.",
+  "enligne-video"
+ ],
+ [
+  "Protocole de devoir blanc en ligne",
+  "Règles écrites d'une évaluation à distance : heure, durée, caméra, envoi des photos.",
+  "enligne-suivi"
+ ],
+ [
+  "Questionnaire autocorrigé",
+  "Quiz en ligne qui corrige automatiquement les questions fermées, comme le mode questionnaire de Google Forms.",
+  "enligne-suivi"
  ],
  [
   "Rappel (récupération en mémoire)",
@@ -251,6 +311,21 @@ FM.glossaire = [
   "motivation"
  ],
  [
+  "Simulation interactive",
+  "Modèle numérique d'un phénomène que l'élève peut manipuler (par exemple les simulations PhET).",
+  "enligne-mathspc"
+ ],
+ [
+  "Synchrone",
+  "Se dit d'un cours en direct : l'élève et l'enseignant sont connectés au même moment.",
+  "enligne-bases"
+ ],
+ [
+  "Tableau blanc numérique",
+  "Espace de dessin partagé en ligne où l'enseignant et l'élève écrivent ensemble (par exemple Excalidraw).",
+  "enligne-equipement"
+ ],
+ [
   "Test diagnostique",
   "Test court passé à l'entrée, qui donne une carte des acquis notion par notion.",
   "evaluer"
@@ -269,5 +344,10 @@ FM.glossaire = [
   "Tunnel de vente",
   "Suite d'étapes qui mène une famille du premier contact à l'inscription puis à la fidélité.",
   "vente"
+ ],
+ [
+  "Vidéo non répertoriée",
+  "Vidéo YouTube visible seulement par les personnes qui ont le lien.",
+  "enligne-video"
  ]
 ];
